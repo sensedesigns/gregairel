@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Greg Airel</title>
+  <meta name="description" content="Get in touch with Greg Airel — social links and contact form.">
+  <meta property="og:title" content="Contact — Greg Airel">
+  <meta property="og:description" content="Get in touch with Greg Airel.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-contact">
+  <header id="site-nav"></header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Contact</h1>
+      <p>Have a question, want to collaborate, or just want to say hello.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h2>Find Me Online</h2>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link">YouTube</a>
+        <a href="#" class="social-link">Facebook</a>
+        <a href="#" class="social-link">LinkedIn</a>
+      </div>
+      <p style="margin-top: var(--space-sm); font-size: var(--text-small); color: var(--color-slate);"><em>Social links will be updated with real URLs.</em></p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2>Send a Message</h2>
+        <p>Fill out the form below and I'll get back to you.</p>
+      </div>
+      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form__group">
+          <label class="form__label" for="name">Name</label>
+          <input class="form__input" type="text" id="name" name="name" required>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="email">Email</label>
+          <input class="form__input" type="email" id="email" name="email" required>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="message">Message</label>
+          <textarea class="form__textarea" id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">Send Message</button>
+      </form>
+      <p style="margin-top: var(--space-sm); font-size: var(--text-small); color: var(--color-slate);"><em>Note: Replace YOUR_FORM_ID in the form action with your Formspree endpoint to activate the contact form.</em></p>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
