@@ -5,3 +5,6 @@ Thumbs.db
 .idea/
 node_modules/
 .claude/
+
+# Local design previews — never ship these
+_preview/

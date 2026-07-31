@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page-contact">
@@ -26,24 +26,27 @@
   <section class="section">
     <div class="container">
       <div class="section__header">
-        <h2>Find Me Online</h2>
+        <span class="section__num">01</span>
+        <span class="label">Elsewhere</span>
+        <h2>Find me<br>online</h2>
       </div>
-      <div class="social-links">
+      <div class="social-links reveal">
         <a href="#" class="social-link">YouTube</a>
         <a href="#" class="social-link">Facebook</a>
         <a href="#" class="social-link">LinkedIn</a>
       </div>
-      <p style="margin-top: var(--space-sm); font-size: var(--text-small); color: var(--color-slate);"><em>Social links will be updated with real URLs.</em></p>
+      <p class="note" style="margin-top:1.5rem">Real social URLs still to come — these are placeholders.</p>
     </div>
   </section>
 
   <section class="section section--alt">
     <div class="container">
       <div class="section__header">
-        <h2>Send a Message</h2>
-        <p>Fill out the form below and I'll get back to you.</p>
+        <span class="section__num">02</span>
+        <span class="label">Direct</span>
+        <h2>Send a<br>message</h2>
       </div>
-      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <div class="form__group">
           <label class="form__label" for="name">Name</label>
           <input class="form__input" type="text" id="name" name="name" required>
@@ -56,9 +59,9 @@
           <label class="form__label" for="message">Message</label>
           <textarea class="form__textarea" id="message" name="message" required></textarea>
         </div>
-        <button type="submit" class="btn btn--primary">Send Message</button>
+        <button type="submit" class="btn btn--primary">Send message</button>
       </form>
-      <p style="margin-top: var(--space-sm); font-size: var(--text-small); color: var(--color-slate);"><em>Note: Replace YOUR_FORM_ID in the form action with your Formspree endpoint to activate the contact form.</em></p>
+      <p class="note" style="margin-top:1.5rem">This form isn't live yet — the Formspree endpoint still needs to be set, so submissions currently go nowhere.</p>
     </div>
   </section>
 

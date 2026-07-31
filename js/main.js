@@ -7,7 +7,11 @@
 
   const PAGES = [
     { href: '/index.html', label: 'Home', alt: '/' },
+    { href: '/about.html', label: 'About' },
+    { href: '/ventures.html', label: 'Ventures' },
+    { href: '/projects.html', label: 'Projects' },
     { href: '/adventures.html', label: 'Adventures' },
+    { href: '/contact.html', label: 'Contact' },
   ];
 
   function isActive(page) {
@@ -26,7 +30,7 @@
     ).join('');
 
     return `
-      <nav class="nav" role="navigation" aria-label="Main navigation">
+      <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav__inner">
           <a href="/index.html" class="nav__logo">Greg Airel</a>
           <div class="nav__links" id="nav-links">${links}</div>
@@ -40,9 +44,9 @@
 
   function buildFooter() {
     const year = new Date().getFullYear();
-    const links = PAGES.map(
-      (p) => `<a href="${p.href}" class="footer__link">${p.label}</a>`
-    ).join('');
+    const links = PAGES.filter((p) => p.label !== 'Home')
+      .map((p) => `<a href="${p.href}" class="footer__link">${p.label}</a>`)
+      .join('');
 
     return `
       <div class="footer">
@@ -52,7 +56,8 @@
             <div class="footer__links">${links}</div>
           </div>
           <div class="footer__bottom">
-            &copy; ${year} Greg Airel. All rights reserved.
+            <span>&copy; ${year} Greg Airel. All rights reserved.</span>
+            <span class="flux">Always in flux</span>
           </div>
         </div>
       </div>
@@ -70,13 +75,43 @@
       toggle.setAttribute('aria-expanded', open);
     });
 
-    // Close menu when a link is clicked
     links.querySelectorAll('.nav__link').forEach(function (link) {
       link.addEventListener('click', function () {
         links.classList.remove('nav__links--open');
         toggle.classList.remove('nav__toggle--active');
         toggle.setAttribute('aria-expanded', 'false');
       });
+    });
+  }
+
+  // Hairline under the nav only once the page has moved.
+  function initNavScroll() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    const onScroll = function () {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 24);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  function initReveal() {
+    const targets = document.querySelectorAll('.reveal');
+    if (!targets.length || !('IntersectionObserver' in window)) {
+      targets.forEach(function (el) { el.classList.add('reveal--in'); });
+      return;
+    }
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal--in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(function (el, i) {
+      el.style.transitionDelay = (i % 4) * 70 + 'ms';
+      io.observe(el);
     });
   }
 
@@ -88,5 +123,7 @@
     if (footerEl) footerEl.innerHTML = buildFooter();
 
     initMobileMenu();
+    initNavScroll();
+    initReveal();
   });
 })();

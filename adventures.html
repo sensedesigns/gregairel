@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adventures — Greg Airel</title>
-  <meta name="description" content="Travel and endurance adventures — Patagonia W Trek, Everest Base Camp, and more.">
+  <meta name="description" content="Travel and endurance adventures — Patagonia's W Trek, Everest Base Camp, and what comes next.">
   <meta property="og:title" content="Adventures — Greg Airel">
   <meta property="og:description" content="Travel and endurance adventures by Greg Airel.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page-adventures">
@@ -26,41 +26,62 @@
   <section class="section">
     <div class="container">
       <div class="section__header">
-        <h2>Expeditions</h2>
+        <span class="section__num">01</span>
+        <span class="label">Expeditions</span>
+        <h2>Completed</h2>
       </div>
-      <div class="adventure-grid">
-        <div class="adventure-card">
-          <div class="adventure-card__img" style="background-image: url('img/patagonia-towers.jpg'); background-color: var(--color-slate);"></div>
-          <div class="adventure-card__body">
-            <div class="adventure-card__title">Patagonia W Trek</div>
-            <div class="adventure-card__meta">Torres del Paine, Chile &middot; March</div>
-            <div class="adventure-card__desc">Multi-day trek through Patagonia's iconic W circuit. Greg wrote a firsthand Markdown field guide covering terrain, gear, packing, and optional activities — built for anyone planning a March departure.</div>
-            <a href="w-trek.html" class="adventure-card__link">Read the Field Guide</a>
+      <div class="card-grid card-grid--2">
+
+        <article class="card reveal">
+          <div class="card__media"><img src="img/day2-towers.jpg" alt="The granite towers of Torres del Paine above the glacial lake at their base"></div>
+          <div class="card__body">
+            <span class="label">Torres del Paine, Chile &middot; March</span>
+            <h3 class="card__title">Patagonia W Trek</h3>
+            <p class="card__desc">Multi-day trek through Patagonia's iconic W circuit. Written up afterwards as a firsthand field guide covering terrain, gear, packing, and optional activities — built for anyone planning a March departure.</p>
+            <div class="card__foot"><a href="w-trek.html" class="text-link">Read the field guide</a></div>
           </div>
-        </div>
-        <div class="adventure-card">
-          <div class="adventure-card__img" style="background-color: var(--color-slate);"></div>
-          <div class="adventure-card__body">
-            <div class="adventure-card__title">Everest Base Camp</div>
-            <div class="adventure-card__meta">Sagarmatha National Park, Nepal</div>
-            <div class="adventure-card__desc">A trek through the Khumbu Valley to the foot of the world's tallest peak. High altitude, long days, and the kind of perspective that only comes from standing at 17,600 feet.</div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__media"><img src="https://i.ytimg.com/vi/Caeku_oopys/maxresdefault.jpg" alt="Still from the Everest Base Camp trek video" loading="lazy"></div>
+          <div class="card__body">
+            <span class="label">Sagarmatha National Park, Nepal</span>
+            <h3 class="card__title">Everest Base Camp</h3>
+            <p class="card__desc">Ten days through the Khumbu — Lukla to Base Camp on foot, then a helicopter out. Nine nights in teahouses, 2.7 vertical kilometres gained from the airstrip, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.</p>
+            <div class="card__foot"><a href="ebc.html" class="text-link">Read the field guide</a></div>
           </div>
-        </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <section class="section section--dark">
+  <section class="section section--alt">
+    <div class="container">
+      <div class="stats reveal">
+        <div class="stat"><b>Two</b><span class="label">Expeditions completed</span></div>
+        <div class="stat"><b>17,600<span style="font-size:0.5em"> ft</span></b><span class="label">Everest base camp</span></div>
+        <div class="stat"><b>Five</b><span class="label">Days on the W circuit</span></div>
+        <div class="stat"><b>Two</b><span class="label">Field guides published</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="section__header">
-        <h2>Watch &amp; Follow</h2>
-        <p>Adventure documentation on YouTube and Facebook.</p>
+        <span class="section__num">02</span>
+        <span class="label">Watch &amp; follow</span>
+        <h2>Documentation</h2>
       </div>
-      <div class="social-links">
-        <a href="#" class="social-link">YouTube</a>
-        <a href="#" class="social-link">Facebook</a>
+      <div class="narrow reveal">
+        <p>Expeditions get documented on video — a growing library of adventure content for anyone planning something similar.</p>
+        <div class="social-links" style="margin-top:1.8rem">
+          <a href="#" class="social-link">YouTube</a>
+          <a href="#" class="social-link">Facebook</a>
+        </div>
+        <p class="note" style="margin-top:1.5rem">Real links still to come — these are placeholders.</p>
       </div>
-      <p style="color: var(--color-sand); opacity: 0.6; margin-top: var(--space-md); font-size: var(--text-small);"><em>Links and embedded content coming soon.</em></p>
     </div>
   </section>
 
