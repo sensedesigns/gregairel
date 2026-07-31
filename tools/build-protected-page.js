@@ -14,7 +14,7 @@
      node tools/build-protected-page.js \
        "C:/Users/grega/Downloads/feo1-binary-star.html" \
        feo1-binary-star.html \
-       2STARS
+       2stars
 
    Keep the plaintext source OUT of this repo. Re-run this script
    after any edit to it, then commit the regenerated output.
@@ -36,9 +36,9 @@ if (!sourcePath || !outputPath || !password) {
   process.exit(1);
 }
 
-// Match the browser side: trimmed + uppercased, so autocapitalize on a
+// Match the browser side: trimmed + lowercased, so autocapitalize on a
 // phone keyboard and stray whitespace never cause a false rejection.
-const normalized = password.trim().toUpperCase();
+const normalized = password.trim().toLowerCase();
 
 const plaintext = fs.readFileSync(sourcePath);
 const template = fs.readFileSync(TEMPLATE, 'utf8');

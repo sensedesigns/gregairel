@@ -168,9 +168,9 @@
     return out;
   }
 
-  // Uppercased + trimmed so phone autocapitalize and stray spaces don't matter.
+  // Lowercased + trimmed so phone autocapitalize and stray spaces don't matter.
   function normalize(pw) {
-    return pw.trim().toUpperCase();
+    return pw.trim().toLowerCase();
   }
 
   if (!window.crypto || !window.crypto.subtle) {
