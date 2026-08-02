@@ -120,7 +120,7 @@ p + p { margin-top: 1rem; }
   color: var(--ink-soft);
   text-align: center;
 }
-.hunt-banner__dot { color: var(--brass); }
+.hunt-banner__doll { flex: none; display: block; }
 .hunt-banner a { color: var(--brass); border-bottom: 1px solid var(--brass-dim); }
 .hunt-banner a:hover { border-bottom-color: var(--brass); }
 @media (max-width: 560px) {

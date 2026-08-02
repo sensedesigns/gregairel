@@ -28,15 +28,29 @@
   // camps, certificates, the leaderboard and the decoys included.
   const HUNT_PAGE = /\bpage-(climb|camp|summited|triumph|leaderboard|decoy|404)\b/;
 
+  // Self-contained Daruma, left eye inked. Fills are inline because this
+  // banner runs on every page, including the ones that never load hunt.css.
+  const DARUMA_MARK = `
+    <svg class="hunt-banner__doll" viewBox="0 0 100 112" width="20" height="22" aria-hidden="true" focusable="false">
+      <path d="M50 6C24 6 12 32 12 62c0 30 16 44 38 44s38-14 38-44C88 32 76 6 50 6Z" fill="#C6362F"/>
+      <ellipse cx="50" cy="56" rx="29" ry="31" fill="#EFE3CC"/>
+      <path d="M25 40c5-6 13-8 19-5" fill="none" stroke="#14100E" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M75 40c-5-6-13-8-19-5" fill="none" stroke="#14100E" stroke-width="3.4" stroke-linecap="round"/>
+      <circle cx="37" cy="54" r="13" fill="#EFE3CC" stroke="#14100E" stroke-width="2"/>
+      <circle cx="63" cy="54" r="13" fill="#EFE3CC" stroke="#14100E" stroke-width="2"/>
+      <circle cx="37" cy="54" r="10.5" fill="#14100E"/>
+    </svg>
+  `;
+
   function buildBanner() {
     if (HUNT_PAGE.test(document.body.className)) return '';
     return `
       <div class="hunt-banner" id="hunt-banner">
         <div class="hunt-banner__inner">
-          <span class="hunt-banner__dot">&#9650;</span>
-          <span>There's a scavenger hunt buried in this site.</span>
-          <span class="hunt-banner__long">Ten camps, two routes, Wu-Tang on the radio.</span>
-          <a href="/climb.html" rel="nofollow">Start the climb &rarr;</a>
+          ${DARUMA_MARK}
+          <span>There's a scavenger hunt hidden in this site.</span>
+          <span class="hunt-banner__long">Ten stops, two routes, a reward for everyone who finishes.</span>
+          <a href="/climb.html" rel="nofollow">Start the hunt &rarr;</a>
         </div>
       </div>
     `;
