@@ -237,6 +237,10 @@
       var ns = 'http://www.w3.org/2000/svg';
       var el = document.createElementNS(ns, 'svg');
       el.setAttribute('viewBox', '0 0 100 112');
+      // Intrinsic size, so the doll still renders if hunt.css is missing
+      // or hasn't loaded yet. CSS overrides both in every real context.
+      el.setAttribute('width', '100');
+      el.setAttribute('height', '112');
       el.setAttribute('class', 'daruma');
       el.setAttribute('role', 'img');
       el.setAttribute('aria-label', opts.label || 'Daruma doll');

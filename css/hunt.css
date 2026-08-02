@@ -19,8 +19,15 @@
 /* Transform origin sits at the base, not the centre. This is the
    whole effect — centred, it spins like a wheel instead of rocking
    like a weighted toy. */
+/* An inline <svg> with a viewBox but no width/height has no intrinsic
+   size — width resolves to 100% of the parent and height to 100% of an
+   auto-height parent, which circularly collapses to zero. Pinning the
+   ratio and letting height follow width fixes it in every context. */
 .daruma {
   display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 100 / 112;
   transform-origin: 50% 92%;
   overflow: visible;
 }
