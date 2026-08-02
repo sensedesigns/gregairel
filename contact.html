@@ -40,11 +40,8 @@
         <h2>Find me<br>online</h2><div data-daruma="9" style="display:inline-block;margin-left:.7rem;vertical-align:middle"></div>
       </div>
       <div class="social-links reveal">
-        <a href="#" class="social-link">YouTube</a>
-        <a href="#" class="social-link">Facebook</a>
-        <a href="#" class="social-link">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/greg-airel/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <p class="note" style="margin-top:1.5rem">Real social URLs still to come — these are placeholders.</p>
     </div>
   </section>
 
@@ -55,13 +52,29 @@
         <span class="label">Direct</span>
         <h2>Send a<br>message</h2>
       </div>
-      <form class="form reveal" action="https://formsubmit.co/greg.airel@gmail.com" method="POST">
-        <!-- FormSubmit config. A static form cannot post to an address on its
-             own; this relays the submission on to the inbox above. -->
-        <input type="hidden" name="_subject" value="New message from gregairel.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <!-- Honeypot: bots fill it, people never see it. -->
+      <!-- ==================================================================
+           TODO: wire up the form endpoint.
+
+           The action is deliberately empty. It previously posted to a
+           formsubmit.co endpoint with the destination address written into
+           the URL, which left it in plain text in the page source where
+           scrapers harvest it. Do not reintroduce it that way.
+
+           When picking a replacement, use one that does NOT require the
+           address in markup:
+             - FormSubmit: submit once, then swap in the hashed alias
+               endpoint it emails back (formsubmit.co/{hash}).
+             - Formspree: create a form, use the issued /f/{id}.
+             - Cloudflare Worker: the domain is already proxied through
+               Cloudflare, so a Worker could accept the POST and relay it
+               with the address held server-side.
+
+           Until then the submit button stays disabled and the page points
+           people at LinkedIn, so nothing is silently swallowed.
+           ================================================================== -->
+      <form class="form reveal" action="" method="POST">
+        <!-- Honeypot: bots fill it, people never see it. Keep it with
+             whatever endpoint replaces the empty action above. -->
         <input type="text" name="_honey" tabindex="-1" autocomplete="off"
                style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
         <div class="form__group">
@@ -76,9 +89,9 @@
           <label class="form__label" for="message">Message</label>
           <textarea class="form__textarea" id="message" name="message" required></textarea>
         </div>
-        <button type="submit" class="btn btn--primary">Send message</button>
+        <button type="submit" class="btn btn--primary" disabled>Send message</button>
       </form>
-      <p class="note" style="margin-top:1.5rem">Messages come straight to my inbox. I read everything, and I reply to most of it.</p>
+      <p class="note" style="margin-top:1.5rem">This form isn't connected yet, so it won't send. <a href="https://www.linkedin.com/in/greg-airel/" class="text-link" target="_blank" rel="noopener">Reach me on LinkedIn</a> in the meantime.</p>
     </div>
   </section>
 
