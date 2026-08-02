@@ -217,6 +217,35 @@ p + p { margin-top: 1rem; }
 .page-header h1 { max-width: 24ch; }
 .page-header p { margin-top: 1.2rem; color: var(--ink-soft); max-width: 40rem; }
 
+/* --- Portrait header (bio) --- */
+.head-split {
+  display: flex; align-items: center;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  flex-wrap: wrap-reverse;
+}
+.head-split__text { flex: 1 1 22rem; }
+.portrait {
+  flex: none;
+  width: clamp(130px, 24vw, 200px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line-2);
+}
+.portrait--sm { width: clamp(88px, 14vw, 116px); }
+
+/* Third-party logos are drawn for light backgrounds — the Fulfill
+   wordmark is black on transparent and vanishes on this palette. Sit
+   them on a plate rather than recolouring someone else's mark. */
+.logo-plate {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #F2F0EC;
+  border-radius: 6px;
+  padding: 0.7rem 1.1rem;
+  margin-top: 1.3rem;
+}
+.logo-plate img { display: block; height: 30px; width: auto; }
+
 /* --- Section header --- */
 .section__header {
   display: flex; align-items: baseline; gap: 1.2rem;
