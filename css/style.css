@@ -319,6 +319,9 @@ p + p { margin-top: 1rem; }
 }
 .card:hover { border-color: var(--line-2); transform: translateY(-3px); }
 .card__media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--raise-2); }
+/* Video stills are 16:9 — cropping them to 4:3 eats the framing. */
+.card__media--wide { aspect-ratio: 16 / 9; }
+a.card__media { display: block; }
 .card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .card:hover .card__media img { transform: scale(1.05); }
 .card__body { padding: 1.7rem; display: flex; flex-direction: column; flex: 1; }
