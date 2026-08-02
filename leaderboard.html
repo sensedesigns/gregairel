@@ -62,14 +62,16 @@
   (function () {
     'use strict';
 
-    // ------------------------------------------------------------------
-    // PENDING: File → Share → Publish to web → Leaderboard tab → CSV.
-    // Paste the .../d/e/2PACX-.../pub?...&output=csv URL here.
-    // Do NOT use a /gviz/ or /export URL built from the spreadsheet ID —
-    // that only works while the doc is link-shared, and link-sharing also
-    // exposes the responses tab, which holds emails and full names.
-    // ------------------------------------------------------------------
-    var CSV_URL = '';
+    // Published CSV of the Leaderboard tab only — display_name,
+    // total_seconds, hints_used, track. The 2PACX token is publish-scoped
+    // and cannot be walked back to the spreadsheet, so the document itself
+    // stays Restricted.
+    //
+    // Do NOT swap this for a /gviz/ or /export URL built from the
+    // spreadsheet ID. Those only work while the doc is link-shared, and
+    // link-sharing also exposes the responses tab, which holds emails and
+    // full names.
+    var CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTU6eOZWdN5_XF5MZtzKbQ_nzeQpsp8EdsItHyZZAPffob_tWOQvv_PNJgYjyO1G6vlJLTKo0EJskXk/pub?gid=1839552434&single=true&output=csv';
 
     // Nine gated camps at 60s expert / 30s novice. Nothing faster is
     // physically possible, so anything below the floor is forged.
