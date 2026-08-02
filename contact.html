@@ -55,7 +55,15 @@
         <span class="label">Direct</span>
         <h2>Send a<br>message</h2>
       </div>
-      <form class="form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="form reveal" action="https://formsubmit.co/greg.airel@gmail.com" method="POST">
+        <!-- FormSubmit config. A static form cannot post to an address on its
+             own; this relays the submission on to the inbox above. -->
+        <input type="hidden" name="_subject" value="New message from gregairel.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Honeypot: bots fill it, people never see it. -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
         <div class="form__group">
           <label class="form__label" for="name">Name</label>
           <input class="form__input" type="text" id="name" name="name" required>
@@ -70,7 +78,7 @@
         </div>
         <button type="submit" class="btn btn--primary">Send message</button>
       </form>
-      <p class="note" style="margin-top:1.5rem">This form isn't live yet — the Formspree endpoint still needs to be set, so submissions currently go nowhere.</p>
+      <p class="note" style="margin-top:1.5rem">Messages come straight to my inbox. I read everything, and I reply to most of it.</p>
     </div>
   </section>
 
