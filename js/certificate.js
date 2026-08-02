@@ -268,8 +268,7 @@
       fetch(FORM, { method: 'POST', mode: 'no-cors', body: data }).catch(function () {});
 
       form.querySelectorAll('input, textarea, button').forEach(function (el) { el.disabled = true; });
-      status.textContent = 'Sent. Check your email over the next few days — ' +
-                           'the draw runs 48 hours after the first summit.';
+      status.textContent = 'Sent. Your reward will land in your inbox over the next few days.';
     });
 
     host.appendChild(form);
