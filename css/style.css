@@ -239,12 +239,30 @@ p + p { margin-top: 1rem; }
    them on a plate rather than recolouring someone else's mark. */
 .logo-plate {
   display: inline-flex; align-items: center; justify-content: center;
-  background: #F2F0EC;
+  background: #FFFFFF;
   border-radius: 6px;
   padding: 0.7rem 1.1rem;
   margin-top: 1.3rem;
 }
 .logo-plate img { display: block; height: 30px; width: auto; }
+
+/* Brand marks come from a white-background site, so they share one
+   light plate. The Shipping Pilot footer mark is white-on-transparent
+   and is the one exception — it sits directly on the dark. */
+.logo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-top: 1.3rem; }
+.logo-row .logo-plate { margin-top: 0; padding: 0.6rem 0.9rem; }
+.logo-row .logo-plate img { height: 24px; }
+.logo-bare { display: inline-flex; align-items: center; margin-top: 1.3rem; }
+.logo-bare img { display: block; height: 34px; width: auto; }
+
+/* Wide operational strip — a band, not a card. */
+.strip-img {
+  width: 100%; height: clamp(90px, 14vw, 150px);
+  object-fit: cover; display: block;
+  margin: 2.2rem 0 0;
+  border-radius: 4px;
+  filter: saturate(0.85);
+}
 
 /* --- Section header --- */
 .section__header {
