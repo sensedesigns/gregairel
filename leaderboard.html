@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Standings — Greg Airel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hunt.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S2DS8FJ5CM');
+  </script>
+</head>
+<body class="page-leaderboard">
+  <header id="site-nav"></header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Standings</h1>
+      <p>Everyone who reached the top, fastest first. The prize is a draw, not a race.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="narrow" style="margin:0 auto">
+        <p class="lede"><span id="summit-count">—</span> summits so far.</p>
+
+        <div class="board-tabs" role="tablist">
+          <button class="board-tab board-tab--on" data-track="expert" role="tab">Bring Da Ruckus</button>
+          <button class="board-tab" data-track="novice" role="tab">Both Eyes Open</button>
+        </div>
+
+        <table class="board" id="board">
+          <thead>
+            <tr><th>#</th><th>Climber</th><th>Time</th><th>Hints</th></tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="4">Loading…</td></tr>
+          </tbody>
+        </table>
+
+        <p class="note" style="margin-top:1.5rem">Updates every few minutes. Only your fastest run counts.</p>
+        <p style="margin-top:2rem"><a href="climb.html" class="text-link" rel="nofollow">Back to the trailhead</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/hunt.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    // ------------------------------------------------------------------
+    // PENDING: File → Share → Publish to web → Leaderboard tab → CSV.
+    // Paste the .../d/e/2PACX-.../pub?...&output=csv URL here.
+    // Do NOT use a /gviz/ or /export URL built from the spreadsheet ID —
+    // that only works while the doc is link-shared, and link-sharing also
+    // exposes the responses tab, which holds emails and full names.
+    // ------------------------------------------------------------------
+    var CSV_URL = '';
+
+    // Nine gated camps at 60s expert / 30s novice. Nothing faster is
+    // physically possible, so anything below the floor is forged.
+    var FLOORS = { expert: 540, novice: 270 };
+
+    var tbody = document.querySelector('#board tbody');
+    var countEl = document.querySelector('#summit-count');
+
+    function message(text) {
+      var tr = document.createElement('tr');
+      var td = document.createElement('td');
+      td.colSpan = 4;
+      td.textContent = text;
+      tr.appendChild(td);
+      tbody.replaceChildren(tr);
+    }
+
+    async function loadBoard(track) {
+      if (!CSV_URL) {
+        message('Standings open once the first climber signs the book.');
+        countEl.textContent = '0';
+        return;
+      }
+      try {
+        var res = await fetch(CSV_URL + '&cb=' + Date.now());
+        if (!res.ok) throw new Error(res.status);
+        var rows = Papa.parse((await res.text()).trim(), { skipEmptyLines: true }).data.slice(1);
+
+        var best = new Map();
+        for (var i = 0; i < rows.length; i++) {
+          var name = rows[i][0], secs = rows[i][1], hints = rows[i][2], t = rows[i][3];
+          var s = Number(secs);
+          if (t !== track || !Number.isFinite(s) || s < FLOORS[track]) continue;
+          var key = (name || '').trim().toLowerCase();
+          if (!key) continue;
+          // People will finish twice. Keep only the fastest run per climber.
+          if (!best.has(key) || s < best.get(key).s) {
+            best.set(key, { name: name.trim(), s: s, hints: Number(hints) || 0 });
+          }
+        }
+
+        var board = [...best.values()].sort(function (a, b) { return a.s - b.s; }).slice(0, 25);
+        var me = null;
+        try { me = localStorage.getItem('hunt_handle'); } catch (e) {}
+
+        if (!board.length) {
+          message('Nobody has finished this route yet. Could be you.');
+          countEl.textContent = String(best.size);
+          return;
+        }
+
+        // textContent throughout — anyone can POST arbitrary text to a
+        // public form endpoint, and this renders on gregairel.com.
+        tbody.replaceChildren.apply(tbody, board.map(function (r, i) {
+          var tr = document.createElement('tr');
+          if (r.name === me) tr.classList.add('you');
+          [i + 1, r.name, Math.floor(r.s / 60) + 'm ' + (r.s % 60) + 's', r.hints]
+            .forEach(function (v) {
+              var td = document.createElement('td');
+              td.textContent = v;
+              tr.appendChild(td);
+            });
+          return tr;
+        }));
+
+        countEl.textContent = String(best.size);
+      } catch (e) {
+        message('Leaderboard is taking a breather. Check back shortly.');
+      }
+    }
+
+    var current = 'expert';
+    loadBoard(current);
+
+    Array.prototype.forEach.call(document.querySelectorAll('.board-tab'), function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.board-tab').forEach(function (t) {
+          t.classList.remove('board-tab--on');
+        });
+        tab.classList.add('board-tab--on');
+        current = tab.getAttribute('data-track');
+        message('Loading…');
+        loadBoard(current);
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

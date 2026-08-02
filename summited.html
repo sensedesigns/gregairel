@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Both Eyes Open — Greg Airel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hunt.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S2DS8FJ5CM');
+  </script>
+</head>
+<body class="page-summited" data-hunt-strip>
+  <header id="site-nav"></header>
+
+  <!-- Shown when the breadcrumb doesn't check out. -->
+  <section class="section" id="locked" hidden>
+    <div class="container">
+      <div class="page-header" style="padding-top:0;border:0">
+        <h1>Not yet</h1>
+        <p>This page belongs to someone who found all ten.</p>
+      </div>
+      <div class="narrow reveal">
+        <p class="lede">The doll only opens its second eye for the person who set the goal.</p>
+        <p style="margin-top:1.6rem">If you got here from a link someone sent you, that link doesn't carry their climb with it — the record of it lives in their browser, not in this URL.</p>
+        <p style="margin-top:2rem"><a href="climb.html" class="text-link" rel="nofollow">Start your own</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The real page. -->
+  <div id="summit" hidden>
+    <section class="section">
+      <div class="container">
+        <div class="ceremony" id="ceremony-host"></div>
+
+        <div class="certificate narrow" id="certificate" style="margin:0 auto;text-align:center">
+          <span class="label">Both Eyes Open</span>
+          <h1 style="margin-top:0.8rem">Ten found.<br>TRIUMPHANT.</h1>
+          <p style="margin-top:1.4rem" id="cert-blurb">
+            You read the site instead of skimming it, which was the entire point.
+          </p>
+
+          <div class="certificate__stats">
+            <div class="certificate__stat">
+              <span class="label">Climber</span><strong id="stat-name">—</strong>
+            </div>
+            <div class="certificate__stat">
+              <span class="label">Elapsed</span><strong id="stat-time">—</strong>
+            </div>
+            <div class="certificate__stat">
+              <span class="label">Hints</span><strong id="stat-hints">—</strong>
+            </div>
+            <div class="certificate__stat">
+              <span class="label">Summited</span><strong id="stat-when">—</strong>
+            </div>
+          </div>
+
+          <p style="margin-top:2rem">
+            <button class="btn" id="replay" type="button">Watch it again</button>
+            <button class="btn" id="burn" type="button">Burn it</button>
+          </p>
+          <p class="note" id="burn-note" hidden>
+            Tradition says you burn the Daruma once the goal is met. Nothing is lost — reload to bring it back.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__num">01</span>
+          <span class="label">Claim it</span>
+          <h2>Name your<br>reward</h2>
+        </div>
+        <p class="narrow" style="margin:0 auto 2rem;text-align:center">
+          Everyone who finishes within 48 hours goes into the same random draw. Finishing fast
+          gets you a place on the leaderboard and nothing more.
+        </p>
+        <div id="form-host"></div>
+        <p style="margin-top:2.5rem;text-align:center">
+          <a href="leaderboard.html" class="text-link" rel="nofollow">See the standings</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer id="site-footer"></footer>
+  <script src="js/main.js"></script>
+  <script src="js/hunt.js"></script>
+  <script src="js/certificate.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    // The tenth Daruma is the certificate itself.
+    if (Hunt.trackOf() === 'novice' && Hunt.letters().length === 9) {
+      Hunt.addLetter(10, 'T');
+    }
+
+    if (!Hunt.verified('novice')) {
+      document.getElementById('locked').hidden = false;
+      return;
+    }
+
+    document.getElementById('summit').hidden = false;
+
+    var host = document.getElementById('ceremony-host');
+    var cert = document.getElementById('certificate');
+
+    document.getElementById('stat-time').textContent  = Hunt.clock(Hunt.elapsed());
+    document.getElementById('stat-hints').textContent = Hunt.hints();
+    document.getElementById('stat-when').textContent  =
+      new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    document.getElementById('stat-name').textContent  =
+      (function () { try { return localStorage.getItem('hunt_handle') || 'You'; } catch (e) { return 'You'; } })();
+
+    function run() {
+      cert.classList.remove('certificate--in');
+      Cert.ceremony(host, {
+        onDone: function () { cert.classList.add('certificate--in'); }
+      });
+    }
+    run();
+
+    document.getElementById('replay').addEventListener('click', run);
+    document.getElementById('burn').addEventListener('click', function () {
+      var doll = host.querySelector('.daruma');
+      if (doll) doll.classList.add('daruma--burning');
+      document.getElementById('burn-note').hidden = false;
+    });
+
+    Cert.buildForm(document.getElementById('form-host'), 'novice');
+
+    // Keep the name on the certificate in step with what gets submitted.
+    document.getElementById('form-host').addEventListener('submit', function () {
+      window.setTimeout(function () {
+        try {
+          var h = localStorage.getItem('hunt_handle');
+          if (h) document.getElementById('stat-name').textContent = h;
+        } catch (e) {}
+      }, 50);
+    });
+  })();
+  </script>
+</body>
+</html>

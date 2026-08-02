@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Cornice — Greg Airel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hunt.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S2DS8FJ5CM');
+  </script>
+</head>
+<body class="page-decoy">
+  <header id="site-nav"></header>
+  <section class="camp">
+    <div class="container">
+      <div class="narrow" style="text-align:center;padding:3rem 0">
+        <div id="doll-host" style="width:110px;margin:0 auto 1.6rem"></div>
+        <span class="label">Off route</span>
+        <h1 style="font-size:var(--text-h2);margin-top:0.6rem">Cornice</h1>
+        <p class="lede" style="margin-top:1.4rem">The ridge you were following ends in air.</p>
+        <p style="margin-top:1.6rem">Nothing here. This was never on the route — you picked it up from a note that was not meant for you. Count the blanks next time.</p>
+        <p style="margin-top:2rem"><button class="btn btn--primary" id="back" type="button">Back to the last camp</button></p>
+      </div>
+    </div>
+  </section>
+  <footer id="site-footer"></footer>
+  <script src="js/main.js"></script>
+  <script src="js/hunt.js"></script>
+  <script>
+  (function () {
+    var host = document.getElementById('doll-host');
+    var doll = Hunt.svg({ label: 'Daruma' });
+    doll.querySelector('.daruma__eye--l').classList.add('daruma__eye--open');
+    host.appendChild(doll);
+    Hunt.wobble(doll);
+
+    if (typeof gtag === 'function') gtag('event', 'decoy_hit', { decoy_path: '/everest.html' });
+
+    document.getElementById('back').addEventListener('click', function () {
+      var crumb = Hunt.crumb();
+      window.location.href = crumb.length ? '/' + crumb[crumb.length - 1] + '.html' : '/climb.html';
+    });
+  })();
+  </script>
+</body>
+</html>

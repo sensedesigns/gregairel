@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>The Climb — Greg Airel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hunt.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S2DS8FJ5CM');
+  </script>
+</head>
+<body class="page-climb">
+  <header id="site-nav"></header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>The Climb</h1>
+      <p>Ten camps. Two ways up. One doll waiting on its second eye.</p>
+    </div>
+  </section>
+
+  <!-- ============ EPIGRAPH & PREMISE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="quote reveal" style="margin-bottom:3.5rem">
+        <blockquote>No shortcuts on the mountain or in the office. The hard way is usually the right way.</blockquote>
+        <cite class="label">On earning it</cite>
+      </div>
+
+      <div class="narrow reveal">
+        <p class="lede">This is a climb, and you are already at the trailhead.</p>
+        <p style="margin-top:1.6rem">Ten camps stand between here and the top, each one higher and thinner than the last. Wu-Tang is on the radio the whole way up, which is less of a joke than it sounds: the Clan took its mythology from Shaolin, Shaolin's founding legend is Bodhidharma, and Bodhidharma is Daruma. He sat facing a wall for nine years. The Clan came nine deep. This site counts nine entities under one canopy. Make of that what you like.</p>
+        <p>A Daruma doll is sold with both eyes blank. You ink the left when you set a goal and the right only when you reach it. Pick a track below and the left eye opens. The right one is up to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESUME (return visits) ============ -->
+  <section class="section section--alt" id="resume" hidden>
+    <div class="container">
+      <div class="section__header">
+        <span class="section__num">02</span>
+        <span class="label">Welcome back</span>
+        <h2>You left a doll<br>half-finished</h2>
+      </div>
+      <div class="narrow reveal">
+        <p class="lede" id="resume-line">You were partway up.</p>
+        <p style="margin-top:1.6rem" id="resume-detail"></p>
+        <p style="margin-top:2rem">
+          <button class="btn btn--primary" id="resume-go" type="button">Back to the mountain</button>
+        </p>
+        <p class="note" style="margin-top:1.5rem">
+          Starting over wipes your elapsed time and your progress.
+          <button class="text-link" id="resume-reset" type="button" style="background:none;border:0;padding:0;cursor:pointer">Start a fresh run</button>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRACK SELECTION ============ -->
+  <section class="section section--alt" id="tracks">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__num">02</span>
+        <span class="label">Choose your route</span>
+        <h2>Two ways<br>up the same hill</h2>
+      </div>
+
+      <div class="track-grid">
+        <!-- Novice -->
+        <div class="track reveal" id="track-novice">
+          <span class="label">Both Eyes Open</span>
+          <h3 style="margin-top:0.6rem">The scenic route</h3>
+          <dl class="track__spec">
+            <dt>Requires</dt><dd>Reading the site</dd>
+            <dt>Device</dt><dd>Any — phone is fine</dd>
+            <dt>Time</dt><dd>About 15 minutes</dd>
+            <dt>Mechanic</dt><dd>Find ten Daruma, collect ten letters</dd>
+          </dl>
+          <p class="track__sample">
+            <span class="label" style="display:block;margin-bottom:0.5rem">A clue looks like this</span>
+            "Two entities were filed on the same day in 2017. Go where all of them get counted."
+          </p>
+          <p style="margin-top:1.5rem">
+            <button class="btn btn--primary" data-start="novice" type="button">Set the left eye</button>
+          </p>
+        </div>
+
+        <!-- Expert -->
+        <div class="track reveal" id="track-expert">
+          <span class="label">Bring Da Ruckus</span>
+          <h3 style="margin-top:0.6rem">The direct line</h3>
+          <dl class="track__spec">
+            <dt>Requires</dt><dd>View-source, the browser console, one canvas</dd>
+            <dt>Device</dt><dd>Desktop only</dd>
+            <dt>Time</dt><dd>45 to 60 minutes</dd>
+            <dt>Mechanic</dt><dd>Solve ten filenames and ten elevations</dd>
+          </dl>
+          <p class="track__sample">
+            <span class="label" style="display:block;margin-bottom:0.5rem">A clue looks like this</span>
+            "You don't summit on day one. You set up at the bottom and wait on weather. →
+            <span class="blank">________</span> — sign the book at 5,364&nbsp;m."
+          </p>
+          <p class="track__blocked" id="expert-blocked" hidden>
+            The console steps need a desktop browser. Come back on a laptop, or take the scenic route today.
+          </p>
+          <p style="margin-top:1.5rem">
+            <button class="btn btn--primary" data-start="expert" type="button">Set the left eye</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__num">03</span>
+        <span class="label">Rules of the mountain</span>
+        <h2>How this<br>actually works</h2>
+      </div>
+      <ul class="values narrow reveal">
+        <li><strong>Hints are free, and they cost you nothing but pride.</strong> Each camp offers three, released a few minutes apart. Using them is recorded on your certificate and does not disqualify you from anything.</li>
+        <li><strong>There is an exit.</strong> Any camp will hand you the answer outright if you ask for it. Take it and you drop off the leaderboard, but you keep climbing and you still finish.</li>
+        <li><strong>Rest between camps.</strong> Climb too fast and the altitude catches you — the mountain will hold you at each camp for a short spell before it lets you go on. Read the page while you wait. It is usually where the next clue is.</li>
+        <li><strong>The prize is a draw, not a race.</strong> Everyone who reaches the summit within 48 hours of starting goes into a random draw for the reward. Finishing first wins you a place on the leaderboard and nothing else. There is no cap on how many people can finish.</li>
+        <li><strong>The leaderboard is optional.</strong> You can finish, claim a reward, and stay off it entirely.</li>
+      </ul>
+      <p class="note" style="margin-top:2rem">One climber, one run. Automating it gains you nothing — the draw is random and the gates are fixed.</p>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+  <script src="js/main.js"></script>
+  <script src="js/hunt.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    var tracks  = document.getElementById('tracks');
+    var resume  = document.getElementById('resume');
+    var expert  = document.getElementById('track-expert');
+    var blocked = document.getElementById('expert-blocked');
+
+    // A run identifier and a start stamp exist from the first load, so
+    // elapsed time is honest even if someone wanders off and comes back.
+    Hunt.begin();
+
+    // The console steps genuinely do not work on a phone. Better to say
+    // so here than to let someone fail at the whiteout.
+    if (Hunt.isMobile()) {
+      expert.classList.add('track--disabled');
+      blocked.hidden = false;
+      expert.querySelector('[data-start="expert"]').disabled = true;
+    }
+
+    // Where the player left off. Camps are named by number and altitude,
+    // never by filename — the resume target comes out of localStorage at
+    // runtime so it never appears in this page's source.
+    var ELEV = [5364, 5555, 6065, 6400, 6800, 7200, 7500, 7950, 8849];
+
+    function paintResume() {
+      var chosen = Hunt.trackOf();
+      if (!chosen) return false;
+
+      var line   = document.getElementById('resume-line');
+      var detail = document.getElementById('resume-detail');
+      var go     = document.getElementById('resume-go');
+
+      if (chosen === 'expert') {
+        var crumb = Hunt.crumb();
+        if (!crumb.length) return false;
+        var n = crumb.length;
+        line.textContent = 'You reached Camp ' + n + ', at ' +
+                           ELEV[n - 1].toLocaleString() + ' m.';
+        detail.textContent = 'Elapsed so far: ' + Hunt.clock(Hunt.elapsed()) +
+                             '. Hints used: ' + Hunt.hints() + '.';
+        go.addEventListener('click', function () {
+          window.location.href = '/' + crumb[crumb.length - 1] + '.html';
+        });
+      } else {
+        var found = Hunt.letters().length;
+        if (!found) return false;
+        line.textContent = 'You have found ' + found + ' of ten Daruma.';
+        detail.textContent = 'Letters so far: ' + Hunt.word() +
+                             '. Elapsed: ' + Hunt.clock(Hunt.elapsed()) + '.';
+        go.textContent = 'Keep looking';
+        go.addEventListener('click', function () { window.location.href = '/index.html'; });
+      }
+
+      tracks.hidden = true;
+      resume.hidden = false;
+      return true;
+    }
+
+    paintResume();
+
+    document.getElementById('resume-reset').addEventListener('click', function () {
+      ['hunt_run_id', 'hunt_started_at', 'hunt_track', 'hunt_crumb', 'hunt_hints_used',
+       'hunt_last_camp_at', 'hunt_letters', 'hunt_forfeited'].forEach(function (k) {
+        try { localStorage.removeItem(k); } catch (e) {}
+      });
+      window.location.reload();
+    });
+
+    // Setting the left eye is the moment the goal is declared.
+    Array.prototype.forEach.call(document.querySelectorAll('[data-start]'), function (btn) {
+      btn.addEventListener('click', function () {
+        var chosen = btn.getAttribute('data-start');
+        if (chosen === 'expert' && Hunt.isMobile()) return;
+        Hunt.begin(chosen);
+        window.location.href = chosen === 'novice' ? '/index.html' : '/index.html';
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

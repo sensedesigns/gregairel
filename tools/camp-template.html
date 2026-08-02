@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>__CAMP_NAME__ — Greg Airel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/hunt.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S2DS8FJ5CM');
+</script>
+</head>
+<body class="page-camp" data-hunt-strip>
+<header id="site-nav"></header>
+
+<section class="camp">
+  <div class="container">
+    <div class="altimeter">
+      <div id="doll-host"></div>
+      <span class="label">Camp __CAMP_NUM__</span>
+      <h1 style="font-size:var(--text-h2);margin-top:0.6rem">__CAMP_NAME__</h1>
+      <p class="note" style="margin-top:1rem">
+        The altimeter wants a reading before it lets you in. It was on the last page you were on.
+      </p>
+
+      <form id="gate-form" autocomplete="off">
+        <input class="altimeter__input" id="pw" type="text" inputmode="numeric"
+               placeholder="0,000 m" aria-label="Elevation in metres" spellcheck="false">
+        <p class="altimeter__error" id="msg" role="status" aria-live="polite"></p>
+        <button class="btn btn--primary" id="go" type="submit" style="margin-top:0.4rem">Check the reading</button>
+      </form>
+
+      <p class="gate-note" id="gate-note"></p>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="js/main.js"></script>
+<script src="js/hunt.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var SALT = '__SALT__';
+  var IV   = '__IV__';
+  var DATA = '__DATA__';
+  var ITER = __ITER__;
+  var CAMP = '__CAMP_SLUG__';
+  var NUM  = __CAMP_NUM__;
+  var STORE_KEY = 'hunt_key_' + CAMP;
+
+  var form   = document.getElementById('gate-form');
+  var input  = document.getElementById('pw');
+  var button = document.getElementById('go');
+  var msg    = document.getElementById('msg');
+  var note   = document.getElementById('gate-note');
+  var host   = document.getElementById('doll-host');
+
+  var doll = Hunt.svg({ label: 'Daruma' });
+  doll.querySelector('.daruma__eye--l').classList.add('daruma__eye--open');
+  host.appendChild(doll);
+
+  var attempts = 0;
+
+  function say(text) {
+    msg.textContent = text;
+    msg.classList.toggle('altimeter__error--on', Boolean(text));
+  }
+
+  function bytes(b64) {
+    var raw = atob(b64);
+    var out = new Uint8Array(raw.length);
+    for (var i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+    return out;
+  }
+
+  if (!window.crypto || !window.crypto.subtle) {
+    say('This page needs a secure (https://) connection to open.');
+    button.disabled = true;
+    return;
+  }
+
+  function unlock(password) {
+    var enc = new TextEncoder();
+    return crypto.subtle
+      .importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey'])
+      .then(function (material) {
+        return crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: bytes(SALT), iterations: ITER, hash: 'SHA-256' },
+          material, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+        );
+      })
+      .then(function (key) {
+        return crypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes(IV) }, key, bytes(DATA));
+      })
+      .then(function (plain) { return new TextDecoder().decode(plain); });
+  }
+
+  function reveal(html, password) {
+    // Cache the working key so a refresh doesn't force re-entry.
+    try { localStorage.setItem(STORE_KEY, password); } catch (e) {}
+    Hunt.clear(CAMP, NUM);
+    document.open();
+    document.write(html);
+    document.close();
+  }
+
+  // Acclimatisation. The mountain holds you at each camp for a spell.
+  function holdGate() {
+    var left = Hunt.gateRemaining();
+    if (left > 0) {
+      button.disabled = true;
+      note.textContent = 'Altitude. Give it ' + left + 's before pushing on.';
+      window.setTimeout(holdGate, 1000);
+    } else {
+      button.disabled = false;
+      note.textContent = '';
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (Hunt.gateRemaining() > 0) return;
+
+    var password = Hunt.normalizeElevation(input.value);
+    if (!password) return;
+
+    button.disabled = true;
+    say('');
+
+    unlock(password)
+      .then(function (html) { reveal(html, password); })
+      .catch(function () {
+        attempts++;
+        Hunt.countFail(NUM, attempts);
+        // Nanakorobi yaoki. The doll wobbles and rights itself.
+        Hunt.wobble(doll);
+        say('Wrong altitude. You are not where you think you are.');
+        button.disabled = false;
+        input.select();
+      });
+  });
+
+  // A cached key opens the camp without a prompt.
+  var stored = null;
+  try { stored = localStorage.getItem(STORE_KEY); } catch (e) {}
+  if (stored) {
+    unlock(stored)
+      .then(function (html) { reveal(html, stored); })
+      .catch(function () { try { localStorage.removeItem(STORE_KEY); } catch (e) {} holdGate(); });
+  } else {
+    holdGate();
+  }
+})();
+</script>
+</body>
+</html>

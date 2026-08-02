@@ -7,10 +7,11 @@
 
   const PAGES = [
     { href: '/index.html', label: 'Home', alt: '/' },
-    { href: '/about.html', label: 'About' },
+    { href: '/bio.html', label: 'Bio' },
     { href: '/ventures.html', label: 'Ventures' },
     { href: '/projects.html', label: 'Projects' },
     { href: '/adventures.html', label: 'Adventures' },
+    { href: '/media.html', label: 'Media' },
     { href: '/contact.html', label: 'Contact' },
   ];
 
@@ -21,6 +22,24 @@
     if (path.endsWith(page.href)) return true;
     if (page.href === '/index.html' && (path === '/' || path === '' || path.endsWith('/'))) return true;
     return false;
+  }
+
+  // The banner promotes the climb, so it stays off the climb's own pages —
+  // camps, certificates, the leaderboard and the decoys included.
+  const HUNT_PAGE = /\bpage-(climb|camp|summited|triumph|leaderboard|decoy|404)\b/;
+
+  function buildBanner() {
+    if (HUNT_PAGE.test(document.body.className)) return '';
+    return `
+      <div class="hunt-banner" id="hunt-banner">
+        <div class="hunt-banner__inner">
+          <span class="hunt-banner__dot">&#9650;</span>
+          <span>There's a scavenger hunt buried in this site.</span>
+          <span class="hunt-banner__long">Ten camps, two routes, Wu-Tang on the radio.</span>
+          <a href="/climb.html" rel="nofollow">Start the climb &rarr;</a>
+        </div>
+      </div>
+    `;
   }
 
   function buildNav() {
@@ -38,8 +57,18 @@
             <span></span><span></span><span></span>
           </button>
         </div>
+        ${buildBanner()}
       </nav>
     `;
+  }
+
+  // Every page offset is calc()'d off --nav-height, so growing the fixed
+  // block means measuring it once and letting the rest follow.
+  function syncNavHeight() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    const h = Math.round(nav.getBoundingClientRect().height);
+    if (h > 0) document.documentElement.style.setProperty('--nav-height', h + 'px');
   }
 
   function buildFooter() {
@@ -125,5 +154,7 @@
     initMobileMenu();
     initNavScroll();
     initReveal();
+    syncNavHeight();
+    window.addEventListener('resize', syncNavHeight, { passive: true });
   });
 })();

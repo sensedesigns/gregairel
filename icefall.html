@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>The Icefall — Greg Airel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/hunt.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S2DS8FJ5CM');
+</script>
+</head>
+<body class="page-camp" data-hunt-strip>
+<header id="site-nav"></header>
+
+<section class="camp">
+  <div class="container">
+    <div class="altimeter">
+      <div id="doll-host"></div>
+      <span class="label">Camp 7</span>
+      <h1 style="font-size:var(--text-h2);margin-top:0.6rem">The Icefall</h1>
+      <p class="note" style="margin-top:1rem">
+        The altimeter wants a reading before it lets you in. It was on the last page you were on.
+      </p>
+
+      <form id="gate-form" autocomplete="off">
+        <input class="altimeter__input" id="pw" type="text" inputmode="numeric"
+               placeholder="0,000 m" aria-label="Elevation in metres" spellcheck="false">
+        <p class="altimeter__error" id="msg" role="status" aria-live="polite"></p>
+        <button class="btn btn--primary" id="go" type="submit" style="margin-top:0.4rem">Check the reading</button>
+      </form>
+
+      <p class="gate-note" id="gate-note"></p>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="js/main.js"></script>
+<script src="js/hunt.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var SALT = 'hFXYFgcRsPsQ0/uUEpLxRw==';
+  var IV   = 'j2H8nCquKTSrE018';
+  var DATA = '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';
+  var ITER = 310000;
+  var CAMP = 'icefall';
+  var NUM  = 7;
+  var STORE_KEY = 'hunt_key_' + CAMP;
+
+  var form   = document.getElementById('gate-form');
+  var input  = document.getElementById('pw');
+  var button = document.getElementById('go');
+  var msg    = document.getElementById('msg');
+  var note   = document.getElementById('gate-note');
+  var host   = document.getElementById('doll-host');
+
+  var doll = Hunt.svg({ label: 'Daruma' });
+  doll.querySelector('.daruma__eye--l').classList.add('daruma__eye--open');
+  host.appendChild(doll);
+
+  var attempts = 0;
+
+  function say(text) {
+    msg.textContent = text;
+    msg.classList.toggle('altimeter__error--on', Boolean(text));
+  }
+
+  function bytes(b64) {
+    var raw = atob(b64);
+    var out = new Uint8Array(raw.length);
+    for (var i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+    return out;
+  }
+
+  if (!window.crypto || !window.crypto.subtle) {
+    say('This page needs a secure (https://) connection to open.');
+    button.disabled = true;
+    return;
+  }
+
+  function unlock(password) {
+    var enc = new TextEncoder();
+    return crypto.subtle
+      .importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey'])
+      .then(function (material) {
+        return crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: bytes(SALT), iterations: ITER, hash: 'SHA-256' },
+          material, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+        );
+      })
+      .then(function (key) {
+        return crypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes(IV) }, key, bytes(DATA));
+      })
+      .then(function (plain) { return new TextDecoder().decode(plain); });
+  }
+
+  function reveal(html, password) {
+    // Cache the working key so a refresh doesn't force re-entry.
+    try { localStorage.setItem(STORE_KEY, password); } catch (e) {}
+    Hunt.clear(CAMP, NUM);
+    document.open();
+    document.write(html);
+    document.close();
+  }
+
+  // Acclimatisation. The mountain holds you at each camp for a spell.
+  function holdGate() {
+    var left = Hunt.gateRemaining();
+    if (left > 0) {
+      button.disabled = true;
+      note.textContent = 'Altitude. Give it ' + left + 's before pushing on.';
+      window.setTimeout(holdGate, 1000);
+    } else {
+      button.disabled = false;
+      note.textContent = '';
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (Hunt.gateRemaining() > 0) return;
+
+    var password = Hunt.normalizeElevation(input.value);
+    if (!password) return;
+
+    button.disabled = true;
+    say('');
+
+    unlock(password)
+      .then(function (html) { reveal(html, password); })
+      .catch(function () {
+        attempts++;
+        Hunt.countFail(NUM, attempts);
+        // Nanakorobi yaoki. The doll wobbles and rights itself.
+        Hunt.wobble(doll);
+        say('Wrong altitude. You are not where you think you are.');
+        button.disabled = false;
+        input.select();
+      });
+  });
+
+  // A cached key opens the camp without a prompt.
+  var stored = null;
+  try { stored = localStorage.getItem(STORE_KEY); } catch (e) {}
+  if (stored) {
+    unlock(stored)
+      .then(function (html) { reveal(html, stored); })
+      .catch(function () { try { localStorage.removeItem(STORE_KEY); } catch (e) {} holdGate(); });
+  } else {
+    holdGate();
+  }
+})();
+</script>
+</body>
+</html>

@@ -104,6 +104,29 @@ p + p { margin-top: 1rem; }
   transition: border-color 0.3s, background 0.3s;
 }
 .nav--scrolled { border-bottom-color: var(--line); }
+
+/* --- Hunt banner (sits inside the fixed nav block) --- */
+.hunt-banner {
+  border-top: 1px solid var(--line);
+  background: rgba(198, 161, 91, 0.08);
+}
+.hunt-banner__inner {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 0.3rem 0.7rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0.6rem var(--pad);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.hunt-banner__dot { color: var(--brass); }
+.hunt-banner a { color: var(--brass); border-bottom: 1px solid var(--brass-dim); }
+.hunt-banner a:hover { border-bottom-color: var(--brass); }
+@media (max-width: 560px) {
+  .hunt-banner__inner { font-size: 0.75rem; padding: 0.5rem var(--pad); }
+  .hunt-banner__long { display: none; }
+}
 .nav__inner {
   display: flex;
   align-items: center;

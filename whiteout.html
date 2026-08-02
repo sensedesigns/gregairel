@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Whiteout — Greg Airel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/hunt.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S2DS8FJ5CM');
+</script>
+</head>
+<body class="page-camp" data-hunt-strip>
+<header id="site-nav"></header>
+
+<section class="camp">
+  <div class="container">
+    <div class="altimeter">
+      <div id="doll-host"></div>
+      <span class="label">Camp 5</span>
+      <h1 style="font-size:var(--text-h2);margin-top:0.6rem">Whiteout</h1>
+      <p class="note" style="margin-top:1rem">
+        The altimeter wants a reading before it lets you in. It was on the last page you were on.
+      </p>
+
+      <form id="gate-form" autocomplete="off">
+        <input class="altimeter__input" id="pw" type="text" inputmode="numeric"
+               placeholder="0,000 m" aria-label="Elevation in metres" spellcheck="false">
+        <p class="altimeter__error" id="msg" role="status" aria-live="polite"></p>
+        <button class="btn btn--primary" id="go" type="submit" style="margin-top:0.4rem">Check the reading</button>
+      </form>
+
+      <p class="gate-note" id="gate-note"></p>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="js/main.js"></script>
+<script src="js/hunt.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var SALT = 'yUPgFftAc0P/zxClvJ5Q2Q==';
+  var IV   = '8yyl5cvOCAiJkazw';
+  var DATA = '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';
+  var ITER = 310000;
+  var CAMP = 'whiteout';
+  var NUM  = 5;
+  var STORE_KEY = 'hunt_key_' + CAMP;
+
+  var form   = document.getElementById('gate-form');
+  var input  = document.getElementById('pw');
+  var button = document.getElementById('go');
+  var msg    = document.getElementById('msg');
+  var note   = document.getElementById('gate-note');
+  var host   = document.getElementById('doll-host');
+
+  var doll = Hunt.svg({ label: 'Daruma' });
+  doll.querySelector('.daruma__eye--l').classList.add('daruma__eye--open');
+  host.appendChild(doll);
+
+  var attempts = 0;
+
+  function say(text) {
+    msg.textContent = text;
+    msg.classList.toggle('altimeter__error--on', Boolean(text));
+  }
+
+  function bytes(b64) {
+    var raw = atob(b64);
+    var out = new Uint8Array(raw.length);
+    for (var i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+    return out;
+  }
+
+  if (!window.crypto || !window.crypto.subtle) {
+    say('This page needs a secure (https://) connection to open.');
+    button.disabled = true;
+    return;
+  }
+
+  function unlock(password) {
+    var enc = new TextEncoder();
+    return crypto.subtle
+      .importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey'])
+      .then(function (material) {
+        return crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: bytes(SALT), iterations: ITER, hash: 'SHA-256' },
+          material, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+        );
+      })
+      .then(function (key) {
+        return crypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes(IV) }, key, bytes(DATA));
+      })
+      .then(function (plain) { return new TextDecoder().decode(plain); });
+  }
+
+  function reveal(html, password) {
+    // Cache the working key so a refresh doesn't force re-entry.
+    try { localStorage.setItem(STORE_KEY, password); } catch (e) {}
+    Hunt.clear(CAMP, NUM);
+    document.open();
+    document.write(html);
+    document.close();
+  }
+
+  // Acclimatisation. The mountain holds you at each camp for a spell.
+  function holdGate() {
+    var left = Hunt.gateRemaining();
+    if (left > 0) {
+      button.disabled = true;
+      note.textContent = 'Altitude. Give it ' + left + 's before pushing on.';
+      window.setTimeout(holdGate, 1000);
+    } else {
+      button.disabled = false;
+      note.textContent = '';
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (Hunt.gateRemaining() > 0) return;
+
+    var password = Hunt.normalizeElevation(input.value);
+    if (!password) return;
+
+    button.disabled = true;
+    say('');
+
+    unlock(password)
+      .then(function (html) { reveal(html, password); })
+      .catch(function () {
+        attempts++;
+        Hunt.countFail(NUM, attempts);
+        // Nanakorobi yaoki. The doll wobbles and rights itself.
+        Hunt.wobble(doll);
+        say('Wrong altitude. You are not where you think you are.');
+        button.disabled = false;
+        input.select();
+      });
+  });
+
+  // A cached key opens the camp without a prompt.
+  var stored = null;
+  try { stored = localStorage.getItem(STORE_KEY); } catch (e) {}
+  if (stored) {
+    unlock(stored)
+      .then(function (html) { reveal(html, stored); })
+      .catch(function () { try { localStorage.removeItem(STORE_KEY); } catch (e) {} holdGate(); });
+  } else {
+    holdGate();
+  }
+})();
+</script>
+</body>
+</html>

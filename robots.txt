@@ -1,4 +1,8 @@
+# Site is closed to crawlers by default. The media page is the one
+# deliberate exception — Allow is listed first so first-match crawlers
+# honour it, and Google resolves it by longest match either way.
 User-agent: *
+Allow: /media.html
 Disallow: /
 
 User-agent: GPTBot
