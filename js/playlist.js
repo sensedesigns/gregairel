@@ -47,12 +47,12 @@
     var wrap = document.createElement('div');
     wrap.className = 'soundtrack';
     wrap.setAttribute('role', 'dialog');
-    wrap.setAttribute('aria-label', 'Reading soundtrack');
+    wrap.setAttribute('aria-label', 'Music to browse to');
 
     var head = document.createElement('div');
     head.className = 'soundtrack__head';
     var title = document.createElement('strong');
-    title.textContent = 'Something to read to?';
+    title.textContent = 'Music while you browse?';
     var close = document.createElement('button');
     close.className = 'soundtrack__close';
     close.type = 'button';
@@ -64,7 +64,8 @@
 
     var blurb = document.createElement('p');
     blurb.className = 'soundtrack__blurb';
-    blurb.textContent = 'Three of mine, on the house. Opens in Spotify.';
+    blurb.textContent = 'Three of my playlists to put on while you look around the site. ' +
+                        'Opens in Spotify in a new tab — this page stays where it is.';
     wrap.appendChild(blurb);
 
     LISTS.forEach(function (p) {
