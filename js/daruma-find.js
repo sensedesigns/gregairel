@@ -141,7 +141,7 @@
       hintWrap.appendChild(hintBody);
       card.appendChild(hintWrap);
 
-      var readyAt = Date.now() + 90000; // 90s
+      var readyAt = Date.now() + 30000; // 30s
       (function tickHint() {
         var left = Math.ceil((readyAt - Date.now()) / 1000);
         if (left > 0) {
