@@ -52,7 +52,7 @@
     var head = document.createElement('div');
     head.className = 'soundtrack__head';
     var title = document.createElement('strong');
-    title.textContent = 'Music while you browse?';
+    title.textContent = 'Complimentary music';
     var close = document.createElement('button');
     close.className = 'soundtrack__close';
     close.type = 'button';
@@ -64,8 +64,9 @@
 
     var blurb = document.createElement('p');
     blurb.className = 'soundtrack__blurb';
-    blurb.textContent = 'Three of my playlists to put on while you look around the site. ' +
-                        'Opens in Spotify in a new tab — this page stays where it is.';
+    blurb.textContent = 'Three of my own playlists, from me to you — something to listen to ' +
+                        'while you read and browse. Opens in Spotify in a new tab, so this ' +
+                        'page stays where it is.';
     wrap.appendChild(blurb);
 
     LISTS.forEach(function (p) {
