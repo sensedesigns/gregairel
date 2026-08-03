@@ -17,30 +17,35 @@
   var STOPS = [
     {
       n: 1, letter: 'T',
+      hint: "Use the nav at the top. The Ventures page is where all five companies get counted.",
       riddle: 'Protect ya neck. But first: two entities were filed on the same day in 2017. ' +
               'Go where all five of them get counted.',
       next: 'ventures.html'
     },
     {
       n: 2, letter: 'R',
+      hint: "Nine entities, one canopy — that line is the heading on the Projects page.",
       riddle: 'Five here. But Wu came nine deep, and so does this canopy. ' +
               'Find the page that counts nine.',
       next: 'projects.html'
     },
     {
       n: 3, letter: 'I',
+      hint: "The one who walks uphill is Adventures. It is in the nav.",
       riddle: 'Bodhidharma faced a wall for nine years. You have found your nine. ' +
               'Now follow the one who walks uphill instead.',
       next: 'adventures.html'
     },
     {
       n: 4, letter: 'U',
+      hint: "Lukla sits at 2,860 m and Base Camp at 5,364 m — that is the 2.7 km. Open the Everest Base Camp guide.",
       riddle: 'Two expeditions. One of them gained 2.7 vertical kilometres from an airstrip. ' +
               'Read that guide.',
       next: 'ebc.html'
     },
     {
       n: 5, letter: 'M',
+      hint: "Stay on this page. Scroll down to the section called Kala Patthar, And The Way Out.",
       riddle: 'The airstrip sits at 2,860 m, and it is the last place on the whole trip ' +
               'you will see a wheel. So keep walking. The next doll waits at the point ' +
               'where the trek finally turns around.',
@@ -48,6 +53,7 @@
     },
     {
       n: 6, letter: 'P',
+      hint: "Granite and towers means Patagonia. Open the W Trek field guide.",
       riddle: 'Up before dawn to 5,555 m, then off the glacier by helicopter from Gorak Shep. ' +
               'Nepal is done. Go where the granite is — and where the big one comes first, ' +
               'on day one.',
@@ -55,6 +61,7 @@
     },
     {
       n: 7, letter: 'H',
+      hint: "Stay on this page. Scroll down to the Packing List.",
       riddle: 'Weight is the whole game here — you will feel the difference between a ' +
               '25 lb pack and a 35 lb pack on day four, when your knees are already ' +
               'screaming. Read down to the list of what actually earns its place.',
@@ -62,12 +69,14 @@
     },
     {
       n: 8, letter: 'A',
+      hint: "Where you would send word is the Contact page.",
       riddle: 'Day six trades the trail for a catamaran across the lake to Puerto Natales. ' +
               'The walking is finished. Find the page where you would send word.',
       next: 'contact.html'
     },
     {
       n: 9, letter: 'N',
+      hint: "You have all nine letters. The button below is the last step.",
       riddle: 'Every trail ends with someone to tell about it. ' +
               'Nine down. Say the word and the last eye opens.',
       next: 'summited.html'
@@ -113,6 +122,44 @@
     riddle.style.marginTop = '1.4rem';
     riddle.textContent = cfg.riddle;
     card.appendChild(riddle);
+
+    // A timed nudge. The riddles are meant to be readable, but a player
+    // who cannot find the next page should not be stuck there forever.
+    if (cfg.hint) {
+      var hintWrap = document.createElement('p');
+      hintWrap.className = 'gate-note';
+      hintWrap.style.marginTop = '1.2rem';
+      var hintBtn = document.createElement('button');
+      hintBtn.type = 'button';
+      hintBtn.className = 'text-link';
+      hintBtn.style.cssText = 'background:none;border:0;padding:0;cursor:pointer';
+      hintBtn.disabled = true;
+      var hintBody = document.createElement('span');
+      hintBody.style.display = 'block';
+      hintBody.style.marginTop = '0.5rem';
+      hintWrap.appendChild(hintBtn);
+      hintWrap.appendChild(hintBody);
+      card.appendChild(hintWrap);
+
+      var readyAt = Date.now() + 90000; // 90s
+      (function tickHint() {
+        var left = Math.ceil((readyAt - Date.now()) / 1000);
+        if (left > 0) {
+          hintBtn.textContent = 'Hint unlocks in ' + left + 's';
+          window.setTimeout(tickHint, 1000);
+        } else {
+          hintBtn.disabled = false;
+          hintBtn.textContent = 'Show me a hint';
+        }
+      })();
+
+      hintBtn.addEventListener('click', function () {
+        hintBody.textContent = cfg.hint;
+        hintBtn.disabled = true;
+        hintBtn.textContent = 'Hint';
+        window.Hunt.countHint(cfg.n, 1);
+      });
+    }
 
     var gate = document.createElement('p');
     gate.className = 'gate-note';
