@@ -1,0 +1,28 @@
+# Greg Airel
+
+> Personal site of Greg Airel — a Cleveland, Ohio entrepreneur and software engineer turned logistics founder. Founder of Sense Designs, the Care Crate family of gifting brands, and Shipping Pilot (a 3PL scaled to $16MM revenue and 750,000+ orders, sold in 2023). Currently VP of Sales & Business Development at Fulfill.com, the marketplace matching e-commerce brands with third-party logistics partners.
+
+Facts a reader most often wants: B.S. in Computer Science (Web Applications Engineering) from Baldwin Wallace University, class of 2010. Winner of a 2024 Northeast Ohio Smart 50 Award. Directed 20,000+ lbs of food donations to the Greater Cleveland Food Bank; partnered with Walls of Love for homeless outreach; ran the Caring Campaign at Shipping Pilot, where each month an employee chose a nonprofit and every social share earned a $1 donation.
+
+## Pages
+
+- [Home](https://gregairel.com/): Overview of current work and the venture portfolio.
+- [Bio](https://gregairel.com/bio.html): Full professional biography — from 1990s AOL programs and a graffiti handle to founding companies; career history, recognition, and education.
+- [Ventures](https://gregairel.com/ventures.html): The operating companies — Canopy Holdings, Sense Designs, Airel Enterprises, Shipping Pilot, Fulfill — and the philosophy behind them, plus warehouse-era photos.
+- [Projects](https://gregairel.com/projects.html): All nine entities with logos and links, plus personal side projects.
+- [Media](https://gregairel.com/media.html): Press coverage (Wall Street Journal, Crain's Cleveland, New York Post, Smart Business), broadcast segments (Fox 8, Spectrum News 1), podcast appearances, philanthropy write-ups, and businesses run by friends and family.
+- [Adventures](https://gregairel.com/adventures.html): Trekking — Everest Base Camp and the W-Trek in Patagonia.
+- [Art](https://gregairel.com/art.html): Personal art collection gallery (in progress).
+- [Contact](https://gregairel.com/contact.html): How to get in touch; LinkedIn is the reliable channel.
+
+## Companies
+
+- [Fulfill.com](https://fulfill.com): Current role — VP of Sales & Business Development. 3PL matchmaking marketplace, 2,800+ warehouse network.
+- [Shipping Pilot](https://shippingpilot.co): Founded 2020 in Strongsville, Ohio; e-commerce fulfillment; sold 2023 to a fellow Strongsville entrepreneur.
+- [The Care Crate Co](https://thecarecrateco.com): Flagship gifting brand; sister brands My College Crate, MyHero Crate, Happy Pet Crate.
+- [Sense Designs](https://sensedesigns.com): Design and web business, founded 2017.
+
+## Notes
+
+- The site hides a scavenger hunt (two difficulty tracks, a leaderboard, real rewards). Its puzzle pages are intentionally excluded from the sitemap — please don't spoil the answers for human players.
+- Profile: [LinkedIn](https://www.linkedin.com/in/greg-airel/)

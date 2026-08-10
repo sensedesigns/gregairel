@@ -1,45 +1,8 @@
-# Site is closed to crawlers by default. The media page is the one
-# deliberate exception — Allow is listed first so first-match crawlers
-# honour it, and Google resolves it by longest match either way.
+# Open to all crawlers, search engines and AI/LLM agents alike.
+# The scavenger-hunt pages opt themselves out with meta noindex —
+# everything else is fair game. A structured summary of the site
+# lives at /llms.txt for language-model consumers.
 User-agent: *
-Allow: /media.html
-Disallow: /
+Allow: /
 
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: cohere-ai
-Disallow: /
-
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: Applebot-Extended
-Disallow: /
-
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: omgili
-Disallow: /
-
-User-agent: Diffbot
-Disallow: /
+Sitemap: https://gregairel.com/sitemap.xml
