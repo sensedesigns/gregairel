@@ -14,6 +14,21 @@
   'use strict';
 
   var STEP = 180000; // three minutes between hint stages
+  var KEY = 'hunt_camp_state';
+
+  // Hint unlocks and reveals survive a dismissed dialog or a reload.
+  // The whole blob is keyed to the run id, so a hunt reset (new run)
+  // invalidates it without climb.html having to know this key exists.
+  function readState() {
+    try {
+      var s = JSON.parse(window.localStorage.getItem(KEY) || 'null');
+      if (s && s.runId === window.Hunt.runId()) return s;
+    } catch (e) {}
+    return { runId: window.Hunt.runId(), camps: {} };
+  }
+  function saveState(s) {
+    try { window.localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
+  }
 
   var Camp = {};
 
@@ -24,6 +39,13 @@
     var stack = document.createElement('div');
     stack.className = 'hint-stack';
     host.appendChild(stack);
+
+    var state = readState();
+    var camp = state.camps[cfg.num];
+    if (!camp) {
+      camp = state.camps[cfg.num] = { openedAt: Date.now(), revealed: [] };
+      saveState(state);
+    }
 
     var opened = 0;
 
@@ -50,8 +72,9 @@
       row.appendChild(body);
       stack.appendChild(row);
 
-      // Stage i unlocks i * 3 minutes after the camp opens.
-      var readyAt = Date.now() + i * STEP;
+      // Stage i unlocks i * 3 minutes after the camp first opened —
+      // not after this particular page load.
+      var readyAt = camp.openedAt + i * STEP;
 
       function tick() {
         var left = Math.ceil((readyAt - Date.now()) / 1000);
@@ -66,10 +89,19 @@
       }
       tick();
 
+      // A hint already paid for stays open, and is never charged twice.
+      if (camp.revealed.indexOf(i + 1) !== -1) {
+        body.hidden = false;
+        btn.disabled = true;
+        opened++;
+      }
+
       btn.addEventListener('click', function () {
         if (body.hidden) {
           body.hidden = false;
           opened++;
+          camp.revealed.push(i + 1);
+          saveState(state);
           window.Hunt.countHint(cfg.num, i + 1);
           btn.disabled = true;
         }
