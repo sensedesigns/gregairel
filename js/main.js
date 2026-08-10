@@ -11,6 +11,7 @@
     { href: '/ventures.html', label: 'Ventures' },
     { href: '/projects.html', label: 'Projects' },
     { href: '/adventures.html', label: 'Adventures' },
+    { href: '/art.html', label: 'Art' },
     { href: '/media.html', label: 'Media' },
     { href: '/contact.html', label: 'Contact' },
   ];
