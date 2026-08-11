@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Art — Greg Airel</title>
-  <meta name="description" content="Greg Airel's personal art collection — the artists, the stories behind the pieces, and the works themselves. Gallery coming soon.">
+  <meta name="description" content="Greg Airel's personal art collection — the artists, the stories behind the pieces, and the works themselves. Including Shepard Fairey's American Rage.">
   <meta property="og:title" content="Art — Greg Airel">
-  <meta property="og:description" content="A personal art collection, being catalogued. Coming soon.">
+  <meta property="og:description" content="A personal art collection — the artists, the stories, and the works themselves.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gregairel.com/art.html">
   <meta property="og:image" content="https://gregairel.com/img/greg-avatar.jpg">
@@ -39,23 +39,33 @@
     <div class="container">
       <div class="section__header">
         <span class="section__num">01</span>
-        <span class="label">Coming soon</span>
-        <h2>The collection<br>is being hung</h2>
+        <span class="label">The collection</span>
+        <h2>On the<br>wall</h2>
       </div>
       <div class="narrow reveal">
-        <p class="lede">A gallery of the pieces I've collected over the years — each with the artist behind it, the story of the work, and the work itself.</p>
-        <p style="margin-top:1.6rem">The frames are up. The wall text is still being written. Check back soon.</p>
+        <p class="lede">The pieces I've collected over the years — each with the artist behind it, the story of the work, and the work itself.</p>
       </div>
-      <!-- ==================================================================
-           GALLERY PLAN — replace the coming-soon copy above when ready.
 
-           Each piece gets a card in a `card-grid card-grid--2` (or a figure
-           with guide-img-caption for full-width works), carrying:
-             - img: the photograph of the piece (hosted in img/, web-sized)
-             - artist name (and link, if they have a site)
-             - title, year, medium
-             - a short note on the piece and how it joined the collection
-           ================================================================== -->
+      <!-- Each piece: image + wall text. Portraits sit in a two-column
+           grid that collapses on mobile; give landscape works
+           grid-column:1/-1 so they take the full row. -->
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(20rem,100%),1fr));gap:2.5rem;align-items:start;margin-top:3rem">
+        <figure style="margin:0">
+          <img src="img/art-american-rage.jpg" style="width:100%;border-radius:4px" width="1271" height="1600" loading="lazy"
+               alt="American Rage by Shepard Fairey, framed — a portrait of a man with a stars-and-stripes bandana over his face, collaged with 1992 Los Angeles Times riot headlines">
+        </figure>
+        <div>
+          <span class="label">Shepard Fairey &times; Ted Soqui &middot; 2020</span>
+          <h3 style="margin-top:0.8rem">American Rage</h3>
+          <p style="margin-top:1.2rem">Screenprint on Speckletone cream paper, 18 &times; 24 in. Edition 399 of 550, signed and numbered in pencil by both Shepard Fairey and photographer Ted Soqui.</p>
+          <p>Fairey built the image on Soqui's photograph from the 1992 Los Angeles riots — the torn Los Angeles Times headlines in the collage are from that spring. The edition dropped on April 30, 2020, sold out in minutes, and its proceeds went to the Watts Labor Community Action Committee.</p>
+          <div class="brands" style="margin-top:1.2rem">
+            <a class="brand-chip" href="https://obeygiant.com" target="_blank" rel="noopener">obeygiant.com</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:3rem">More of the collection is being catalogued.</p>
     </div>
   </section>
 
