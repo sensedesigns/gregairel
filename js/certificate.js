@@ -100,7 +100,31 @@
      Reward form
      ------------------------------------------------------------ */
 
+  // The finisher's seal — the site mark with BOTH eyes filled. The
+  // mark everywhere else keeps its right eye empty on purpose; only a
+  // finished certificate earns the second brushstroke. Injected here
+  // because the expert certificate's markup ships encrypted.
+  function stampSeal() {
+    var cert = document.querySelector('.certificate') || document.getElementById('certificate');
+    if (!cert || cert.querySelector('.cert-seal')) return;
+    var seal = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    seal.setAttribute('class', 'cert-seal');
+    seal.setAttribute('viewBox', '0 0 100 100');
+    seal.setAttribute('width', '48');
+    seal.setAttribute('height', '48');
+    seal.setAttribute('role', 'img');
+    seal.setAttribute('aria-label', 'The site mark with both eyes painted — goal reached');
+    seal.style.display = 'block';
+    seal.style.margin = '0 auto 1.4rem';
+    seal.innerHTML =
+      '<circle cx="50" cy="50" r="33" fill="none" stroke="#F2F0EC" stroke-width="9"/>' +
+      '<circle cx="38" cy="46" r="10" fill="#C6A15B"/>' +
+      '<circle cx="62" cy="46" r="10" fill="#C6A15B"/>';
+    cert.insertBefore(seal, cert.firstChild);
+  }
+
   Cert.buildForm = function (host, trackName) {
+    stampSeal();
     var form = document.createElement('form');
     form.className = 'form';
     form.style.maxWidth = '38rem';
