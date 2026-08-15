@@ -167,7 +167,7 @@
       <div class="footer">
         <div class="footer__inner">
           <div class="footer__top">
-            <div class="footer__brand">Greg Airel</div>
+            <div class="footer__brand"><svg class="nav__mark" width="20" height="20" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="33" fill="none" stroke="currentColor" stroke-width="9"/><circle cx="38" cy="46" r="10" fill="#C6A15B"/></svg>Greg Airel</div>
             <div class="footer__links">${links}</div>
           </div>
           <div class="footer__bottom">
