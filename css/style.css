@@ -156,7 +156,9 @@ p + p { margin-top: 1rem; }
   letter-spacing: 0.3em;
   text-transform: uppercase;
 }
+.nav__logo { display: inline-flex; align-items: center; gap: 0.55rem; }
 .nav__logo:hover { color: var(--brass); }
+.nav__mark { flex: none; }
 .nav__links { display: flex; gap: 1.9rem; align-items: center; }
 .nav__link {
   font-size: 0.68rem;

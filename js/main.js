@@ -137,7 +137,7 @@
     return `
       <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav__inner">
-          <a href="/index.html" class="nav__logo">Greg Airel</a>
+          <a href="/index.html" class="nav__logo"><svg class="nav__mark" width="18" height="18" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="33" fill="none" stroke="currentColor" stroke-width="9"/><circle cx="38" cy="46" r="10" fill="#C6A15B"/></svg>Greg Airel</a>
           <div class="nav__links" id="nav-links">${links}</div>
           <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
