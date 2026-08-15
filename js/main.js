@@ -53,7 +53,6 @@
   const BANNER_MESSAGES = [
     `${DARUMA_MARK}
      <span>There's a scavenger hunt hidden in this site.</span>
-     <span class="hunt-banner__long">Ten stops, two routes, a reward for everyone who finishes.</span>
      <a href="/climb.html" rel="nofollow">Start the hunt &rarr;</a>`,
     COARSE_POINTER
       ? `<span style="font-size:17px" aria-hidden="true">🕹️</span>
