@@ -45,18 +45,43 @@
     </svg>
   `;
 
+  // The banner alternates between the hunt pitch and the door to
+  // G-Funk's Realm. Both messages live here so the rotation swaps
+  // markup wholesale instead of patching text nodes.
+  const BANNER_MESSAGES = [
+    `${DARUMA_MARK}
+     <span>There's a scavenger hunt hidden in this site.</span>
+     <span class="hunt-banner__long">Ten stops, two routes, a reward for everyone who finishes.</span>
+     <a href="/climb.html" rel="nofollow">Start the hunt &rarr;</a>`,
+    `<span style="font-size:17px" aria-hidden="true">🕹️</span>
+     <span>This site had a previous life.</span>
+     <span class="hunt-banner__long" style="letter-spacing:0.08em">&uarr; &uarr; &darr; &darr; &larr; &rarr; &larr; &rarr; B A takes you back to it.</span>`,
+  ];
+
   function buildBanner() {
     if (HUNT_PAGE.test(document.body.className)) return '';
     return `
       <div class="hunt-banner" id="hunt-banner">
-        <div class="hunt-banner__inner">
-          ${DARUMA_MARK}
-          <span>There's a scavenger hunt hidden in this site.</span>
-          <span class="hunt-banner__long">Ten stops, two routes, a reward for everyone who finishes.</span>
-          <a href="/climb.html" rel="nofollow">Start the hunt &rarr;</a>
+        <div class="hunt-banner__inner" id="hunt-banner-inner">
+          ${BANNER_MESSAGES[0]}
         </div>
       </div>
     `;
+  }
+
+  function initBannerRotation() {
+    const inner = document.getElementById('hunt-banner-inner');
+    if (!inner || BANNER_MESSAGES.length < 2) return;
+    let i = 0;
+    inner.style.transition = 'opacity 0.4s';
+    setInterval(function () {
+      inner.style.opacity = '0';
+      window.setTimeout(function () {
+        i = (i + 1) % BANNER_MESSAGES.length;
+        inner.innerHTML = BANNER_MESSAGES[i];
+        inner.style.opacity = '1';
+      }, 420);
+    }, 9000);
   }
 
   function buildNav() {
@@ -171,7 +196,39 @@
     initMobileMenu();
     initNavScroll();
     initReveal();
+    initBannerRotation();
     syncNavHeight();
     window.addEventListener('resize', syncNavHeight, { passive: true });
   });
+
+  // == G-Funk's Realm ==========================================
+  // ↑ ↑ ↓ ↓ ← → ← → B A drops you into the 1998 version of this
+  // site. Keyboard only, on purpose — some doors need a code.
+  //
+  // Analytics: gfunk_attempt fires once per page once someone gets
+  // five keys deep (↑↑↓↓← is nobody's accident), gfunk_realm fires
+  // on the full code. Attempts without entries = people who knew
+  // there was a code but not which one.
+  (function () {
+    var CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+                'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    var at = 0;
+    var attemptLogged = false;
+    function log(name, params) {
+      if (typeof gtag === 'function') gtag('event', name, params || {});
+    }
+    document.addEventListener('keydown', function (e) {
+      var k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      if (k === CODE[at]) { at++; } else { at = (k === CODE[0]) ? 1 : 0; }
+      if (at === 5 && !attemptLogged) {
+        attemptLogged = true;
+        log('gfunk_attempt', { entered_from: window.location.pathname });
+      }
+      if (at === CODE.length) {
+        at = 0;
+        log('gfunk_realm', { entered_from: window.location.pathname });
+        window.location.href = '/realm.html';
+      }
+    });
+  })();
 })();
