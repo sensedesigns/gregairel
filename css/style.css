@@ -123,6 +123,20 @@ p + p { margin-top: 1rem; }
 .hunt-banner__doll { flex: none; display: block; }
 .hunt-banner a { color: var(--brass); border-bottom: 1px solid var(--brass-dim); }
 .hunt-banner a:hover { border-bottom-color: var(--brass); }
+.hunt-banner__dots {
+  display: flex; justify-content: center; gap: 0.45rem;
+  padding: 0 0 0.4rem;
+}
+.hunt-banner__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  border: 0; padding: 0; cursor: pointer;
+  background: var(--line-2);
+}
+.hunt-banner__dot--on {
+  background: var(--brass);
+  box-shadow: 0 0 10px var(--brass);
+}
+.hunt-banner__dot:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
 @media (max-width: 560px) {
   .hunt-banner__inner { font-size: 0.75rem; padding: 0.5rem var(--pad); }
   .hunt-banner__long { display: none; }
