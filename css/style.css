@@ -686,3 +686,24 @@ a.card__media { display: block; }
   .flux::before { animation: none; }
   .card__media img, .card, .row { transition: none; }
 }
+
+/* ============================================
+   Print — the field guides are meant to be
+   printed and carried where there is no signal.
+   Tokens flip to ink-on-paper; site chrome goes.
+   ============================================ */
+@media print {
+  :root {
+    --bg: #ffffff; --raise: #ffffff; --raise-2: #ffffff;
+    --ink: #111111; --ink-soft: #333333; --muted: #555555;
+    --brass: #8a6d3b; --brass-dim: #8a6d3b;
+    --line: #cccccc; --line-2: #aaaaaa;
+  }
+  #site-nav, #site-footer, .hunt-banner, .soundtrack, [data-daruma], .btn { display: none !important; }
+  body { background: #ffffff; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .section, .page-header { padding: 1.2rem 0; }
+  .guide a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #555555; }
+  figure, .guide-stats, blockquote, .guide-callout { break-inside: avoid; }
+  .guide-hero, .guide-img { max-height: 4in; object-fit: contain; }
+}

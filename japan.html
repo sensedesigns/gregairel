@@ -118,6 +118,7 @@
         <p class="note">Status: itinerary drafted, bookings in progress. This page becomes a full field guide — with photos and the honest what-went-wrong section — after April 2027.</p>
 
         <p style="margin-top:2rem"><a href="adventures.html" class="text-link">&larr; Back to Adventures</a></p>
+        <p class="note" style="margin-top:3rem">This guide saves itself for offline reading once you've opened it — it'll load on the trail with no signal. It also prints clean, if paper is more your style.</p>
       </div>
     </div>
   </section>
@@ -126,5 +127,9 @@
   <script src="js/main.js"></script>
   <script src="js/playlist.js"></script>
   <script src="js/hunt.js"></script>
+  <script>
+    // The guides cache themselves for offline reading on the trail.
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+  </script>
 </body>
 </html>

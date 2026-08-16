@@ -12,7 +12,6 @@
   <meta property="og:description" content="A firsthand field guide to the 10-day Everest Base Camp trek with helicopter return.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://gregairel.com/ebc.html">
-  <meta property="og:image" content="https://gregairel.com/img/og-card.png">
   <link rel="canonical" href="https://gregairel.com/ebc.html">
   <meta property="og:image" content="https://i.ytimg.com/vi/Caeku_oopys/maxresdefault.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +132,7 @@
 
         <p style="margin-top:2.5rem"><a href="adventures.html" class="text-link">Back to adventures</a></p>
 
+        <p class="note" style="margin-top:3rem">This guide saves itself for offline reading once you've opened it — it'll load on the trail with no signal. It also prints clean, if paper is more your style.</p>
       </div>
     </div>
   </section>
@@ -142,5 +142,9 @@
   <script src="js/playlist.js"></script>
   <script src="js/hunt.js"></script>
   <script src="js/daruma-find.js"></script>
+  <script>
+    // The guides cache themselves for offline reading on the trail.
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+  </script>
 </body>
 </html>
