@@ -22,23 +22,31 @@
     {
       title: 'Patagonia W Trek — A Personal Field Guide',
       href: 'w-trek.html',
-      date: '2026-08-03',
+      date: '2026-03-11',
       tags: ['adventures', 'field guides'],
-      excerpt: 'Five days on the W circuit, written up afterwards — terrain day by day, the gear that earned its weight, and what to pack for a March departure.'
+      excerpt: 'Five days on the W circuit, written up afterwards — terrain day by day, the gear that earned its weight, and what to pack for a March departure.',
+      image: 'img/day2-towers.jpg',
+      imageAlt: 'The granite towers of Torres del Paine above the glacial lake at their base'
     },
     {
+      // TODO: date should be the trip date — awaiting the actual EBC
+      // trek dates; this is the write-up's publish date for now.
       title: 'Everest Base Camp — A Personal Field Guide',
       href: 'ebc.html',
       date: '2026-08-03',
       tags: ['adventures', 'field guides'],
-      excerpt: 'Ten days through the Khumbu — Lukla to Base Camp on foot, a helicopter out, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.'
+      excerpt: 'Ten days through the Khumbu — Lukla to Base Camp on foot, a helicopter out, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.',
+      image: 'img/khumbu-icefall.jpg',
+      imageAlt: 'The Khumbu Icefall — a river of broken glacier ice below Everest'
     },
     {
       title: 'Japan 2027 — A Field Guide in Progress',
       href: 'japan.html',
-      date: '2026-08-16',
+      date: '2027-03-24',
       tags: ['adventures', 'field guides'],
-      excerpt: 'The plan, published while it is still a plan: ten nights riding the cherry blossom front south from Tokyo to Kyoto, with the full write-up to follow in April 2027.'
+      excerpt: 'The plan, published while it is still a plan: ten nights riding the cherry blossom front south from Tokyo to Kyoto, with the full write-up to follow in April 2027.',
+      image: 'img/japan-chureito.jpg',
+      imageAlt: 'Chureito Pagoda above Fujiyoshida with early cherry blossoms and snow-capped Mount Fuji'
     }
   ];
 
@@ -97,9 +105,12 @@
     listHost.innerHTML = '';
     posts.forEach(function (p, i) {
       var row = document.createElement('div');
-      row.className = 'row reveal reveal--in';
+      row.className = 'row reveal reveal--in' + (p.image ? ' row--thumbed' : '');
       row.innerHTML =
         '<span class="row__i">' + String(i + 1).padStart(2, '0') + '</span>' +
+        (p.image
+          ? '<a href="' + p.href + '" class="row__thumb-link" tabindex="-1" aria-hidden="true"><img class="row__thumb" loading="lazy" alt=""></a>'
+          : '') +
         '<div>' +
         '  <div class="row__name"><a href="' + p.href + '" class="text-link"></a></div>' +
         '  <div class="row__type"></div>' +
@@ -108,6 +119,11 @@
         '</div>' +
         '<span class="row__arrow">&rarr;</span>';
       row.querySelector('.row__name a').textContent = p.title;
+      if (p.image) {
+        var thumb = row.querySelector('.row__thumb');
+        thumb.src = p.image;
+        thumb.alt = p.imageAlt || '';
+      }
       row.querySelector('.row__type').textContent = fmtDate(p.date);
       row.querySelector('.row__desc').textContent = p.excerpt || '';
       var chipHost = row.querySelector('.brands');

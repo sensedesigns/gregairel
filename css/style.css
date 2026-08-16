@@ -140,6 +140,18 @@ p + p { margin-top: 1rem; }
 
 /* Blog tag chips reuse .brand-chip; --on marks the active filter. */
 .brand-chip--on { border-color: var(--brass); color: var(--brass); }
+
+/* Blog rows with a thumbnail get a fourth grid column. Doubled class
+   beats the base .row rule, which is declared later in this file. */
+.row.row--thumbed { grid-template-columns: 2.5rem 9.5rem 1fr auto; }
+.row__thumb-link { display: block; }
+.row__thumb {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: 4px; display: block;
+}
+@media (max-width: 640px) {
+  .row.row--thumbed { grid-template-columns: 1.8rem 5.2rem 1fr; }
+}
 @media (max-width: 560px) {
   .hunt-banner__inner { font-size: 0.75rem; padding: 0.5rem var(--pad); }
   .hunt-banner__long { display: none; }
