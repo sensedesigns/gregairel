@@ -174,6 +174,31 @@
     `;
   }
 
+  // Posted/updated line in the footer, per page, from /page-dates.json —
+  // generated out of git history by CI, never edited by hand.
+  function initPageDates() {
+    const host = document.querySelector('.footer__bottom');
+    if (!host) return;
+    let path = window.location.pathname;
+    if (path === '/' || path === '' || path.endsWith('/')) path = '/index.html';
+    fetch('/page-dates.json')
+      .then(function (r) { return r.json(); })
+      .then(function (dates) {
+        const d = dates[path];
+        if (!d) return;
+        const fmt = function (iso) {
+          return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        };
+        const span = document.createElement('span');
+        span.className = 'footer__dates';
+        span.textContent = d.posted === d.updated
+          ? 'Posted ' + fmt(d.posted)
+          : 'Posted ' + fmt(d.posted) + ' · Updated ' + fmt(d.updated);
+        host.insertBefore(span, host.lastElementChild);
+      })
+      .catch(function () {});
+  }
+
   function initMobileMenu() {
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
@@ -236,6 +261,7 @@
     initNavScroll();
     initReveal();
     initBannerRotation();
+    initPageDates();
     syncNavHeight();
     window.addEventListener('resize', syncNavHeight, { passive: true });
   });

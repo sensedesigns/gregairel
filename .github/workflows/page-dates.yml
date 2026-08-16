@@ -1,0 +1,32 @@
+name: Rebuild page dates
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "**.html"
+      - tools/build-page-dates.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build page-dates.json from git history
+        run: node tools/build-page-dates.mjs
+      - name: Commit the manifest if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add page-dates.json
+          git diff --staged --quiet || git commit -m "Rebuild page-dates.json from git history"
+          git push

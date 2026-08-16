@@ -655,6 +655,7 @@ a.card__media { display: block; }
 .footer__links { display: flex; gap: 1.6rem; flex-wrap: wrap; }
 .footer__link { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 .footer__link:hover { color: var(--brass); }
+.footer__dates { font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); }
 .footer__bottom {
   padding-top: 1.5rem; border-top: 1px solid var(--line);
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
