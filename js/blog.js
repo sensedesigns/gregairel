@@ -29,11 +29,9 @@
       imageAlt: 'The granite towers of Torres del Paine above the glacial lake at their base'
     },
     {
-      // TODO: date should be the trip date — awaiting the actual EBC
-      // trek dates; this is the write-up's publish date for now.
       title: 'Everest Base Camp — A Personal Field Guide',
       href: 'ebc.html',
-      date: '2026-08-03',
+      date: '2025-03-10',
       tags: ['adventures', 'field guides'],
       excerpt: 'Ten days through the Khumbu — Lukla to Base Camp on foot, a helicopter out, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.',
       image: 'img/khumbu-icefall.jpg',
