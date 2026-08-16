@@ -13,6 +13,7 @@
     { href: '/adventures.html', label: 'Adventures' },
     { href: '/art.html', label: 'Art' },
     { href: '/media.html', label: 'Media' },
+    { href: '/blog.html', label: 'Blog' },
     { href: '/contact.html', label: 'Contact' },
   ];
 

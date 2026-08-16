@@ -137,6 +137,9 @@ p + p { margin-top: 1rem; }
   box-shadow: 0 0 10px var(--brass);
 }
 .hunt-banner__dot:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
+
+/* Blog tag chips reuse .brand-chip; --on marks the active filter. */
+.brand-chip--on { border-color: var(--brass); color: var(--brass); }
 @media (max-width: 560px) {
   .hunt-banner__inner { font-size: 0.75rem; padding: 0.5rem var(--pad); }
   .hunt-banner__long { display: none; }
