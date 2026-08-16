@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Greg Airel — Blog</title>
+    <link>https://gregairel.com/blog.html</link>
+    <atom:link href="https://gregairel.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Logistics notes, AI experiments, field guides, and the occasional mix.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Mar 2027 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Japan 2027 — A Field Guide in Progress</title>
+      <link>https://gregairel.com/japan.html</link>
+      <guid isPermaLink="true">https://gregairel.com/japan.html</guid>
+      <pubDate>Wed, 24 Mar 2027 12:00:00 GMT</pubDate>
+      <description>The plan, published while it is still a plan: ten nights riding the cherry blossom front south from Tokyo to Kyoto, with the full write-up to follow in April 2027.</description>
+      <category>adventures</category>
+      <category>field guides</category>
+    </item>
+    <item>
+      <title>Patagonia W Trek — A Personal Field Guide</title>
+      <link>https://gregairel.com/w-trek.html</link>
+      <guid isPermaLink="true">https://gregairel.com/w-trek.html</guid>
+      <pubDate>Wed, 11 Mar 2026 12:00:00 GMT</pubDate>
+      <description>Five days on the W circuit, written up afterwards — terrain day by day, the gear that earned its weight, and what to pack for a March departure.</description>
+      <category>adventures</category>
+      <category>field guides</category>
+    </item>
+    <item>
+      <title>Everest Base Camp — A Personal Field Guide</title>
+      <link>https://gregairel.com/ebc.html</link>
+      <guid isPermaLink="true">https://gregairel.com/ebc.html</guid>
+      <pubDate>Mon, 10 Mar 2025 12:00:00 GMT</pubDate>
+      <description>Ten days through the Khumbu — Lukla to Base Camp on foot, a helicopter out, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.</description>
+      <category>adventures</category>
+      <category>field guides</category>
+    </item>
+    <item>
+      <title>Ninjazz Vol. 1</title>
+      <link>https://www.mixcloud.com/gregtron/ninjazz-vol-1/</link>
+      <guid isPermaLink="true">https://www.mixcloud.com/gregtron/ninjazz-vol-1/</guid>
+      <pubDate>Sun, 23 Sep 2012 12:00:00 GMT</pubDate>
+      <description>An old mix from the gregtron era — an hour of jazz and hip-hop stitched together into something mellow enough to work to and heavy enough to nod to. Fourteen years old and still holds up.</description>
+      <category>music</category>
+      <category>mixes</category>
+    </item>
+  </channel>
+</rss>

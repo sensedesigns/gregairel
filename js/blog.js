@@ -1,61 +1,20 @@
 /* ============================================================
    GREGAIREL.COM — Blog index
 
-   Posts live in the POSTS array below; the page renders itself
-   from it. To publish: write the post page under posts/, then
-   append an entry here. Tags and filtering come along free.
+   Posts live in /posts.json; the page renders itself from it and
+   the RSS feed is generated from the same file by GitHub Actions.
+   To publish: write the post page (copy posts/_template.html),
+   append an entry to posts.json, push. Everything else follows.
    ============================================================ */
 
 (function (window, document) {
   'use strict';
 
-  // Newest first is handled at render time — append anywhere.
-  // Shape of an entry:
-  // {
-  //   title:   'The post title',
-  //   href:    'posts/the-post-slug.html',
-  //   date:    '2026-09-01',                  // ISO, used for sorting + display
-  //   tags:    ['logistics', 'ai'],           // lowercase, short
-  //   excerpt: 'One or two sentences shown in the list.'
-  // }
-  var POSTS = [
-    {
-      title: 'Ninjazz Vol. 1',
-      href: 'https://www.mixcloud.com/gregtron/ninjazz-vol-1/',
-      date: '2012-09-23',
-      tags: ['music', 'mixes'],
-      excerpt: 'An old mix from the gregtron era — an hour of jazz and hip-hop stitched together into something mellow enough to work to and heavy enough to nod to. Fourteen years old and still holds up.',
-      image: 'img/blog-ninjazz.jpg',
-      imageAlt: 'Cover art for Ninjazz Vol. 1, a jazz and hip-hop mix'
-    },
-    {
-      title: 'Patagonia W Trek — A Personal Field Guide',
-      href: 'w-trek.html',
-      date: '2026-03-11',
-      tags: ['adventures', 'field guides'],
-      excerpt: 'Five days on the W circuit, written up afterwards — terrain day by day, the gear that earned its weight, and what to pack for a March departure.',
-      image: 'img/day2-towers.jpg',
-      imageAlt: 'The granite towers of Torres del Paine above the glacial lake at their base'
-    },
-    {
-      title: 'Everest Base Camp — A Personal Field Guide',
-      href: 'ebc.html',
-      date: '2025-03-10',
-      tags: ['adventures', 'field guides'],
-      excerpt: 'Ten days through the Khumbu — Lukla to Base Camp on foot, a helicopter out, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.',
-      image: 'img/khumbu-icefall.jpg',
-      imageAlt: 'The Khumbu Icefall — a river of broken glacier ice below Everest'
-    },
-    {
-      title: 'Japan 2027 — A Field Guide in Progress',
-      href: 'japan.html',
-      date: '2027-03-24',
-      tags: ['adventures', 'field guides'],
-      excerpt: 'The plan, published while it is still a plan: ten nights riding the cherry blossom front south from Tokyo to Kyoto, with the full write-up to follow in April 2027.',
-      image: 'img/japan-chureito.jpg',
-      imageAlt: 'Chureito Pagoda above Fujiyoshida with early cherry blossoms and snow-capped Mount Fuji'
-    }
-  ];
+  // Posts live in /posts.json — one source of truth shared with the
+  // RSS feed generator (tools/build-feed.mjs, run by GitHub Actions).
+  // To publish: copy posts/_template.html, write the post, append an
+  // entry to posts.json. The feed rebuilds itself on push.
+  var POSTS = [];
 
   function track(name, params) {
     if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
@@ -179,6 +138,10 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var params = new URLSearchParams(window.location.search);
-    render(params.get('tag') || null);
+    fetch('posts.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) { POSTS = data; })
+      .catch(function () { /* leave POSTS empty — the coming-soon state renders */ })
+      .then(function () { render(params.get('tag') || null); });
   });
 })(window, document);

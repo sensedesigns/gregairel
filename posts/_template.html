@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- ==================================================================
+     POST TEMPLATE — copy this file, never publish it directly.
+
+     To publish a post:
+       1. Copy to posts/<slug>.html and replace every {{PLACEHOLDER}}.
+       2. Remove the noindex meta below.
+       3. Append an entry to /posts.json:
+            { "title": "...", "href": "posts/<slug>.html",
+              "date": "YYYY-MM-DD", "tags": ["..."],
+              "excerpt": "...", "image": "img/...", "imageAlt": "..." }
+       4. Push. The blog index and feed.xml update themselves.
+     ================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex"><!-- remove when publishing -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>{{TITLE}} — Greg Airel</title>
+  <meta name="description" content="{{EXCERPT}}">
+  <meta property="og:title" content="{{TITLE}} — Greg Airel">
+  <meta property="og:description" content="{{EXCERPT}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://gregairel.com/posts/{{SLUG}}.html">
+  <meta property="og:image" content="https://gregairel.com/img/og-card.png">
+  <link rel="canonical" href="https://gregairel.com/posts/{{SLUG}}.html">
+  <link rel="alternate" type="application/rss+xml" title="Greg Airel — Blog" href="/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/hunt.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S2DS8FJ5CM');
+  </script>
+</head>
+<body class="page-blog">
+  <header id="site-nav"></header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>{{TITLE}}</h1>
+      <p>{{DATE_LONG}} &middot; {{TAGS_READABLE}}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="guide">
+        <!-- Optional hero image:
+        <img src="/img/{{IMAGE}}" alt="{{IMAGE_ALT}}" class="guide-hero">
+        -->
+
+        <p class="lede">{{OPENING_PARAGRAPH}}</p>
+
+        <p>{{BODY}}</p>
+
+        <hr>
+
+        <p style="margin-top:2rem"><a href="/blog.html" class="text-link">&larr; Back to the blog</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+  <script src="/js/main.js"></script>
+  <script src="/js/playlist.js"></script>
+  <script src="/js/hunt.js"></script>
+</body>
+</html>
