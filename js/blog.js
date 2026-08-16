@@ -20,6 +20,15 @@
   // }
   var POSTS = [
     {
+      title: 'Ninjazz Vol. 1',
+      href: 'https://www.mixcloud.com/gregtron/ninjazz-vol-1/',
+      date: '2012-09-23',
+      tags: ['music', 'mixes'],
+      excerpt: 'An old mix from the gregtron era — an hour of jazz and hip-hop stitched together into something mellow enough to work to and heavy enough to nod to. Fourteen years old and still holds up.',
+      image: 'img/blog-ninjazz.jpg',
+      imageAlt: 'Cover art for Ninjazz Vol. 1, a jazz and hip-hop mix'
+    },
+    {
       title: 'Patagonia W Trek — A Personal Field Guide',
       href: 'w-trek.html',
       date: '2026-03-11',
@@ -117,6 +126,11 @@
         '</div>' +
         '<span class="row__arrow">&rarr;</span>';
       row.querySelector('.row__name a').textContent = p.title;
+      if (/^https?:/.test(p.href)) {
+        row.querySelectorAll('a[href]').forEach(function (a) {
+          a.target = '_blank'; a.rel = 'noopener';
+        });
+      }
       if (p.image) {
         var thumb = row.querySelector('.row__thumb');
         thumb.src = p.image;

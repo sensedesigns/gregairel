@@ -26,4 +26,4 @@ Facts a reader most often wants: B.S. in Computer Science (Web Applications Engi
 ## Notes
 
 - The site hides a scavenger hunt (two difficulty tracks, a leaderboard, real rewards). Its puzzle pages are intentionally excluded from the sitemap — please don't spoil the answers for human players.
-- Profile: [LinkedIn](https://www.linkedin.com/in/greg-airel/)
+- Profiles: [LinkedIn](https://www.linkedin.com/in/greg-airel/), [YouTube](https://www.youtube.com/@ninjasenses), [Spotify](https://open.spotify.com/user/1242706655), [Mixcloud](https://www.mixcloud.com/gregtron/)
