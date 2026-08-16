@@ -95,7 +95,9 @@
         thumb.src = p.image;
         thumb.alt = p.imageAlt || '';
       }
-      row.querySelector('.row__type').textContent = fmtDate(p.date);
+      var dateLine = fmtDate(p.date);
+      if (p.updated && p.updated !== p.date) dateLine += ' · Updated ' + fmtDate(p.updated);
+      row.querySelector('.row__type').textContent = dateLine;
       row.querySelector('.row__desc').textContent = p.excerpt || '';
       var chipHost = row.querySelector('.brands');
       (p.tags || []).forEach(function (t) {
@@ -136,11 +138,41 @@
     }
   }
 
+  // schema.org Blog markup, built from the same data the page renders.
+  // Injected after fetch — Google processes JSON-LD added by script.
+  function injectSchema() {
+    var abs = function (h) { return /^https?:/.test(h) ? h : 'https://gregairel.com/' + h; };
+    var ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      '@id': 'https://gregairel.com/blog.html',
+      name: 'Greg Airel — Blog',
+      author: { '@id': 'https://gregairel.com/#person' },
+      blogPost: POSTS.map(function (p) {
+        return {
+          '@type': 'BlogPosting',
+          headline: p.title,
+          url: abs(p.href),
+          datePublished: p.date,
+          dateModified: p.updated || p.date,
+          author: { '@type': 'Person', name: p.author || 'Greg Airel', url: 'https://gregairel.com/' },
+          image: p.image ? abs(p.image) : undefined,
+          keywords: (p.tags || []).join(', '),
+          description: p.excerpt
+        };
+      })
+    };
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(ld);
+    document.head.appendChild(s);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     var params = new URLSearchParams(window.location.search);
     fetch('posts.json')
       .then(function (r) { return r.json(); })
-      .then(function (data) { POSTS = data; })
+      .then(function (data) { POSTS = data; injectSchema(); })
       .catch(function () { /* leave POSTS empty — the coming-soon state renders */ })
       .then(function () { render(params.get('tag') || null); });
   });

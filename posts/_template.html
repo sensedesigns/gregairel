@@ -7,8 +7,10 @@
        2. Remove the noindex meta below.
        3. Append an entry to /posts.json:
             { "title": "...", "href": "posts/<slug>.html",
-              "date": "YYYY-MM-DD", "tags": ["..."],
+              "date": "YYYY-MM-DD", "updated": "YYYY-MM-DD",
+              "author": "Greg Airel", "tags": ["..."],
               "excerpt": "...", "image": "img/...", "imageAlt": "..." }
+          (bump "updated" whenever the post meaningfully changes)
        4. Push. The blog index and feed.xml update themselves.
      ================================================================== -->
 <html lang="en">
@@ -28,6 +30,19 @@
   <meta property="og:image" content="https://gregairel.com/img/og-card.png">
   <link rel="canonical" href="https://gregairel.com/posts/{{SLUG}}.html">
   <link rel="alternate" type="application/rss+xml" title="Greg Airel — Blog" href="/feed.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{TITLE}}",
+    "url": "https://gregairel.com/posts/{{SLUG}}.html",
+    "datePublished": "{{DATE_ISO}}",
+    "dateModified": "{{UPDATED_ISO}}",
+    "author": { "@type": "Person", "name": "Greg Airel", "url": "https://gregairel.com/", "@id": "https://gregairel.com/#person" },
+    "description": "{{EXCERPT}}",
+    "isPartOf": { "@id": "https://gregairel.com/blog.html" }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -48,7 +63,7 @@
   <section class="page-header">
     <div class="container">
       <h1>{{TITLE}}</h1>
-      <p>{{DATE_LONG}} &middot; {{TAGS_READABLE}}</p>
+      <p>By Greg Airel &middot; {{DATE_LONG}}<!-- if revised: --> &middot; Updated {{UPDATED_LONG}} &middot; {{TAGS_READABLE}}</p>
     </div>
   </section>
 

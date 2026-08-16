@@ -36,21 +36,28 @@ const items = posts
       <link>${esc(abs(p.href))}</link>
       <guid isPermaLink="true">${esc(abs(p.href))}</guid>
       <pubDate>${rfc822(p.date)}</pubDate>
+      <dc:creator>${esc(p.author || 'Greg Airel')}</dc:creator>
       <description>${esc(p.excerpt)}</description>
 ${(p.tags || []).map((t) => `      <category>${esc(t)}</category>`).join('\n')}
     </item>`
   )
   .join('\n');
 
+// The channel's build date is the newest touch on any post.
+const newest = posts.reduce(
+  (max, p) => ((p.updated || p.date) > max ? p.updated || p.date : max),
+  '2026-01-01'
+);
+
 const feed = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>Greg Airel — Blog</title>
     <link>${SITE}/blog.html</link>
     <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Logistics notes, AI experiments, field guides, and the occasional mix.</description>
     <language>en-us</language>
-    <lastBuildDate>${rfc822(posts[0]?.date ?? '2026-01-01')}</lastBuildDate>
+    <lastBuildDate>${rfc822(newest)}</lastBuildDate>
 ${items}
   </channel>
 </rss>
