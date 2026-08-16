@@ -19,6 +19,27 @@
   //   excerpt: 'One or two sentences shown in the list.'
   // }
   var POSTS = [
+    {
+      title: 'Patagonia W Trek — A Personal Field Guide',
+      href: 'w-trek.html',
+      date: '2026-08-03',
+      tags: ['adventures', 'field guides'],
+      excerpt: 'Five days on the W circuit, written up afterwards — terrain day by day, the gear that earned its weight, and what to pack for a March departure.'
+    },
+    {
+      title: 'Everest Base Camp — A Personal Field Guide',
+      href: 'ebc.html',
+      date: '2026-08-03',
+      tags: ['adventures', 'field guides'],
+      excerpt: 'Ten days through the Khumbu — Lukla to Base Camp on foot, a helicopter out, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.'
+    },
+    {
+      title: 'Japan 2027 — A Field Guide in Progress',
+      href: 'japan.html',
+      date: '2026-08-16',
+      tags: ['adventures', 'field guides'],
+      excerpt: 'The plan, published while it is still a plan: ten nights riding the cherry blossom front south from Tokyo to Kyoto, with the full write-up to follow in April 2027.'
+    }
   ];
 
   function track(name, params) {
