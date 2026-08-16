@@ -1,5 +1,16 @@
 [
   {
+    "title": "Introducing AI to Kids: A Website of Their Own, Built On Demand",
+    "href": "posts/introducing-ai-to-kids.html",
+    "date": "2026-08-17",
+    "updated": "2026-08-17",
+    "author": "Greg Airel",
+    "tags": ["ai", "parenting"],
+    "excerpt": "A parent's guide: your child answers ten questions and an AI turns their answers into a real website they can send to their grandparents. The complete walkthrough, all code included.",
+    "image": "img/blog-kid-website.png",
+    "imageAlt": "A child's drawing of a house, rainbow, sun, and star stamps inside a browser window"
+  },
+  {
     "title": "Ninjazz Vol. 1",
     "href": "https://www.mixcloud.com/gregtron/ninjazz-vol-1/",
     "date": "2012-09-23",
@@ -36,6 +47,7 @@
     "title": "Japan 2027 — A Field Guide in Progress",
     "href": "japan.html",
     "date": "2027-03-24",
+    "posted": "2026-08-15",
     "updated": "2026-08-16",
     "author": "Greg Airel",
     "tags": ["adventures", "field guides"],

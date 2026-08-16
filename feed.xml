@@ -6,12 +6,22 @@
     <atom:link href="https://gregairel.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Logistics notes, AI experiments, field guides, and the occasional mix.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Introducing AI to Kids: A Website of Their Own, Built On Demand</title>
+      <link>https://gregairel.com/posts/introducing-ai-to-kids.html</link>
+      <guid isPermaLink="true">https://gregairel.com/posts/introducing-ai-to-kids.html</guid>
+      <pubDate>Mon, 17 Aug 2026 12:00:00 GMT</pubDate>
+      <dc:creator>Greg Airel</dc:creator>
+      <description>A parent's guide: your child answers ten questions and an AI turns their answers into a real website they can send to their grandparents. The complete walkthrough, all code included.</description>
+      <category>ai</category>
+      <category>parenting</category>
+    </item>
     <item>
       <title>Japan 2027 — A Field Guide in Progress</title>
       <link>https://gregairel.com/japan.html</link>
       <guid isPermaLink="true">https://gregairel.com/japan.html</guid>
-      <pubDate>Wed, 24 Mar 2027 12:00:00 GMT</pubDate>
+      <pubDate>Sat, 15 Aug 2026 12:00:00 GMT</pubDate>
       <dc:creator>Greg Airel</dc:creator>
       <description>The plan, published while it is still a plan: ten nights riding the cherry blossom front south from Tokyo to Kyoto, with the full write-up to follow in April 2027.</description>
       <category>adventures</category>

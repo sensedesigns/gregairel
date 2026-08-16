@@ -15,9 +15,12 @@ import { dirname, join } from 'node:path';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://gregairel.com';
 
+// `posted` (real publish date) beats `date` (which can be a trip date,
+// even a future one) for ordering and pubDate.
+const sortKey = (p) => p.posted || p.date;
 const posts = JSON.parse(readFileSync(join(root, 'posts.json'), 'utf8'))
   .slice()
-  .sort((a, b) => (a.date < b.date ? 1 : -1));
+  .sort((a, b) => (sortKey(a) < sortKey(b) ? 1 : -1));
 
 const esc = (s) =>
   String(s ?? '')
@@ -35,7 +38,7 @@ const items = posts
       <title>${esc(p.title)}</title>
       <link>${esc(abs(p.href))}</link>
       <guid isPermaLink="true">${esc(abs(p.href))}</guid>
-      <pubDate>${rfc822(p.date)}</pubDate>
+      <pubDate>${rfc822(p.posted || p.date)}</pubDate>
       <dc:creator>${esc(p.author || 'Greg Airel')}</dc:creator>
       <description>${esc(p.excerpt)}</description>
 ${(p.tags || []).map((t) => `      <category>${esc(t)}</category>`).join('\n')}

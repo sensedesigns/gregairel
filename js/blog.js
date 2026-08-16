@@ -63,10 +63,13 @@
       }
     }
 
-    // Post rows.
+    // Post rows. Sorting uses the publish date (`posted`) when it exists —
+    // `date` can be a trip date, including a future one (see Japan 2027),
+    // and a future trip shouldn't pin a post to the top forever.
+    var sortKey = function (p) { return p.posted || p.date; };
     var posts = POSTS
       .filter(function (p) { return !activeTag || (p.tags || []).indexOf(activeTag) !== -1; })
-      .sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+      .sort(function (a, b) { return sortKey(a) < sortKey(b) ? 1 : -1; });
 
     listHost.innerHTML = '';
     posts.forEach(function (p, i) {
@@ -153,7 +156,7 @@
           '@type': 'BlogPosting',
           headline: p.title,
           url: abs(p.href),
-          datePublished: p.date,
+          datePublished: p.posted || p.date,
           dateModified: p.updated || p.date,
           author: { '@type': 'Person', name: p.author || 'Greg Airel', url: 'https://gregairel.com/' },
           image: p.image ? abs(p.image) : undefined,
