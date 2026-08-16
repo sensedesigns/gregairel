@@ -7,7 +7,7 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <title>Contact — Greg Airel</title>
-  <meta name="description" content="Get in touch with Greg Airel — social links and contact form.">
+  <meta name="description" content="Get in touch with Greg Airel — LinkedIn for messages, YouTube for the treks, Spotify for the playlists.">
   <meta property="og:title" content="Contact — Greg Airel">
   <meta property="og:description" content="Get in touch with Greg Airel.">
   <meta property="og:type" content="website">
@@ -50,61 +50,38 @@
         <span class="label">Elsewhere</span>
         <h2>Find me<br>online</h2><div data-daruma="9" style="display:inline-block;margin-left:.7rem;vertical-align:middle"></div>
       </div>
-      <div class="social-links reveal">
-        <a href="https://www.linkedin.com/in/greg-airel/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.youtube.com/@ninjasenses" class="social-link" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://open.spotify.com/user/1242706655" class="social-link" target="_blank" rel="noopener">Spotify</a>
+      <div class="narrow reveal">
+        <p class="lede">No contact form, no inbox to lose your message in — just pick the channel that fits.</p>
+        <div class="rows" style="margin-top:2.5rem">
+          <div class="row">
+            <span class="row__i">01</span>
+            <div>
+              <div class="row__name"><a href="https://www.linkedin.com/in/greg-airel/" class="text-link" target="_blank" rel="noopener">LinkedIn</a></div>
+              <div class="row__type">Messages &middot; the reliable channel</div>
+              <p class="row__desc">Business, collaboration, questions, or just saying hello — this is the one I actually check. Connection requests with a note get answered first.</p>
+            </div>
+            <span class="row__arrow">&rarr;</span>
+          </div>
+          <div class="row">
+            <span class="row__i">02</span>
+            <div>
+              <div class="row__name"><a href="https://www.youtube.com/@ninjasenses" class="text-link" target="_blank" rel="noopener">YouTube</a></div>
+              <div class="row__type">The treks, on video</div>
+              <p class="row__desc">Expedition documentation — Everest Base Camp and whatever comes next. Comments there get read too.</p>
+            </div>
+            <span class="row__arrow">&rarr;</span>
+          </div>
+          <div class="row">
+            <span class="row__i">03</span>
+            <div>
+              <div class="row__name"><a href="https://open.spotify.com/user/1242706655" class="text-link" target="_blank" rel="noopener">Spotify</a></div>
+              <div class="row__type">The playlists</div>
+              <p class="row__desc">The same lists the site offers you while you read — something calm, some R&amp;B and soul, and the all-time list, thirty years deep.</p>
+            </div>
+            <span class="row__arrow">&rarr;</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section__header">
-        <span class="section__num">02</span>
-        <span class="label">Direct</span>
-        <h2>Send a<br>message</h2>
-      </div>
-      <!-- ==================================================================
-           TODO: wire up the form endpoint.
-
-           The action is deliberately empty. It previously posted to a
-           formsubmit.co endpoint with the destination address written into
-           the URL, which left it in plain text in the page source where
-           scrapers harvest it. Do not reintroduce it that way.
-
-           When picking a replacement, use one that does NOT require the
-           address in markup:
-             - FormSubmit: submit once, then swap in the hashed alias
-               endpoint it emails back (formsubmit.co/{hash}).
-             - Formspree: create a form, use the issued /f/{id}.
-             - Cloudflare Worker: the domain is already proxied through
-               Cloudflare, so a Worker could accept the POST and relay it
-               with the address held server-side.
-
-           Until then the submit button stays disabled and the page points
-           people at LinkedIn, so nothing is silently swallowed.
-           ================================================================== -->
-      <form class="form reveal" action="" method="POST">
-        <!-- Honeypot: bots fill it, people never see it. Keep it with
-             whatever endpoint replaces the empty action above. -->
-        <input type="text" name="_honey" tabindex="-1" autocomplete="off"
-               style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
-        <div class="form__group">
-          <label class="form__label" for="name">Name</label>
-          <input class="form__input" type="text" id="name" name="name" required>
-        </div>
-        <div class="form__group">
-          <label class="form__label" for="email">Email</label>
-          <input class="form__input" type="email" id="email" name="email" required>
-        </div>
-        <div class="form__group">
-          <label class="form__label" for="message">Message</label>
-          <textarea class="form__textarea" id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="btn btn--primary" disabled>Send message</button>
-      </form>
-      <p class="note" style="margin-top:1.5rem">This form isn't connected yet, so it won't send. <a href="https://www.linkedin.com/in/greg-airel/" class="text-link" target="_blank" rel="noopener">Reach me on LinkedIn</a> in the meantime.</p>
     </div>
   </section>
 
