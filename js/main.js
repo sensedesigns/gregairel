@@ -174,13 +174,16 @@
     `;
   }
 
-  // Posted/updated line in the footer, per page, from /page-dates.json —
-  // generated out of git history by CI, never edited by hand.
+  // Posted/updated line, per page, from /page-dates.json — generated out
+  // of git history by CI, never edited by hand. Placement: in the page
+  // header on most pages; the home page keeps it in the footer; pages
+  // with a byline already show their dates up top and get nothing;
+  // pages with no page header (hunt camps) fall back to the footer.
   function initPageDates() {
-    const host = document.querySelector('.footer__bottom');
-    if (!host) return;
     let path = window.location.pathname;
     if (path === '/' || path === '' || path.endsWith('/')) path = '/index.html';
+    const isHome = path === '/index.html';
+    if (!isHome && document.querySelector('.byline')) return;
     fetch('/page-dates.json')
       .then(function (r) { return r.json(); })
       .then(function (dates) {
@@ -189,12 +192,23 @@
         const fmt = function (iso) {
           return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         };
-        const span = document.createElement('span');
-        span.className = 'footer__dates';
-        span.textContent = d.posted === d.updated
+        const text = d.posted === d.updated
           ? 'Posted ' + fmt(d.posted)
           : 'Posted ' + fmt(d.posted) + ' · Updated ' + fmt(d.updated);
-        host.insertBefore(span, host.lastElementChild);
+        const headerHost = isHome ? null : document.querySelector('.page-header .container');
+        if (headerHost) {
+          const p = document.createElement('p');
+          p.className = 'page-dates';
+          p.textContent = text;
+          headerHost.appendChild(p);
+        } else {
+          const footerHost = document.querySelector('.footer__bottom');
+          if (!footerHost) return;
+          const span = document.createElement('span');
+          span.className = 'footer__dates';
+          span.textContent = text;
+          footerHost.insertBefore(span, footerHost.lastElementChild);
+        }
       })
       .catch(function () {});
   }

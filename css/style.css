@@ -661,6 +661,10 @@ a.card__media { display: block; }
 .footer__link { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 .footer__link:hover { color: var(--brass); }
 .footer__dates { font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); }
+.page-dates {
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-top: 1.3rem;
+}
 .footer__bottom {
   padding-top: 1.5rem; border-top: 1px solid var(--line);
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
