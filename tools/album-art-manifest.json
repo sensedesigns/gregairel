@@ -268,7 +268,7 @@
     "artist": "Three 6 Mafia",
     "album": "When the Smoke Clears: Sixty 6, Sixty 1",
     "file": "img/albums/three-6-mafia-when-the-smoke-clears-sixty-6-sixty-1.jpg",
-    "matched": "Foundation — When the Smoke Clears",
+    "matched": "Deezer: Three 6 Mafia — When the Smoke Clears: Sixty 6, Sixty 1",
     "note": "OK"
   },
   {
@@ -1014,5 +1014,109 @@
     "file": "img/albums/mac-miller-the-divine-feminine.jpg",
     "matched": "Mac Miller — The Divine Feminine",
     "note": "OK"
+  },
+  {
+    "li": "Pink Floyd — Wish You Were Here",
+    "artist": "Pink Floyd",
+    "album": "Wish You Were Here",
+    "file": "img/albums/pink-floyd-wish-you-were-here.jpg",
+    "matched": "Pink Floyd — Wish You Were Here",
+    "note": "OK"
+  },
+  {
+    "li": "Pink Floyd — Animals",
+    "artist": "Pink Floyd",
+    "album": "Animals",
+    "note": "OK",
+    "file": "img/albums/pink-floyd-animals.jpg",
+    "matched": "Deezer: Pink Floyd — Animals"
+  },
+  {
+    "li": "Pink Floyd — The Wall",
+    "artist": "Pink Floyd",
+    "album": "The Wall",
+    "file": "img/albums/pink-floyd-the-wall.jpg",
+    "matched": "Pink Floyd — The Wall",
+    "note": "OK"
+  },
+  {
+    "li": "The Beatles — Abbey Road",
+    "artist": "The Beatles",
+    "album": "Abbey Road",
+    "file": "img/albums/the-beatles-abbey-road.jpg",
+    "matched": "The Beatles — Abbey Road (2019 Mix)",
+    "note": "OK"
+  },
+  {
+    "li": "Yesterdays New Quintet — Angles Without Edges",
+    "artist": "Yesterdays New Quintet",
+    "album": "Angles Without Edges",
+    "file": "img/albums/yesterdays-new-quintet-angles-without-edges.jpg",
+    "matched": "Yesterdays New Quintet — Angles Without Edges",
+    "note": "OK"
+  },
+  {
+    "li": "MF DOOM — MM..FOOD",
+    "artist": "MF DOOM",
+    "album": "MM..FOOD",
+    "note": "OK",
+    "file": "img/albums/mf-doom-mm-food.jpg",
+    "matched": "Deezer: MF DOOM — MM..FOOD"
+  },
+  {
+    "li": "Madlib — Shades of Blue",
+    "artist": "Madlib",
+    "album": "Shades of Blue",
+    "file": "img/albums/madlib-shades-of-blue.jpg",
+    "matched": "Madlib — Shades of Blue: Madlib Invades Blue Note",
+    "note": "OK"
+  },
+  {
+    "li": "Hypnotize Camp Posse — Three 6 Mafia Presents: Hypnotize Camp Posse",
+    "artist": "Hypnotize Camp Posse",
+    "album": "Three 6 Mafia Presents: Hypnotize Camp Posse",
+    "file": "img/albums/hypnotize-camp-posse-three-6-mafia-presents-hypnotize-camp-p.jpg",
+    "matched": "Deezer: Hypnotize Camp Posse — Three 6 Mafia Presents Hypnotize Camp Posse",
+    "note": "OK"
+  },
+  {
+    "li": "Three 6 Mafia — Chpt. 2: World Domination",
+    "artist": "Three 6 Mafia",
+    "album": "Chpt. 2: World Domination",
+    "file": "img/albums/three-6-mafia-chpt-2-world-domination.jpg",
+    "matched": "Deezer: Three 6 Mafia — Chapter 2: World Domination",
+    "note": "OK"
+  },
+  {
+    "li": "Three 6 Mafia — Choices: The Album",
+    "artist": "Three 6 Mafia",
+    "album": "Choices: The Album",
+    "file": "img/albums/three-6-mafia-choices-the-album.jpg",
+    "matched": "Deezer: Three 6 Mafia — Choices: The Album",
+    "note": "OK"
+  },
+  {
+    "li": "Tear da Club Up Thugs — CrazyNDaLazDayz",
+    "artist": "Tear da Club Up Thugs",
+    "album": "CrazyNDaLazDayz",
+    "file": "img/albums/tear-da-club-up-thugs-crazyndalazdayz.jpg",
+    "matched": "Deezer: Tear Da Club Up Thugs — Crazyndalazdayz",
+    "note": "OK"
+  },
+  {
+    "li": "Three 6 Mafia — Underground Vol. 2: Club Memphis Underground",
+    "artist": "Three 6 Mafia",
+    "album": "Underground Vol. 2: Club Memphis Underground",
+    "note": "OK",
+    "file": "img/albums/three-6-mafia-underground-vol-2-club-memphis-underground.jpg",
+    "matched": "Deezer: Triple Six Mafia — Club Memphis - Underground Volume 2"
+  },
+  {
+    "li": "Three 6 Mafia — Underground Vol. 3: Kings of Memphis",
+    "artist": "Three 6 Mafia",
+    "album": "Underground Vol. 3: Kings of Memphis",
+    "note": "OK",
+    "file": "img/albums/three-6-mafia-underground-vol-3-kings-of-memphis.jpg",
+    "matched": "Deezer: Triple Six Mafia — Kings Of Memphis: Underground, Vol. 3"
   }
 ]

@@ -50,9 +50,17 @@
       margin: 20px 0 36px;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(5, 1fr);
       gap: 20px 16px;
     }
+    @media (max-width: 860px) {
+      .album-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .album-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .guide h2 { font-size: clamp(2rem, 4.5vw, 2.8rem); }
+    .guide h3 { font-size: 1.7rem; }
     .guide .album-grid li,
     .album-grid li { margin: 0; padding: 0; list-style: none; }
     .guide .album-grid li::before,
@@ -124,7 +132,7 @@
 
         <p class="note">DRAFT — this list is still being written. The thoughts come later; the records came first.</p>
 
-        <p class="lede">The albums that built my taste, front to back. In no particular order — ranking these would be like ranking your friends.</p>
+        <p class="lede"><strong>These albums are in no particular order</strong> — ranking them would be like ranking your friends. This is everything that built my taste, front to back.</p>
 
         <!-- TODO: opening thoughts — what makes an album an all-timer for you,
              the vinyl connection, the Udagawacho dig, JBS, the warehouse speakers. -->
@@ -170,6 +178,12 @@
           <li><img src="/img/albums/ma-e-harlem-world.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Ma$e</span><span class="album-title">Harlem World</span></li>
           <li><img src="/img/albums/puff-daddy-the-family-no-way-out.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Puff Daddy &amp; the Family</span><span class="album-title">No Way Out</span></li>
           <li><img src="/img/albums/three-6-mafia-when-the-smoke-clears-sixty-6-sixty-1.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Three 6 Mafia</span><span class="album-title">When the Smoke Clears: Sixty 6, Sixty 1</span></li>
+          <li><img src="/img/albums/three-6-mafia-chpt-2-world-domination.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Three 6 Mafia</span><span class="album-title">Chpt. 2: World Domination</span></li>
+          <li><img src="/img/albums/three-6-mafia-choices-the-album.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Three 6 Mafia</span><span class="album-title">Choices: The Album</span></li>
+          <li><img src="/img/albums/three-6-mafia-underground-vol-2-club-memphis-underground.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Three 6 Mafia</span><span class="album-title">Underground Vol. 2: Club Memphis Underground</span></li>
+          <li><img src="/img/albums/three-6-mafia-underground-vol-3-kings-of-memphis.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Three 6 Mafia</span><span class="album-title">Underground Vol. 3: Kings of Memphis</span></li>
+          <li><img src="/img/albums/hypnotize-camp-posse-three-6-mafia-presents-hypnotize-camp-p.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Hypnotize Camp Posse</span><span class="album-title">Three 6 Mafia Presents: Hypnotize Camp Posse</span></li>
+          <li><img src="/img/albums/tear-da-club-up-thugs-crazyndalazdayz.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Tear da Club Up Thugs</span><span class="album-title">CrazyNDaLazDayz</span></li>
           <li><img src="/img/albums/project-pat-ghetty-green.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Project Pat</span><span class="album-title">Ghetty Green</span></li>
           <li><img src="/img/albums/the-roots-how-i-got-over.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Roots</span><span class="album-title">How I Got Over</span></li>
           <li><img src="/img/albums/dmx-it-s-dark-and-hell-is-hot.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">DMX</span><span class="album-title">It's Dark and Hell Is Hot</span></li>
@@ -190,6 +204,7 @@
           <li><img src="/img/albums/aesop-rock-labor-days.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Aesop Rock</span><span class="album-title">Labor Days</span></li>
           <li><img src="/img/albums/aesop-rock-none-shall-pass.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Aesop Rock</span><span class="album-title">None Shall Pass</span></li>
           <li><img src="/img/albums/cage-hell-s-winter.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Cage</span><span class="album-title">Hell's Winter</span></li>
+          <li><img src="/img/albums/mf-doom-mm-food.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">MF DOOM</span><span class="album-title">MM..FOOD</span></li>
           <li><img src="/img/albums/deltron-3030-deltron-3030.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Deltron 3030</span><span class="album-title">Deltron 3030</span></li>
           <li><img src="/img/albums/del-the-funky-homosapien-future-development.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Del the Funky Homosapien</span><span class="album-title">Future Development</span></li>
         </ul>
@@ -281,7 +296,11 @@
         <!-- TODO: thoughts. -->
         <ul class="album-grid">
           <li><img src="/img/albums/pink-floyd-the-dark-side-of-the-moon.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Pink Floyd</span><span class="album-title">The Dark Side of the Moon</span></li>
+          <li><img src="/img/albums/pink-floyd-wish-you-were-here.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Pink Floyd</span><span class="album-title">Wish You Were Here</span></li>
+          <li><img src="/img/albums/pink-floyd-animals.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Pink Floyd</span><span class="album-title">Animals</span></li>
+          <li><img src="/img/albums/pink-floyd-the-wall.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Pink Floyd</span><span class="album-title">The Wall</span></li>
           <li><img src="/img/albums/the-beatles-the-beatles-the-white-album.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Beatles</span><span class="album-title">The Beatles (The White Album)</span></li>
+          <li><img src="/img/albums/the-beatles-abbey-road.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Beatles</span><span class="album-title">Abbey Road</span></li>
           <li><img src="/img/albums/the-doors-l-a-woman.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Doors</span><span class="album-title">L.A. Woman</span></li>
         </ul>
 
@@ -299,6 +318,8 @@
         <!-- TODO: thoughts. -->
         <ul class="album-grid">
           <li><img src="/img/albums/miles-davis-kind-of-blue.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Miles Davis</span><span class="album-title">Kind of Blue</span></li>
+          <li><img src="/img/albums/yesterdays-new-quintet-angles-without-edges.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Yesterdays New Quintet</span><span class="album-title">Angles Without Edges</span></li>
+          <li><img src="/img/albums/madlib-shades-of-blue.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Madlib</span><span class="album-title">Shades of Blue</span></li>
         </ul>
 
         <h2>Mixtapes</h2>
