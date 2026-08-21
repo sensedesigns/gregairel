@@ -1158,5 +1158,21 @@
     "file": "img/albums/drake-scary-hours.jpg",
     "matched": "iTunes: Diplomatic Immunity - Single (Scary Hours EP artwork)",
     "note": "OK"
+  },
+  {
+    "li": "Eminem — The Slim Shady LP",
+    "artist": "Eminem",
+    "album": "The Slim Shady LP",
+    "file": "img/albums/eminem-the-slim-shady-lp.jpg",
+    "matched": "Deezer: Eminem — The Slim Shady LP",
+    "note": "OK"
+  },
+  {
+    "li": "Eminem — The Eminem Show",
+    "artist": "Eminem",
+    "album": "The Eminem Show",
+    "file": "img/albums/eminem-the-eminem-show.jpg",
+    "matched": "Deezer: Eminem — The Eminem Show",
+    "note": "OK"
   }
 ]
