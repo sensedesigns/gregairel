@@ -1,5 +1,16 @@
 [
   {
+    "title": "The All-Time Albums",
+    "href": "posts/all-time-albums.html",
+    "date": "2026-08-21",
+    "updated": "2026-08-21",
+    "author": "Greg Airel",
+    "tags": ["music"],
+    "excerpt": "140 albums in no particular order — the hip-hop, rock, jazz, and everything in between that built my taste, every one with its cover. Ranking them would be like ranking your friends.",
+    "image": "img/blog-albums.jpg",
+    "imageAlt": "A 3x3 grid of album covers including 36 Chambers, Illmatic, Nevermind, Dark Side of the Moon, MM..FOOD, and Kind of Blue"
+  },
+  {
     "title": "Introducing AI to Kids: A Website of Their Own, Built On Demand",
     "href": "posts/introducing-ai-to-kids.html",
     "date": "2026-08-17",
