@@ -6,7 +6,16 @@
     <atom:link href="https://gregairel.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Logistics notes, AI experiments, field guides, and the occasional mix.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>The All-Time Albums</title>
+      <link>https://gregairel.com/posts/all-time-albums.html</link>
+      <guid isPermaLink="true">https://gregairel.com/posts/all-time-albums.html</guid>
+      <pubDate>Fri, 21 Aug 2026 12:00:00 GMT</pubDate>
+      <dc:creator>Greg Airel</dc:creator>
+      <description>140 albums in no particular order — the hip-hop, rock, jazz, and everything in between that built my taste, every one with its cover. Ranking them would be like ranking your friends.</description>
+      <category>music</category>
+    </item>
     <item>
       <title>Introducing AI to Kids: A Website of Their Own, Built On Demand</title>
       <link>https://gregairel.com/posts/introducing-ai-to-kids.html</link>
