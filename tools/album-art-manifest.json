@@ -1118,5 +1118,45 @@
     "note": "OK",
     "file": "img/albums/three-6-mafia-underground-vol-3-kings-of-memphis.jpg",
     "matched": "Deezer: Triple Six Mafia — Kings Of Memphis: Underground, Vol. 3"
+  },
+  {
+    "li": "Drake — Nothing Was the Same",
+    "artist": "Drake",
+    "album": "Nothing Was the Same",
+    "file": "img/albums/drake-nothing-was-the-same.jpg",
+    "matched": "Deezer: Drake — Nothing Was The Same",
+    "note": "OK"
+  },
+  {
+    "li": "Drake — Views",
+    "artist": "Drake",
+    "album": "Views",
+    "file": "img/albums/drake-views.jpg",
+    "matched": "Deezer: Drake — Views",
+    "note": "OK"
+  },
+  {
+    "li": "Drake & Future — What a Time to Be Alive",
+    "artist": "Drake & Future",
+    "album": "What a Time to Be Alive",
+    "file": "img/albums/drake-future-what-a-time-to-be-alive.jpg",
+    "matched": "Deezer: Drake — What A Time To Be Alive",
+    "note": "OK"
+  },
+  {
+    "li": "Drake — More Life",
+    "artist": "Drake",
+    "album": "More Life",
+    "file": "img/albums/drake-more-life.jpg",
+    "matched": "Deezer: Drake — More Life",
+    "note": "OK"
+  },
+  {
+    "li": "Drake — Scary Hours",
+    "artist": "Drake",
+    "album": "Scary Hours",
+    "file": "img/albums/drake-scary-hours.jpg",
+    "matched": "iTunes: Diplomatic Immunity - Single (Scary Hours EP artwork)",
+    "note": "OK"
   }
 ]
