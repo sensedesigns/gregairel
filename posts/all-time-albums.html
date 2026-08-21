@@ -44,6 +44,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/hunt.css">
+  <style>
+    .album-grid {
+      list-style: none;
+      margin: 20px 0 36px;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 20px 16px;
+    }
+    .guide .album-grid li,
+    .album-grid li { margin: 0; padding: 0; list-style: none; }
+    .guide .album-grid li::before,
+    .guide .album-grid li::marker,
+    .album-grid li::before { content: none; }
+    .album-grid img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid rgba(198, 161, 91, 0.18);
+      margin-bottom: 8px;
+    }
+    .album-noart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 1px dashed rgba(198, 161, 91, 0.35);
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+    .album-grid .album-artist {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .album-grid .album-title {
+      display: block;
+      font-size: 0.78rem;
+      line-height: 1.35;
+      opacity: 0.65;
+      font-style: italic;
+    }
+  </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
   <script>
@@ -82,192 +133,199 @@
 
         <h2>Hip-Hop</h2>
         <!-- TODO: thoughts on this section — the backbone of the list. -->
-        <ul>
-          <li>Wu-Tang Clan — Enter the Wu-Tang (36 Chambers)</li>
-          <li>Wu-Tang Clan — The W</li>
-          <li>GZA — Liquid Swords</li>
-          <li>Nas — Illmatic</li>
-          <li>Nas — Stillmatic</li>
-          <li>Big L — Lifestylez ov da Poor &amp; Dangerous</li>
-          <li>The Notorious B.I.G. — Life After Death</li>
-          <li>2Pac — All Eyez on Me</li>
-          <li>Bone Thugs-N-Harmony — E. 1999 Eternal</li>
-          <li>Bone Thugs-N-Harmony — BTNHResurrection</li>
-          <li>Krayzie Bone — Thug Mentality 1999</li>
-          <li>Jay-Z — 4:44</li>
-          <li>Eminem — The Marshall Mathers LP</li>
-          <li>Dr. Dre — 2001</li>
-          <li>A Tribe Called Quest — Midnight Marauders</li>
-          <li>Outkast — ATLiens</li>
-          <li>Kendrick Lamar — good kid, m.A.A.d city</li>
-          <li>Kanye West — The College Dropout</li>
-          <li>Kanye West — My Beautiful Dark Twisted Fantasy</li>
-          <li>Common — Be</li>
-          <li>Lupe Fiasco — Food &amp; Liquor</li>
-          <li>J. Cole — 2014 Forest Hills Drive</li>
-          <li>Lil Wayne — Tha Carter III</li>
-          <li>Drake — Take Care</li>
-          <li>Logic — The Incredible True Story</li>
-          <li>Logic — No Pressure</li>
-          <li>Childish Gambino — Camp</li>
-          <li>Mac Miller — Watching Movies with the Sound Off</li>
-          <li>Kid Cudi — Man on the Moon: The End of Day</li>
-          <li>Post Malone — Stoney</li>
-          <li>XXXTentacion — ?</li>
-          <li>Yelawolf — Love Story</li>
-          <li>Ma$e — Harlem World</li>
-          <li>Puff Daddy &amp; the Family — No Way Out</li>
-          <li>Three 6 Mafia — When the Smoke Clears: Sixty 6, Sixty 1</li>
-          <li>Project Pat — Ghetty Green</li>
-          <li>The Roots — How I Got Over</li>
-          <li>DMX — It's Dark and Hell Is Hot</li>
-          <li>DMX — Flesh of My Flesh, Blood of My Blood</li>
-          <li>Juvenile — 400 Degreez</li>
-          <li>Master P — Ghetto D</li>
-          <li>Lil' Flip — Undaground Legend</li>
-          <li>Do or Die — Picture This</li>
-          <li>Do or Die — Headz or Tailz</li>
-          <li>Kris Kross — Totally Krossed Out</li>
-          <li>Ludacris — Word of Mouf</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/wu-tang-clan-enter-the-wu-tang-36-chambers.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Wu-Tang Clan</span><span class="album-title">Enter the Wu-Tang (36 Chambers)</span></li>
+          <li><img src="/img/albums/wu-tang-clan-the-w.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Wu-Tang Clan</span><span class="album-title">The W</span></li>
+          <li><img src="/img/albums/gza-liquid-swords.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">GZA</span><span class="album-title">Liquid Swords</span></li>
+          <li><img src="/img/albums/nas-illmatic.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Nas</span><span class="album-title">Illmatic</span></li>
+          <li><img src="/img/albums/nas-stillmatic.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Nas</span><span class="album-title">Stillmatic</span></li>
+          <li><img src="/img/albums/big-l-lifestylez-ov-da-poor-dangerous.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Big L</span><span class="album-title">Lifestylez ov da Poor &amp; Dangerous</span></li>
+          <li><img src="/img/albums/the-notorious-b-i-g-life-after-death.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Notorious B.I.G.</span><span class="album-title">Life After Death</span></li>
+          <li><img src="/img/albums/2pac-all-eyez-on-me.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">2Pac</span><span class="album-title">All Eyez on Me</span></li>
+          <li><img src="/img/albums/bone-thugs-n-harmony-e-1999-eternal.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Bone Thugs-N-Harmony</span><span class="album-title">E. 1999 Eternal</span></li>
+          <li><img src="/img/albums/bone-thugs-n-harmony-btnhresurrection.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Bone Thugs-N-Harmony</span><span class="album-title">BTNHResurrection</span></li>
+          <li><img src="/img/albums/krayzie-bone-thug-mentality-1999.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Krayzie Bone</span><span class="album-title">Thug Mentality 1999</span></li>
+          <li><img src="/img/albums/jay-z-4-44.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Jay-Z</span><span class="album-title">4:44</span></li>
+          <li><img src="/img/albums/eminem-the-marshall-mathers-lp.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Eminem</span><span class="album-title">The Marshall Mathers LP</span></li>
+          <li><img src="/img/albums/dr-dre-2001.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Dr. Dre</span><span class="album-title">2001</span></li>
+          <li><img src="/img/albums/a-tribe-called-quest-midnight-marauders.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">A Tribe Called Quest</span><span class="album-title">Midnight Marauders</span></li>
+          <li><img src="/img/albums/outkast-atliens.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Outkast</span><span class="album-title">ATLiens</span></li>
+          <li><img src="/img/albums/kendrick-lamar-good-kid-m-a-a-d-city.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Kendrick Lamar</span><span class="album-title">good kid, m.A.A.d city</span></li>
+          <li><img src="/img/albums/kanye-west-the-college-dropout.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Kanye West</span><span class="album-title">The College Dropout</span></li>
+          <li><img src="/img/albums/kanye-west-my-beautiful-dark-twisted-fantasy.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Kanye West</span><span class="album-title">My Beautiful Dark Twisted Fantasy</span></li>
+          <li><img src="/img/albums/common-be.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Common</span><span class="album-title">Be</span></li>
+          <li><img src="/img/albums/lupe-fiasco-food-liquor.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Lupe Fiasco</span><span class="album-title">Food &amp; Liquor</span></li>
+          <li><img src="/img/albums/j-cole-2014-forest-hills-drive.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">J. Cole</span><span class="album-title">2014 Forest Hills Drive</span></li>
+          <li><img src="/img/albums/lil-wayne-tha-carter-iii.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Lil Wayne</span><span class="album-title">Tha Carter III</span></li>
+          <li><img src="/img/albums/drake-take-care.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Drake</span><span class="album-title">Take Care</span></li>
+          <li><img src="/img/albums/logic-the-incredible-true-story.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Logic</span><span class="album-title">The Incredible True Story</span></li>
+          <li><img src="/img/albums/logic-no-pressure.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Logic</span><span class="album-title">No Pressure</span></li>
+          <li><img src="/img/albums/childish-gambino-camp.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Childish Gambino</span><span class="album-title">Camp</span></li>
+          <li><img src="/img/albums/mac-miller-watching-movies-with-the-sound-off.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Mac Miller</span><span class="album-title">Watching Movies with the Sound Off</span></li>
+          <li><img src="/img/albums/mac-miller-the-divine-feminine.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Mac Miller</span><span class="album-title">The Divine Feminine</span></li>
+          <li><img src="/img/albums/kid-cudi-man-on-the-moon-the-end-of-day.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Kid Cudi</span><span class="album-title">Man on the Moon: The End of Day</span></li>
+          <li><img src="/img/albums/post-malone-stoney.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Post Malone</span><span class="album-title">Stoney</span></li>
+          <li><img src="/img/albums/xxxtentacion.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">XXXTentacion</span><span class="album-title">?</span></li>
+          <li><img src="/img/albums/yelawolf-love-story.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Yelawolf</span><span class="album-title">Love Story</span></li>
+          <li><img src="/img/albums/ma-e-harlem-world.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Ma$e</span><span class="album-title">Harlem World</span></li>
+          <li><img src="/img/albums/puff-daddy-the-family-no-way-out.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Puff Daddy &amp; the Family</span><span class="album-title">No Way Out</span></li>
+          <li><img src="/img/albums/three-6-mafia-when-the-smoke-clears-sixty-6-sixty-1.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Three 6 Mafia</span><span class="album-title">When the Smoke Clears: Sixty 6, Sixty 1</span></li>
+          <li><img src="/img/albums/project-pat-ghetty-green.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Project Pat</span><span class="album-title">Ghetty Green</span></li>
+          <li><img src="/img/albums/the-roots-how-i-got-over.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Roots</span><span class="album-title">How I Got Over</span></li>
+          <li><img src="/img/albums/dmx-it-s-dark-and-hell-is-hot.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">DMX</span><span class="album-title">It's Dark and Hell Is Hot</span></li>
+          <li><img src="/img/albums/dmx-flesh-of-my-flesh-blood-of-my-blood.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">DMX</span><span class="album-title">Flesh of My Flesh, Blood of My Blood</span></li>
+          <li><img src="/img/albums/juvenile-400-degreez.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Juvenile</span><span class="album-title">400 Degreez</span></li>
+          <li><img src="/img/albums/master-p-ghetto-d.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Master P</span><span class="album-title">Ghetto D</span></li>
+          <li><img src="/img/albums/lil-flip-undaground-legend.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Lil' Flip</span><span class="album-title">Undaground Legend</span></li>
+          <li><img src="/img/albums/do-or-die-picture-this.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Do or Die</span><span class="album-title">Picture This</span></li>
+          <li><img src="/img/albums/do-or-die-headz-or-tailz.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Do or Die</span><span class="album-title">Headz or Tailz</span></li>
+          <li><img src="/img/albums/kris-kross-totally-krossed-out.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Kris Kross</span><span class="album-title">Totally Krossed Out</span></li>
+          <li><img src="/img/albums/ludacris-word-of-mouf.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Ludacris</span><span class="album-title">Word of Mouf</span></li>
         </ul>
 
         <h3>Underground</h3>
         <!-- TODO: thoughts — the backpack era. -->
-        <ul>
-          <li>Atmosphere — God Loves Ugly</li>
-          <li>Aesop Rock — Labor Days</li>
-          <li>Aesop Rock — None Shall Pass</li>
-          <li>Cage — Hell's Winter</li>
-          <li>Deltron 3030 — Deltron 3030</li>
-          <li>Del the Funky Homosapien — Future Development</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/atmosphere-god-loves-ugly.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Atmosphere</span><span class="album-title">God Loves Ugly</span></li>
+          <li><img src="/img/albums/aesop-rock-labor-days.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Aesop Rock</span><span class="album-title">Labor Days</span></li>
+          <li><img src="/img/albums/aesop-rock-none-shall-pass.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Aesop Rock</span><span class="album-title">None Shall Pass</span></li>
+          <li><img src="/img/albums/cage-hell-s-winter.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Cage</span><span class="album-title">Hell's Winter</span></li>
+          <li><img src="/img/albums/deltron-3030-deltron-3030.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Deltron 3030</span><span class="album-title">Deltron 3030</span></li>
+          <li><img src="/img/albums/del-the-funky-homosapien-future-development.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Del the Funky Homosapien</span><span class="album-title">Future Development</span></li>
         </ul>
 
         <h3>Beats &amp; Instrumentals</h3>
         <!-- TODO: thoughts — the Nujabes-to-Tokyo-record-shops thread lives here. -->
-        <ul>
-          <li>Nujabes — Metaphorical Music</li>
-          <li>Nujabes — Modal Soul</li>
-          <li>Shing02 &amp; Nujabes — Luv(sic) Hexalogy</li>
-          <li>DJ Shadow — Endtroducing.....</li>
-          <li>TOKiMONSTA — Eternal Reverie</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/nujabes-metaphorical-music.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Nujabes</span><span class="album-title">Metaphorical Music</span></li>
+          <li><img src="/img/albums/nujabes-modal-soul.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Nujabes</span><span class="album-title">Modal Soul</span></li>
+          <li><img src="/img/albums/shing02-nujabes-luv-sic-hexalogy.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Shing02 &amp; Nujabes</span><span class="album-title">Luv(sic) Hexalogy</span></li>
+          <li><img src="/img/albums/dj-shadow-endtroducing.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">DJ Shadow</span><span class="album-title">Endtroducing.....</span></li>
+          <li><img src="/img/albums/tokimonsta-eternal-reverie.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">TOKiMONSTA</span><span class="album-title">Eternal Reverie</span></li>
         </ul>
 
         <h2>R&amp;B &amp; Soul</h2>
         <!-- TODO: thoughts. -->
-        <ul>
-          <li>Michael Jackson — Thriller</li>
-          <li>Boyz II Men — II</li>
-          <li>Usher — 8701</li>
-          <li>Justin Timberlake — The 20/20 Experience</li>
-          <li>TLC — CrazySexyCool</li>
-          <li>Aaliyah — Aaliyah</li>
-          <li>Amy Winehouse — Frank</li>
-          <li>Amy Winehouse — Back to Black</li>
-          <li>Jill Scott — Who Is Jill Scott? Words and Sounds Vol. 1</li>
-          <li>Alicia Keys — The Diary of Alicia Keys</li>
-          <li>Frank Ocean — Channel Orange</li>
-          <li>The Weeknd — Hurry Up Tomorrow</li>
-          <li>The Internet — Ego Death</li>
-          <li>Jamiroquai — A Funk Odyssey</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/michael-jackson-thriller.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Michael Jackson</span><span class="album-title">Thriller</span></li>
+          <li><img src="/img/albums/boyz-ii-men-ii.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Boyz II Men</span><span class="album-title">II</span></li>
+          <li><img src="/img/albums/usher-8701.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Usher</span><span class="album-title">8701</span></li>
+          <li><img src="/img/albums/justin-timberlake-the-20-20-experience.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Justin Timberlake</span><span class="album-title">The 20/20 Experience</span></li>
+          <li><img src="/img/albums/tlc-crazysexycool.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">TLC</span><span class="album-title">CrazySexyCool</span></li>
+          <li><img src="/img/albums/aaliyah-aaliyah.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Aaliyah</span><span class="album-title">Aaliyah</span></li>
+          <li><img src="/img/albums/amy-winehouse-frank.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Amy Winehouse</span><span class="album-title">Frank</span></li>
+          <li><img src="/img/albums/amy-winehouse-back-to-black.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Amy Winehouse</span><span class="album-title">Back to Black</span></li>
+          <li><img src="/img/albums/jill-scott-who-is-jill-scott-words-and-sounds-vol-1.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Jill Scott</span><span class="album-title">Who Is Jill Scott? Words and Sounds Vol. 1</span></li>
+          <li><img src="/img/albums/alicia-keys-the-diary-of-alicia-keys.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Alicia Keys</span><span class="album-title">The Diary of Alicia Keys</span></li>
+          <li><img src="/img/albums/frank-ocean-channel-orange.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Frank Ocean</span><span class="album-title">Channel Orange</span></li>
+          <li><img src="/img/albums/the-weeknd-hurry-up-tomorrow.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Weeknd</span><span class="album-title">Hurry Up Tomorrow</span></li>
+          <li><img src="/img/albums/the-internet-ego-death.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Internet</span><span class="album-title">Ego Death</span></li>
+          <li><img src="/img/albums/jamiroquai-a-funk-odyssey.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Jamiroquai</span><span class="album-title">A Funk Odyssey</span></li>
         </ul>
 
         <h2>Rock</h2>
         <!-- TODO: thoughts — the nu-metal era deserves a paragraph. -->
-        <ul>
-          <li>Rage Against the Machine — Rage Against the Machine</li>
-          <li>Red Hot Chili Peppers — Californication</li>
-          <li>Radiohead — OK Computer</li>
-          <li>Weezer — Weezer (The Blue Album)</li>
-          <li>Counting Crows — August and Everything After</li>
-          <li>Alanis Morissette — Jagged Little Pill</li>
-          <li>Incubus — Make Yourself</li>
-          <li>Incubus — Morning View</li>
-          <li>Korn — Follow the Leader</li>
-          <li>Limp Bizkit — Chocolate Starfish and the Hot Dog Flavored Water</li>
-          <li>Linkin Park — Hybrid Theory</li>
-          <li>Linkin Park — Meteora</li>
-          <li>Breaking Benjamin — Phobia</li>
-          <li>Flyleaf — Flyleaf</li>
-          <li>Twenty One Pilots — Blurryface</li>
-          <li>Gorillaz — Gorillaz</li>
-          <li>Coheed and Cambria — Good Apollo, I'm Burning Star IV, Volume One: From Fear Through the Eyes of Madness</li>
-          <li>"Weird Al" Yankovic — Bad Hair Day</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/rage-against-the-machine-rage-against-the-machine.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Rage Against the Machine</span><span class="album-title">Rage Against the Machine</span></li>
+          <li><img src="/img/albums/red-hot-chili-peppers-californication.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Red Hot Chili Peppers</span><span class="album-title">Californication</span></li>
+          <li><img src="/img/albums/radiohead-ok-computer.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Radiohead</span><span class="album-title">OK Computer</span></li>
+          <li><img src="/img/albums/weezer-weezer-the-blue-album.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Weezer</span><span class="album-title">Weezer (The Blue Album)</span></li>
+          <li><img src="/img/albums/counting-crows-august-and-everything-after.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Counting Crows</span><span class="album-title">August and Everything After</span></li>
+          <li><img src="/img/albums/alanis-morissette-jagged-little-pill.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Alanis Morissette</span><span class="album-title">Jagged Little Pill</span></li>
+          <li><img src="/img/albums/incubus-make-yourself.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Incubus</span><span class="album-title">Make Yourself</span></li>
+          <li><img src="/img/albums/incubus-morning-view.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Incubus</span><span class="album-title">Morning View</span></li>
+          <li><img src="/img/albums/korn-follow-the-leader.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Korn</span><span class="album-title">Follow the Leader</span></li>
+          <li><img src="/img/albums/limp-bizkit-chocolate-starfish-and-the-hot-dog-flavored-wate.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Limp Bizkit</span><span class="album-title">Chocolate Starfish and the Hot Dog Flavored Water</span></li>
+          <li><img src="/img/albums/linkin-park-hybrid-theory.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Linkin Park</span><span class="album-title">Hybrid Theory</span></li>
+          <li><img src="/img/albums/linkin-park-meteora.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Linkin Park</span><span class="album-title">Meteora</span></li>
+          <li><img src="/img/albums/breaking-benjamin-phobia.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Breaking Benjamin</span><span class="album-title">Phobia</span></li>
+          <li><img src="/img/albums/flyleaf-flyleaf.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Flyleaf</span><span class="album-title">Flyleaf</span></li>
+          <li><img src="/img/albums/twenty-one-pilots-blurryface.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Twenty One Pilots</span><span class="album-title">Blurryface</span></li>
+          <li><img src="/img/albums/gorillaz-gorillaz.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Gorillaz</span><span class="album-title">Gorillaz</span></li>
+          <li><img src="/img/albums/coheed-and-cambria-good-apollo-i-m-burning-star-iv-volume-one.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Coheed and Cambria</span><span class="album-title">Good Apollo, I'm Burning Star IV, Volume One: From Fear Through the Eyes of Madness</span></li>
+          <li><img src="/img/albums/weird-al-yankovic-bad-hair-day.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">"Weird Al" Yankovic</span><span class="album-title">Bad Hair Day</span></li>
         </ul>
 
         <h3>Grunge</h3>
         <!-- TODO: thoughts. -->
-        <ul>
-          <li>Nirvana — Nevermind</li>
-          <li>The Smashing Pumpkins — Mellon Collie and the Infinite Sadness</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/nirvana-nevermind.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Nirvana</span><span class="album-title">Nevermind</span></li>
+          <li><img src="/img/albums/the-smashing-pumpkins-mellon-collie-and-the-infinite-sadness.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Smashing Pumpkins</span><span class="album-title">Mellon Collie and the Infinite Sadness</span></li>
         </ul>
 
         <h3>Punk</h3>
         <!-- TODO: thoughts — the Warped Tour years. -->
-        <ul>
-          <li>Green Day — Dookie</li>
-          <li>The Offspring — Smash</li>
-          <li>blink-182 — Enema of the State</li>
-          <li>blink-182 — Take Off Your Pants and Jacket</li>
-          <li>blink-182 — Untitled</li>
-          <li>Green Day — American Idiot</li>
-          <li>Sublime — 40oz. to Freedom</li>
-          <li>Sublime — Sublime</li>
-          <li>Yellowcard — Ocean Avenue</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/green-day-dookie.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Green Day</span><span class="album-title">Dookie</span></li>
+          <li><img src="/img/albums/the-offspring-smash.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Offspring</span><span class="album-title">Smash</span></li>
+          <li><img src="/img/albums/blink-182-enema-of-the-state.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">blink-182</span><span class="album-title">Enema of the State</span></li>
+          <li><img src="/img/albums/blink-182-take-off-your-pants-and-jacket.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">blink-182</span><span class="album-title">Take Off Your Pants and Jacket</span></li>
+          <li><img src="/img/albums/blink-182-untitled.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">blink-182</span><span class="album-title">Untitled</span></li>
+          <li><img src="/img/albums/green-day-american-idiot.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Green Day</span><span class="album-title">American Idiot</span></li>
+          <li><img src="/img/albums/sublime-40oz-to-freedom.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Sublime</span><span class="album-title">40oz. to Freedom</span></li>
+          <li><img src="/img/albums/sublime-sublime.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Sublime</span><span class="album-title">Sublime</span></li>
+          <li><img src="/img/albums/yellowcard-ocean-avenue.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Yellowcard</span><span class="album-title">Ocean Avenue</span></li>
         </ul>
 
         <h3>Hardcore &amp; Emo</h3>
         <!-- TODO: thoughts. -->
-        <ul>
-          <li>My Chemical Romance — Three Cheers for Sweet Revenge</li>
-          <li>My Chemical Romance — The Black Parade</li>
-          <li>From Autumn to Ashes — The Fiction We Live</li>
-          <li>Funeral for a Friend — Casually Dressed &amp; Deep in Conversation</li>
-          <li>Beloved — Failure On</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/my-chemical-romance-three-cheers-for-sweet-revenge.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">My Chemical Romance</span><span class="album-title">Three Cheers for Sweet Revenge</span></li>
+          <li><img src="/img/albums/my-chemical-romance-the-black-parade.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">My Chemical Romance</span><span class="album-title">The Black Parade</span></li>
+          <li><img src="/img/albums/from-autumn-to-ashes-the-fiction-we-live.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">From Autumn to Ashes</span><span class="album-title">The Fiction We Live</span></li>
+          <li><img src="/img/albums/funeral-for-a-friend-casually-dressed-deep-in-conversation.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Funeral for a Friend</span><span class="album-title">Casually Dressed &amp; Deep in Conversation</span></li>
+          <li><img src="/img/albums/beloved-failure-on.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Beloved</span><span class="album-title">Failure On</span></li>
         </ul>
 
         <h3>Classic Rock</h3>
         <!-- TODO: thoughts. -->
-        <ul>
-          <li>Pink Floyd — The Dark Side of the Moon</li>
-          <li>The Beatles — The Beatles (The White Album)</li>
-          <li>The Doors — L.A. Woman</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/pink-floyd-the-dark-side-of-the-moon.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Pink Floyd</span><span class="album-title">The Dark Side of the Moon</span></li>
+          <li><img src="/img/albums/the-beatles-the-beatles-the-white-album.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Beatles</span><span class="album-title">The Beatles (The White Album)</span></li>
+          <li><img src="/img/albums/the-doors-l-a-woman.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Doors</span><span class="album-title">L.A. Woman</span></li>
         </ul>
 
         <h2>Electronic</h2>
         <!-- TODO: thoughts. -->
-        <ul>
-          <li>Daft Punk — TRON: Legacy (Original Motion Picture Soundtrack)</li>
-          <li>deadmau5 — For Lack of a Better Name</li>
-          <li>Skrillex — Scary Monsters and Nice Sprites</li>
-          <li>KAYTRANADA — 99.9%</li>
-          <li>Zero 7 — Simple Things</li>
-          <li>Fred again.. — Actual Life 3 (January 1 – September 9 2022) <!-- TODO: confirm which Actual Life --></li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/deadmau5-for-lack-of-a-better-name.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">deadmau5</span><span class="album-title">For Lack of a Better Name</span></li>
+          <li><img src="/img/albums/skrillex-scary-monsters-and-nice-sprites.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Skrillex</span><span class="album-title">Scary Monsters and Nice Sprites</span></li>
+          <li><img src="/img/albums/kaytranada-99-9.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">KAYTRANADA</span><span class="album-title">99.9%</span></li>
+          <li><img src="/img/albums/zero-7-simple-things.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Zero 7</span><span class="album-title">Simple Things</span></li>
+          <li><img src="/img/albums/fred-again-actual-life-3-january-1-september-9-2022.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Fred again..</span><span class="album-title">Actual Life 3 (January 1 – September 9 2022)</span></li>
         </ul>
 
         <h2>Jazz</h2>
         <!-- TODO: thoughts. -->
-        <ul>
-          <li>Miles Davis — Kind of Blue</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/miles-davis-kind-of-blue.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Miles Davis</span><span class="album-title">Kind of Blue</span></li>
         </ul>
 
         <h2>Mixtapes</h2>
         <!-- TODO: thoughts — the format where nobody was watching and everybody was hungry. -->
-        <ul>
-          <li>Lil Wayne — Dedication 2</li>
-          <li>Kid Cudi — A Kid Named Cudi</li>
-          <li>Childish Gambino — Royalty</li>
-          <li>The Weeknd — the mixtape trilogy: House of Balloons / Thursday / Echoes of Silence</li>
-          <li>Atmosphere (Slug) — Sad Clown Bad Dub II</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/lil-wayne-dedication-2.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Lil Wayne</span><span class="album-title">Dedication 2</span></li>
+          <li><img src="/img/albums/kid-cudi-a-kid-named-cudi.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Kid Cudi</span><span class="album-title">A Kid Named Cudi</span></li>
+          <li><img src="/img/albums/childish-gambino-royalty.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Childish Gambino</span><span class="album-title">Royalty</span></li>
+          <li><img src="/img/albums/the-weeknd-the-mixtape-trilogy-house-of-balloons-thursday-ec.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">The Weeknd</span><span class="album-title">the mixtape trilogy: House of Balloons / Thursday / Echoes of Silence</span></li>
+          <li><img src="/img/albums/atmosphere-slug-sad-clown-bad-dub-ii.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Atmosphere (Slug)</span><span class="album-title">Sad Clown Bad Dub II</span></li>
+        </ul>
+
+        <h2>Soundtracks</h2>
+        <!-- TODO: thoughts. -->
+        <ul class="album-grid">
+          <li><img src="/img/albums/various-artists-space-jam-original-soundtrack.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Various Artists</span><span class="album-title">Space Jam (Original Soundtrack)</span></li>
+          <li><img src="/img/albums/daft-punk-tron-legacy-original-motion-picture-soundtrack.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Daft Punk</span><span class="album-title">TRON: Legacy (Original Motion Picture Soundtrack)</span></li>
         </ul>
 
         <h2>Live Albums</h2>
         <!-- TODO: thoughts — the records that prove it happened once, in a room. -->
-        <ul>
-          <li>Johnny Cash — At Folsom Prison</li>
-          <li>Johnny Cash — At San Quentin</li>
-          <li>Nirvana — MTV Unplugged in New York</li>
-          <li>Daft Punk — Alive 2007</li>
-          <li>DJ Shadow — In Tune and On Time</li>
+        <ul class="album-grid">
+          <li><img src="/img/albums/johnny-cash-at-folsom-prison.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Johnny Cash</span><span class="album-title">At Folsom Prison</span></li>
+          <li><img src="/img/albums/johnny-cash-at-san-quentin.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Johnny Cash</span><span class="album-title">At San Quentin</span></li>
+          <li><img src="/img/albums/nirvana-mtv-unplugged-in-new-york.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Nirvana</span><span class="album-title">MTV Unplugged in New York</span></li>
+          <li><img src="/img/albums/daft-punk-alive-2007.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">Daft Punk</span><span class="album-title">Alive 2007</span></li>
+          <li><img src="/img/albums/dj-shadow-in-tune-and-on-time.jpg" alt="" width="300" height="300" loading="lazy"><span class="album-artist">DJ Shadow</span><span class="album-title">In Tune and On Time</span></li>
         </ul>
 
         <hr>
