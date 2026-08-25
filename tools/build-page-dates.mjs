@@ -19,9 +19,13 @@ import { dirname, join } from 'node:path';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const git = (args) => execSync(`git ${args}`, { cwd: root, encoding: 'utf8' }).trim();
 
+// Pages that must never be advertised in the public manifest —
+// listing them here is how someone would discover they exist.
+const UNLISTED = ['dulce.html', 'hemingway.html'];
+
 const pages = git('ls-files "*.html"')
   .split('\n')
-  .filter((f) => f && !f.startsWith('tools/') && !f.includes('_template'));
+  .filter((f) => f && !f.startsWith('tools/') && !f.includes('_template') && !UNLISTED.includes(f));
 
 const manifest = {};
 for (const file of pages) {

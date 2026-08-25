@@ -8,7 +8,11 @@
    in the visitor's browser, after the right password.
 
    Usage:
-     node tools/build-protected-page.js <source.html> <output.html> <password>
+     node tools/build-protected-page.js <source.html> <output.html> <password> [template.html]
+
+   The optional fourth argument selects a gate template; without it
+   the original tools/gate-template.html is used, so existing builds
+   are unaffected.
 
    Example:
      node tools/build-protected-page.js \
@@ -27,12 +31,14 @@ const path = require('path');
 const crypto = require('crypto');
 
 const ITERATIONS = 310000; // PBKDF2 rounds — slows down offline guessing
-const TEMPLATE = path.join(__dirname, 'gate-template.html');
 
-const [sourcePath, outputPath, password] = process.argv.slice(2);
+const [sourcePath, outputPath, password, templatePath] = process.argv.slice(2);
+const TEMPLATE = templatePath
+  ? path.resolve(templatePath)
+  : path.join(__dirname, 'gate-template.html');
 
 if (!sourcePath || !outputPath || !password) {
-  console.error('Usage: node tools/build-protected-page.js <source.html> <output.html> <password>');
+  console.error('Usage: node tools/build-protected-page.js <source.html> <output.html> <password> [template.html]');
   process.exit(1);
 }
 
