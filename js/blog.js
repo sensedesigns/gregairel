@@ -100,6 +100,9 @@
       }
       var dateLine = fmtDate(p.date);
       if (p.updated && p.updated !== p.date) dateLine += ' · Updated ' + fmtDate(p.updated);
+      // Ideas and words are Greg's; AI keeps the grammar in line. The
+      // model that helped is disclosed per post.
+      if (p.model) dateLine += ' · Grammar with ' + p.model;
       row.querySelector('.row__type').textContent = dateLine;
       row.querySelector('.row__desc').textContent = p.excerpt || '';
       var chipHost = row.querySelector('.brands');

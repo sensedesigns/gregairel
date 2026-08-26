@@ -192,9 +192,14 @@
         const fmt = function (iso) {
           return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         };
-        const text = d.posted === d.updated
-          ? 'Posted ' + fmt(d.posted)
-          : 'Posted ' + fmt(d.posted) + ' · Updated ' + fmt(d.updated);
+        // An index page (like the blog roll) shows only when it last
+        // changed — its first-commit date says nothing about the content.
+        const updatedOnly = document.body.getAttribute('data-page-dates') === 'updated';
+        const text = updatedOnly
+          ? 'Updated ' + fmt(d.updated)
+          : d.posted === d.updated
+            ? 'Posted ' + fmt(d.posted)
+            : 'Posted ' + fmt(d.posted) + ' · Updated ' + fmt(d.updated);
         const headerHost = isHome ? null : document.querySelector('.page-header .container');
         if (headerHost) {
           const p = document.createElement('p');
