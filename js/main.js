@@ -123,6 +123,21 @@
     schedule();
   }
 
+  // A standing callout, on every page: the fundraiser for Avinash,
+  // the guide from the Everest trek. Styles are inline because this
+  // strip must render correctly even when a cached stylesheet is stale.
+  function buildFundStrip() {
+    return `
+      <a href="https://www.gofundme.com/f/help-avinash-rebuild-after-nepal-floods"
+         id="fund-strip" target="_blank" rel="noopener"
+         style="display:block;background:#1A1410;border-top:1px solid rgba(198,161,91,0.35);border-bottom:1px solid rgba(198,161,91,0.35);color:#F2F0EC;text-decoration:none;text-align:center;padding:9px 16px;font-size:13px;line-height:1.5">
+        <span style="color:#C6A15B;font-weight:500">Nepal floods:</span>
+        my Everest guide Avinash lost his mother and his home.
+        <span style="color:#C6A15B;text-decoration:underline;text-underline-offset:3px">Help him rebuild &rarr;</span>
+      </a>
+    `;
+  }
+
   function buildNav() {
     const links = PAGES.map(
       (p) =>
@@ -138,6 +153,7 @@
             <span></span><span></span><span></span>
           </button>
         </div>
+        ${buildFundStrip()}
         ${buildBanner()}
       </nav>
     `;
@@ -283,6 +299,11 @@
     initPageDates();
     syncNavHeight();
     window.addEventListener('resize', syncNavHeight, { passive: true });
+
+    var fund = document.getElementById('fund-strip');
+    if (fund) fund.addEventListener('click', function () {
+      if (typeof gtag === 'function') gtag('event', 'fundraiser_click');
+    });
   });
 
   // == G-Funk's Realm ==========================================
