@@ -123,19 +123,62 @@
     schedule();
   }
 
-  // A standing callout, on every page: the fundraiser for Avinash,
-  // the guide from the Everest trek. Styles are inline because this
-  // strip must render correctly even when a cached stylesheet is stale.
-  function buildFundStrip() {
+  // A standing callout, on every page: fundraisers for people who
+  // matter. Styles are inline because this strip must render
+  // correctly even when a cached stylesheet is stale.
+  const FUNDRAISERS = [
+    {
+      id: 'avinash',
+      href: 'https://www.gofundme.com/f/help-avinash-rebuild-after-nepal-floods',
+      lead: 'Nepal floods:',
+      text: 'my Everest guide Avinash lost his mother and his home.',
+      cta: 'Help him rebuild →',
+    },
+    {
+      id: 'nicholas',
+      href: 'https://gofund.me/02a9292ae',
+      lead: 'Closer to home:',
+      text: 'Nicholas is fighting stage-four cancer.',
+      cta: 'Support Nicholas →',
+    },
+  ];
+
+  function fundRowHTML(f) {
     return `
-      <a href="https://www.gofundme.com/f/help-avinash-rebuild-after-nepal-floods"
-         id="fund-strip" target="_blank" rel="noopener"
-         style="display:block;background:#1A1410;border-top:1px solid rgba(198,161,91,0.35);border-bottom:1px solid rgba(198,161,91,0.35);color:#F2F0EC;text-decoration:none;text-align:center;padding:9px 16px;font-size:13px;line-height:1.5">
-        <span style="color:#C6A15B;font-weight:500">Nepal floods:</span>
-        my Everest guide Avinash lost his mother and his home.
-        <span style="color:#C6A15B;text-decoration:underline;text-underline-offset:3px">Help him rebuild &rarr;</span>
+        <span style="color:#C6A15B;font-weight:500">${f.lead}</span>
+        ${f.text}
+        <span style="color:#C6A15B;text-decoration:underline;text-underline-offset:3px">${f.cta}</span>`;
+  }
+
+  // One row tall, rotating through the fundraisers the way the hunt
+  // banner rotates its messages.
+  function buildFundStrip() {
+    const f = FUNDRAISERS[0];
+    return `
+      <a href="${f.href}" id="fund-strip" data-fund="${f.id}" target="_blank" rel="noopener"
+         style="display:block;background:#1A1410;border-top:1px solid rgba(198,161,91,0.35);border-bottom:1px solid rgba(198,161,91,0.35);color:#F2F0EC;text-decoration:none;text-align:center;padding:9px 16px;font-size:13px;line-height:1.5;transition:opacity 0.4s">
+        <span id="fund-strip-inner">${fundRowHTML(f)}</span>
       </a>
     `;
+  }
+
+  function initFundRotation() {
+    const strip = document.getElementById('fund-strip');
+    const inner = document.getElementById('fund-strip-inner');
+    if (!strip || !inner || FUNDRAISERS.length < 2) return;
+
+    let i = 0;
+    window.setInterval(function () {
+      strip.style.opacity = '0';
+      window.setTimeout(function () {
+        i = (i + 1) % FUNDRAISERS.length;
+        const f = FUNDRAISERS[i];
+        strip.href = f.href;
+        strip.setAttribute('data-fund', f.id);
+        inner.innerHTML = fundRowHTML(f);
+        strip.style.opacity = '1';
+      }, 420);
+    }, 8000);
   }
 
   function buildNav() {
@@ -296,13 +339,14 @@
     initNavScroll();
     initReveal();
     initBannerRotation();
+    initFundRotation();
     initPageDates();
     syncNavHeight();
     window.addEventListener('resize', syncNavHeight, { passive: true });
 
     var fund = document.getElementById('fund-strip');
     if (fund) fund.addEventListener('click', function () {
-      if (typeof gtag === 'function') gtag('event', 'fundraiser_click');
+      if (typeof gtag === 'function') gtag('event', 'fundraiser_click', { fund: fund.getAttribute('data-fund') });
     });
   });
 
