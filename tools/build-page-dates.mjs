@@ -21,7 +21,7 @@ const git = (args) => execSync(`git ${args}`, { cwd: root, encoding: 'utf8' }).t
 
 // Pages that must never be advertised in the public manifest —
 // listing them here is how someone would discover they exist.
-const UNLISTED = ['dulce.html', 'hemingway.html'];
+const UNLISTED = ['dulce.html', 'hemingway.html', 'comet.html'];
 
 const pages = git('ls-files "*.html"')
   .split('\n')

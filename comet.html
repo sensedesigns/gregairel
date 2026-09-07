@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Comet</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2DS8FJ5CM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S2DS8FJ5CM');
+</script>
+<style>
+  :root{
+    --bg:#0a0d1c;
+    --ink:#e9e6f0;
+    --muted:#8b87a0;
+    --red:#CF3A2B;
+    --blue:#5B8DEF;
+    --gold:#F4D03F;
+    --line:rgba(233,230,240,.14);
+    --panel:#10142a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    overflow:hidden;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .app{
+    height:100dvh;
+    display:flex;flex-direction:column;
+    padding:max(env(safe-area-inset-top),.6rem) .8rem max(env(safe-area-inset-bottom),.6rem);
+    gap:.5rem;
+  }
+  header{
+    display:flex;align-items:baseline;justify-content:space-between;
+    flex:0 0 auto;
+  }
+  .wordmark{
+    font-family:'Fraunces',serif;font-weight:340;font-size:1.25rem;
+    color:var(--ink);text-decoration:none;
+  }
+  .wordmark em{font-style:italic;font-weight:300;color:var(--muted)}
+  .exit{
+    font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--muted);text-decoration:none;
+  }
+  .exit:hover{color:var(--gold)}
+
+  .stage{
+    flex:1 1 auto;min-height:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .board{
+    position:relative;
+    touch-action:manipulation;
+    user-select:none;-webkit-user-select:none;
+  }
+  canvas{display:block}
+
+  .blk{
+    position:absolute;
+    background:none;border:0;padding:0;cursor:pointer;
+    line-height:0;
+    touch-action:manipulation;
+  }
+  .blk svg{width:100%;height:100%;transition:transform .22s ease}
+  .blk:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:8px}
+  .blk:active svg{filter:brightness(1.35)}
+
+  .hud{
+    flex:0 0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    min-height:1.4rem;
+  }
+  .hud b{color:var(--ink);font-weight:500}
+  .chip{padding:.15rem .6rem;border:1px solid var(--line);border-radius:999px}
+  .chip--red{color:var(--red);border-color:rgba(207,58,43,.5)}
+  .chip--blue{color:var(--blue);border-color:rgba(91,141,239,.5)}
+  .pips span{display:inline-block;width:.5rem;height:.5rem;border-radius:50%;
+    background:var(--gold);margin-left:.3rem;vertical-align:middle;transition:opacity .3s}
+  .pips span.out{opacity:.15}
+  #timer.low{color:var(--red)}
+
+  .overlay{
+    position:fixed;inset:0;z-index:10;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(10,13,28,.88);backdrop-filter:blur(6px);
+    padding:1.5rem;
+  }
+  .overlay[hidden]{display:none}
+  .card{
+    width:100%;max-width:22rem;text-align:center;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:1.8rem 1.5rem;
+  }
+  .eyebrow{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:'Fraunces',serif;font-weight:340;font-size:2rem;line-height:1.1;margin:.5rem 0 .8rem}
+  h1 em{font-style:italic;font-weight:300}
+  .card p{font-size:.9rem;line-height:1.65;color:var(--muted)}
+  .card p b{color:var(--ink);font-weight:500}
+  .modes{display:flex;flex-direction:column;gap:.7rem;margin-top:1.3rem}
+  .mode{
+    display:block;width:100%;
+    background:rgba(233,230,240,.04);border:1px solid var(--line);border-radius:.7rem;
+    color:var(--ink);padding:.9rem 1rem;cursor:pointer;text-align:left;
+    font-family:inherit;font-size:.9rem;
+    transition:border-color .2s;
+  }
+  .mode:hover,.mode:focus-visible{border-color:var(--gold)}
+  .mode b{display:block;font-size:1rem;font-weight:500;margin-bottom:.15rem}
+  .mode--easy b{color:var(--red)}
+  .mode--hard b{color:var(--blue)}
+  .mode small{color:var(--muted);font-size:.76rem;letter-spacing:.05em}
+  .stats{display:flex;justify-content:center;gap:1.6rem;margin:1.1rem 0 .3rem}
+  .stats div span{display:block;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+  .stats div b{font-size:1.35rem;font-weight:500}
+  .best{color:var(--gold);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;min-height:1.1rem;margin-top:.2rem}
+  .btnrow{display:flex;gap:.7rem;margin-top:1.2rem}
+  .btnrow button{
+    flex:1;background:none;border:1px solid var(--line);border-radius:.6rem;
+    color:var(--ink);font-family:inherit;font-size:.72rem;letter-spacing:.2em;
+    text-transform:uppercase;padding:.8rem;cursor:pointer;transition:border-color .2s,color .2s;
+  }
+  .btnrow button:hover,.btnrow button:focus-visible{border-color:var(--gold);color:var(--gold)}
+  .btnrow button.primary{background:var(--ink);color:#0a0d1c;border-color:var(--ink)}
+  .btnrow button.primary:hover{background:var(--gold);border-color:var(--gold);color:#0a0d1c}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <a class="wordmark" href="/comet.html">Comet <em>deflector</em></a>
+    <a class="exit" href="/index.html">gregairel.com &rarr;</a>
+  </header>
+  <div class="stage"><div class="board" id="board"><canvas id="cv"></canvas></div></div>
+  <div class="hud">
+    <span class="chip" id="mode-chip">&mdash;</span>
+    <span>Spins <b id="rot">0</b></span>
+    <span id="right-hud"><span id="timer"></span><span class="pips" id="pips"></span></span>
+  </div>
+</div>
+
+<div class="overlay" id="menu">
+  <div class="card">
+    <p class="eyebrow">Save the planet</p>
+    <h1>A comet is <em>coming</em></h1>
+    <p>Tap the deflectors to spin them. Pipe the comet into the
+      <b>escape gate</b> before it hits home. The comet only turns when it
+      flies into an open mouth &mdash; face it wrong and it sails straight through.</p>
+    <div class="modes">
+      <button class="mode mode--easy" id="play-easy">
+        <b>Easy &mdash; red comet</b>
+        <small>5 deflectors &middot; no clock &middot; the planet forgives</small>
+      </button>
+      <button class="mode mode--hard" id="play-hard">
+        <b>Hard &mdash; blue comet</b>
+        <small>10 deflectors &middot; 90 seconds &middot; 3-hit shield</small>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="end" hidden>
+  <div class="card">
+    <p class="eyebrow" id="end-eyebrow"></p>
+    <h1 id="end-title"></h1>
+    <p id="end-copy"></p>
+    <div class="stats" id="end-stats">
+      <div><span>Time</span><b id="stat-time">&mdash;</b></div>
+      <div><span>Spins</span><b id="stat-rot">&mdash;</b></div>
+    </div>
+    <p class="best" id="stat-best"></p>
+    <div class="btnrow">
+      <button id="again" class="primary">Play again</button>
+      <button id="to-menu">Modes</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- analytics ---------- */
+  function track(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  }
+
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- geometry ---------- */
+  // Directions: 0=N 1=E 2=S 3=W. An elbow at orientation O connects sides O and O+1.
+  var DX = [0, 1, 0, -1];
+  var DY = [-1, 0, 1, 0];
+
+  function deflect(O, d) {
+    var entry = (d + 2) % 4, a = O, b = (O + 1) % 4;
+    if (entry === a) return b;
+    if (entry === b) return a;
+    return d; // sailed past the mouths
+  }
+
+  /* ---------- levels (brute-force verified: easy unique, hard >=6/10 core) ---------- */
+  var LEVELS = {
+    easy: {
+      cols: 5, rows: 6, spawnX: 2,
+      exit: { x: 4, y: 5, dir: 1 },
+      blocks: [
+        { x: 2, y: 1 }, { x: 4, y: 1 }, { x: 4, y: 3 }, { x: 0, y: 3 }, { x: 0, y: 5 }
+      ],
+      start: [2, 0, 1, 3, 2],
+      speed: 2.5, stepMs: 400, respawnMs: 700,
+      timer: null, shield: null,
+      color: '#FF5A45', glow: 'rgba(255,90,69,0.55)', chip: 'chip--red', label: 'Easy'
+    },
+    hard: {
+      cols: 5, rows: 9, spawnX: 2,
+      exit: { x: 4, y: 0, dir: 0 },
+      blocks: [
+        { x: 2, y: 1 }, { x: 3, y: 1 }, { x: 3, y: 3 }, { x: 0, y: 3 }, { x: 0, y: 5 },
+        { x: 3, y: 5 }, { x: 3, y: 7 }, { x: 1, y: 7 }, { x: 1, y: 0 }, { x: 4, y: 0 }
+      ],
+      start: [2, 0, 1, 3, 2, 0, 1, 2, 3, 1],
+      speed: 3.25, stepMs: 280, respawnMs: 500,
+      timer: 90, shield: 3,
+      color: '#5B8DEF', glow: 'rgba(91,141,239,0.55)', chip: 'chip--blue', label: 'Hard'
+    }
+  };
+
+  /* ---------- state ---------- */
+  var state = {
+    mode: null, level: null, phase: 'menu',
+    ori: [], rotations: 0, t0: 0, timeLeft: 0, shield: 0,
+    comet: null, trail: [], respawnAt: 0, steps: 0,
+    shake: 0, cracks: [], flare: 0
+  };
+
+  var board = document.getElementById('board');
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  var cell = 60, planetBand = 54, W = 0, H = 0;
+  var stars = [];
+  var buttons = [];
+
+  /* ---------- storage ---------- */
+  function loadBest(mode) {
+    try {
+      var raw = window.localStorage.getItem('comet_best_' + mode);
+      var v = raw ? JSON.parse(raw) : null;
+      return v && typeof v.seconds === 'number' ? v : null;
+    } catch (e) { return null; }
+  }
+  function saveBest(mode, v) {
+    try { window.localStorage.setItem('comet_best_' + mode, JSON.stringify(v)); } catch (e) {}
+  }
+
+  /* ---------- layout ---------- */
+  function layout() {
+    if (!state.level) return;
+    var L = state.level;
+    var stage = board.parentElement.getBoundingClientRect();
+    var availW = Math.min(stage.width, 448);
+    var availH = stage.height;
+    cell = Math.floor(Math.min(availW / L.cols, availH / (L.rows + 0.9)));
+    planetBand = Math.floor(cell * 0.9);
+    W = cell * L.cols;
+    H = cell * L.rows + planetBand;
+    var dpr = window.devicePixelRatio || 1;
+    cv.width = Math.round(W * dpr);
+    cv.height = Math.round(H * dpr);
+    cv.style.width = W + 'px';
+    cv.style.height = H + 'px';
+    board.style.width = W + 'px';
+    board.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var inset = Math.round(cell * 0.05);
+    buttons.forEach(function (btn, i) {
+      var b = L.blocks[i];
+      btn.style.left = (b.x * cell + inset) + 'px';
+      btn.style.top = (b.y * cell + inset) + 'px';
+      btn.style.width = (cell - inset * 2) + 'px';
+      btn.style.height = (cell - inset * 2) + 'px';
+    });
+    seedStars();
+    draw();
+  }
+
+  function seedStars() {
+    stars = [];
+    for (var i = 0; i < 46; i++) {
+      stars.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: Math.random() * 1.3 + 0.4, a: Math.random() * 0.55 + 0.2,
+        tw: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  /* ---------- blocks ---------- */
+  var ORI_NAMES = ['north and east', 'east and south', 'south and west', 'west and north'];
+
+  function elbowSVG(color) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 100 100');
+    // Base orientation O0 connects N and E. Faint diamond frame + bright arc.
+    svg.innerHTML =
+      '<rect x="7" y="7" width="86" height="86" rx="16" fill="rgba(233,230,240,0.05)" stroke="rgba(233,230,240,0.16)" stroke-width="2"/>' +
+      '<path d="M50 4 L50 30" stroke="' + color + '" stroke-width="13" stroke-linecap="round" opacity="0.95"/>' +
+      '<path d="M50 30 Q50 50 70 50" fill="none" stroke="' + color + '" stroke-width="13" stroke-linecap="round" opacity="0.95"/>' +
+      '<path d="M70 50 L96 50" stroke="' + color + '" stroke-width="13" stroke-linecap="round" opacity="0.95"/>' +
+      '<circle cx="50" cy="50" r="4.5" fill="rgba(233,230,240,0.35)"/>';
+    return svg;
+  }
+
+  function ariaFor(i) {
+    return 'Deflector ' + (i + 1) + ', mouths facing ' + ORI_NAMES[state.ori[i]];
+  }
+
+  function buildBoard() {
+    buttons.forEach(function (b) { b.remove(); });
+    buttons = [];
+    var L = state.level;
+    L.blocks.forEach(function (blk, i) {
+      var btn = document.createElement('button');
+      btn.className = 'blk';
+      btn.type = 'button';
+      var svg = elbowSVG('#E8B34B');
+      if (REDUCED) svg.style.transition = 'none';
+      btn.appendChild(svg);
+      btn.addEventListener('click', function () { rotate(i); });
+      board.appendChild(btn);
+      buttons.push(btn);
+    });
+    syncBlocks();
+  }
+
+  function syncBlocks() {
+    buttons.forEach(function (btn, i) {
+      btn.querySelector('svg').style.transform = 'rotate(' + state.ori[i] * 90 + 'deg)';
+      btn.setAttribute('aria-label', ariaFor(i));
+    });
+  }
+
+  function rotate(i) {
+    if (state.phase !== 'playing') return;
+    state.ori[i] = (state.ori[i] + 1) % 4;
+    state.rotations++;
+    document.getElementById('rot').textContent = state.rotations;
+    var svg = buttons[i].querySelector('svg');
+    svg.style.transform = 'rotate(' + state.ori[i] * 90 + 'deg)';
+    buttons[i].setAttribute('aria-label', ariaFor(i));
+  }
+
+  /* ---------- comet motion ---------- */
+  function spawnComet() {
+    state.comet = { fx: state.level.spawnX, fy: -1.6, tx: state.level.spawnX, ty: 0, d: 2, t: 0 };
+    state.trail = [];
+    state.steps = 0;
+  }
+
+  function blockAt(x, y) {
+    var L = state.level;
+    for (var i = 0; i < L.blocks.length; i++) {
+      if (L.blocks[i].x === x && L.blocks[i].y === y) return i;
+    }
+    return -1;
+  }
+
+  // Advance the comet one completed segment: resolve deflection or outcome.
+  function arrive() {
+    var c = state.comet, L = state.level;
+    var x = c.tx, y = c.ty;
+
+    // Off-board arrival: resolve outcome.
+    if (y >= L.rows) { onImpact(); return; }
+    if (x < 0 || x >= L.cols || y < 0) {
+      var fx = x - DX[c.d], fy = y - DY[c.d];
+      if (fx === L.exit.x && fy === L.exit.y && c.d === L.exit.dir) { onWin(); return; }
+      onSpace(); return;
+    }
+
+    if (++state.steps > 300) { onSpace(); return; }
+
+    var bi = blockAt(x, y);
+    if (bi !== -1) c.d = deflect(state.ori[bi], c.d);
+    c.fx = x; c.fy = y;
+    c.tx = x + DX[c.d]; c.ty = y + DY[c.d];
+    c.t = 0;
+  }
+
+  function advance(dt) {
+    var c = state.comet;
+    if (!c) {
+      if (state.respawnAt && performance.now() >= state.respawnAt && state.phase === 'playing') {
+        state.respawnAt = 0;
+        spawnComet();
+      }
+      return;
+    }
+    if (REDUCED) {
+      c.acc = (c.acc || 0) + dt * 1000;
+      if (c.acc >= state.level.stepMs) { c.acc = 0; c.t = 1; }
+    } else {
+      c.t += state.level.speed * dt;
+    }
+    if (c.t >= 1) arrive();
+  }
+
+  /* ---------- outcomes ---------- */
+  function onImpact() {
+    state.comet = null;
+    if (!REDUCED) state.shake = 1;
+    if (state.mode === 'hard') {
+      state.shield--;
+      state.cracks.push(Math.random() * Math.PI);
+      paintPips();
+      track('comet_impact', { mode: state.mode });
+      if (state.shield <= 0) { endGame(false, 'The shield gave out.'); return; }
+    }
+    state.respawnAt = performance.now() + state.level.respawnMs;
+  }
+
+  function onSpace() {
+    state.comet = null;
+    state.respawnAt = performance.now() + state.level.respawnMs;
+  }
+
+  function onWin() {
+    state.comet = null;
+    state.flare = 1;
+    var seconds = Math.round((performance.now() - state.t0) / 1000);
+    var best = loadBest(state.mode);
+    var isBest = !best || seconds < best.seconds;
+    if (isBest) saveBest(state.mode, { seconds: seconds, rotations: state.rotations });
+    track('comet_win', { mode: state.mode, seconds: seconds, rotations: state.rotations });
+    endGame(true, null, seconds, isBest, best);
+  }
+
+  /* ---------- game flow ---------- */
+  var rafId = null, lastNow = 0;
+
+  function startGame(mode) {
+    state.mode = mode;
+    state.level = LEVELS[mode];
+    state.phase = 'playing';
+    state.ori = state.level.start.slice();
+    state.rotations = 0;
+    state.t0 = performance.now();
+    state.timeLeft = state.level.timer;
+    state.shield = state.level.shield;
+    state.cracks = [];
+    state.flare = 0;
+    state.respawnAt = 0;
+
+    document.getElementById('menu').hidden = true;
+    document.getElementById('end').hidden = true;
+    document.getElementById('rot').textContent = '0';
+    var chipEl = document.getElementById('mode-chip');
+    chipEl.textContent = state.level.label;
+    chipEl.className = 'chip ' + state.level.chip;
+    document.getElementById('timer').textContent = '';
+    paintPips();
+
+    buildBoard();
+    layout();
+    spawnComet();
+    track('comet_start', { mode: mode });
+
+    lastNow = performance.now();
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function paintPips() {
+    var host = document.getElementById('pips');
+    host.innerHTML = '';
+    if (state.mode !== 'hard' || state.shield == null) return;
+    for (var i = 0; i < 3; i++) {
+      var s = document.createElement('span');
+      if (i >= state.shield) s.className = 'out';
+      host.appendChild(s);
+    }
+  }
+
+  function fmt(sec) {
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  function endGame(won, reason, seconds, isBest, prevBest) {
+    state.phase = won ? 'won' : 'failed';
+    var end = document.getElementById('end');
+    var stats = document.getElementById('end-stats');
+    var bestEl = document.getElementById('stat-best');
+    if (won) {
+      document.getElementById('end-eyebrow').textContent = 'Planet saved';
+      document.getElementById('end-title').innerHTML = 'Right on <em>course</em>';
+      document.getElementById('end-copy').textContent =
+        'The comet slid through the gate and back into the dark. Down below, nobody ever knew.';
+      document.getElementById('stat-time').textContent = fmt(seconds);
+      document.getElementById('stat-rot').textContent = state.rotations;
+      stats.style.display = '';
+      bestEl.textContent = isBest ? 'New best!' :
+        (prevBest ? 'Best: ' + fmt(prevBest.seconds) + ' · ' + prevBest.rotations + ' spins' : '');
+    } else {
+      document.getElementById('end-eyebrow').textContent = 'Impact';
+      document.getElementById('end-title').innerHTML = 'The planet is <em>gone</em>';
+      document.getElementById('end-copy').textContent =
+        (reason || 'Time ran out.') + ' Somewhere, a very small civilization is very upset with you.';
+      stats.style.display = 'none';
+      bestEl.textContent = '';
+      track('comet_fail', { mode: state.mode });
+    }
+    window.setTimeout(function () {
+      end.hidden = false;
+      document.getElementById('again').focus();
+    }, won && !REDUCED ? 750 : 250);
+  }
+
+  /* ---------- drawing ---------- */
+  function cellCenter(x, y) {
+    return { px: x * cell + cell / 2, py: y * cell + cell / 2 };
+  }
+
+  function draw() {
+    if (!state.level) return;
+    var L = state.level;
+    ctx.clearRect(0, 0, W, H);
+
+    var ox = 0, oy = 0;
+    if (state.shake > 0) {
+      ox = (Math.random() - 0.5) * 9 * state.shake;
+      oy = (Math.random() - 0.5) * 9 * state.shake;
+      state.shake = Math.max(0, state.shake - 0.05);
+    }
+    ctx.save();
+    ctx.translate(ox, oy);
+
+    // stars
+    var now = performance.now() / 1000;
+    stars.forEach(function (s) {
+      var a = REDUCED ? s.a : s.a * (0.65 + 0.35 * Math.sin(now * 1.4 + s.tw));
+      ctx.globalAlpha = a;
+      ctx.fillStyle = '#e9e6f0';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+
+    // faint grid
+    ctx.strokeStyle = 'rgba(233,230,240,0.05)';
+    ctx.lineWidth = 1;
+    for (var gx = 1; gx < L.cols; gx++) {
+      ctx.beginPath(); ctx.moveTo(gx * cell, 0); ctx.lineTo(gx * cell, L.rows * cell); ctx.stroke();
+    }
+    for (var gy = 1; gy <= L.rows; gy++) {
+      ctx.beginPath(); ctx.moveTo(0, gy * cell); ctx.lineTo(W, gy * cell); ctx.stroke();
+    }
+
+    // planet: a big circle rising into the band
+    var pr = W * 0.72;
+    var pcx = W / 2, pcy = L.rows * cell + pr - planetBand * 0.72;
+    var grad = ctx.createRadialGradient(pcx - pr * 0.3, pcy - pr * 0.9, pr * 0.1, pcx, pcy, pr);
+    grad.addColorStop(0, '#3E7C6B');
+    grad.addColorStop(0.5, '#2A5566');
+    grad.addColorStop(1, '#16213E');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(pcx, pcy, pr, 0, Math.PI * 2);
+    ctx.fill();
+    // atmosphere line
+    ctx.strokeStyle = 'rgba(126,200,227,0.5)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(pcx, pcy, pr + 3, Math.PI * 1.15, Math.PI * 1.85);
+    ctx.stroke();
+    // shield arc (hard)
+    if (state.mode === 'hard' && state.shield != null && state.shield > 0) {
+      ctx.strokeStyle = 'rgba(244,208,63,0.55)';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([10, 7]);
+      ctx.beginPath();
+      ctx.arc(pcx, pcy, pr + 14, Math.PI * 1.1, Math.PI * 1.9);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      // cracks
+      ctx.strokeStyle = 'rgba(207,58,43,0.8)';
+      ctx.lineWidth = 2;
+      state.cracks.forEach(function (seed) {
+        var ang = Math.PI * 1.2 + (seed % 1) * Math.PI * 0.6;
+        var cx0 = pcx + Math.cos(ang) * (pr + 14), cy0 = pcy + Math.sin(ang) * (pr + 14);
+        ctx.beginPath();
+        ctx.moveTo(cx0 - 7, cy0 - 9);
+        ctx.lineTo(cx0 + 2, cy0);
+        ctx.lineTo(cx0 - 3, cy0 + 9);
+        ctx.stroke();
+      });
+    }
+
+    // exit gate glow
+    var g = L.exit;
+    ctx.save();
+    var flare = 1 + state.flare * 2.2;
+    if (state.flare > 0) state.flare = Math.max(0, state.flare - 0.03);
+    ctx.shadowColor = '#F4D03F';
+    ctx.shadowBlur = 14 * flare;
+    ctx.strokeStyle = 'rgba(244,208,63,0.9)';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    if (g.dir === 1) { // east edge
+      ctx.moveTo(W - 2, g.y * cell + cell * 0.12);
+      ctx.lineTo(W - 2, g.y * cell + cell * 0.88);
+    } else { // north edge
+      ctx.moveTo(g.x * cell + cell * 0.12, 2);
+      ctx.lineTo(g.x * cell + cell * 0.88, 2);
+    }
+    ctx.stroke();
+    ctx.restore();
+
+    // spawn marker
+    ctx.fillStyle = 'rgba(233,230,240,0.25)';
+    ctx.beginPath();
+    ctx.moveTo(L.spawnX * cell + cell / 2 - 6, 2);
+    ctx.lineTo(L.spawnX * cell + cell / 2 + 6, 2);
+    ctx.lineTo(L.spawnX * cell + cell / 2, 12);
+    ctx.closePath();
+    ctx.fill();
+
+    // comet + trail
+    if (state.comet) {
+      var c = state.comet;
+      var t = Math.min(c.t, 1);
+      var px = (c.fx + (c.tx - c.fx) * t) * cell + cell / 2;
+      var py = (c.fy + (c.ty - c.fy) * t) * cell + cell / 2;
+      if (!REDUCED) {
+        state.trail.push({ x: px, y: py });
+        if (state.trail.length > 12) state.trail.shift();
+        for (var ti = 0; ti < state.trail.length; ti++) {
+          var tp = state.trail[ti];
+          ctx.globalAlpha = (ti / state.trail.length) * 0.45;
+          ctx.fillStyle = L.color;
+          ctx.beginPath();
+          ctx.arc(tp.x, tp.y, (ti / state.trail.length) * cell * 0.10 + 1, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+      }
+      ctx.save();
+      ctx.shadowColor = L.glow;
+      ctx.shadowBlur = 16;
+      ctx.fillStyle = L.color;
+      ctx.beginPath();
+      ctx.arc(px, py, cell * 0.16, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.beginPath();
+      ctx.arc(px, py, cell * 0.07, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    ctx.restore();
+  }
+
+  /* ---------- main loop ---------- */
+  // Logic is a pure time-step so the paint rate never owns the simulation.
+  function step(dt) {
+    if (state.phase !== 'playing') return;
+    advance(dt);
+    if (state.mode === 'hard' && state.phase === 'playing') {
+      state.timeLeft -= dt;
+      var tEl = document.getElementById('timer');
+      var whole = Math.max(0, Math.ceil(state.timeLeft));
+      tEl.textContent = fmt(whole);
+      tEl.className = whole <= 15 ? 'low' : '';
+      if (state.timeLeft <= 0) {
+        state.comet = null;
+        endGame(false, 'Time ran out.');
+      }
+    }
+  }
+
+  function frame(nowMs) {
+    rafId = requestAnimationFrame(frame);
+    var dt = Math.min((nowMs - lastNow) / 1000, 0.05);
+    lastNow = nowMs;
+    step(dt);
+    draw();
+  }
+
+  // Deterministic hook for automated checks (harmless on an unlisted toy page).
+  window.__comet = { step: step, state: state };
+
+  /* ---------- wiring ---------- */
+  document.getElementById('play-easy').addEventListener('click', function () { startGame('easy'); });
+  document.getElementById('play-hard').addEventListener('click', function () { startGame('hard'); });
+  document.getElementById('again').addEventListener('click', function () { startGame(state.mode); });
+  document.getElementById('to-menu').addEventListener('click', function () {
+    state.phase = 'menu';
+    document.getElementById('end').hidden = true;
+    document.getElementById('menu').hidden = false;
+  });
+
+  window.addEventListener('resize', layout, { passive: true });
+  window.addEventListener('orientationchange', layout, { passive: true });
+})();
+</script>
+</body>
+</html>
