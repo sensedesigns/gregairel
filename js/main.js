@@ -55,6 +55,9 @@
       : `<span style="font-size:17px" aria-hidden="true">🕹️</span>
          <span>Enter 90s mode with the Konami code.</span>
          <span class="hunt-banner__long" style="letter-spacing:0.08em">&uarr; &uarr; &darr; &darr; &larr; &rarr; &larr; &rarr; B A</span>`,
+    `<span style="font-size:17px" aria-hidden="true">☄️</span>
+     <span>A comet is headed for a small planet.</span>
+     <a href="/comet.html" rel="nofollow">Deflect it &rarr;</a>`,
   ];
 
   function buildBanner() {
