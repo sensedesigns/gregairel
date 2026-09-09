@@ -40,9 +40,33 @@
     </svg>
   `;
 
-  // The banner alternates between the hunt pitch and the door to
-  // G-Funk's Realm. Both messages live here so the rotation swaps
-  // markup wholesale instead of patching text nodes.
+  // Fundraisers for people who matter — folded into the banner
+  // rotation, always the last messages.
+  const FUNDRAISERS = [
+    {
+      id: 'avinash',
+      href: 'https://www.gofundme.com/f/help-avinash-rebuild-after-nepal-floods',
+      lead: 'Nepal floods:',
+      text: 'my Everest guide Avinash lost his mother and his home.',
+      cta: 'Help him rebuild &rarr;',
+    },
+    {
+      id: 'nicholas',
+      href: 'https://gofund.me/02a9292ae',
+      lead: 'Closer to home:',
+      text: 'Nicholas is fighting stage-four cancer.',
+      cta: 'Support Nicholas &rarr;',
+    },
+  ];
+
+  const fundMessage = (f) => `
+    <span style="font-size:15px" aria-hidden="true">🤝</span>
+    <span><b style="color:#C6A15B;font-weight:500">${f.lead}</b> ${f.text}</span>
+    <a href="${f.href}" data-fund="${f.id}" target="_blank" rel="noopener">${f.cta}</a>`;
+
+  // The banner rotates through the hunt pitch, the door to G-Funk's
+  // Realm, the comet game, and the fundraisers. All messages live here
+  // so the rotation swaps markup wholesale instead of patching text nodes.
   const COARSE_POINTER = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
 
   const BANNER_MESSAGES = [
@@ -58,6 +82,7 @@
     `<span style="font-size:17px" aria-hidden="true">☄️</span>
      <span>A comet is headed for a small planet.</span>
      <a href="/comet.html" rel="nofollow">Deflect it &rarr;</a>`,
+    ...FUNDRAISERS.map(fundMessage),
   ];
 
   function buildBanner() {
@@ -123,65 +148,13 @@
       if (Math.abs(dx) > 30) { show(dx < 0 ? i + 1 : i - 1); schedule(); }
     }, { passive: true });
 
+    // Fundraiser clicks, whichever message is showing.
+    banner.addEventListener('click', function (e) {
+      const a = e.target && e.target.closest ? e.target.closest('a[data-fund]') : null;
+      if (a && typeof gtag === 'function') gtag('event', 'fundraiser_click', { fund: a.getAttribute('data-fund') });
+    });
+
     schedule();
-  }
-
-  // A standing callout, on every page: fundraisers for people who
-  // matter. Styles are inline because this strip must render
-  // correctly even when a cached stylesheet is stale.
-  const FUNDRAISERS = [
-    {
-      id: 'avinash',
-      href: 'https://www.gofundme.com/f/help-avinash-rebuild-after-nepal-floods',
-      lead: 'Nepal floods:',
-      text: 'my Everest guide Avinash lost his mother and his home.',
-      cta: 'Help him rebuild →',
-    },
-    {
-      id: 'nicholas',
-      href: 'https://gofund.me/02a9292ae',
-      lead: 'Closer to home:',
-      text: 'Nicholas is fighting stage-four cancer.',
-      cta: 'Support Nicholas →',
-    },
-  ];
-
-  function fundRowHTML(f) {
-    return `
-        <span style="color:#C6A15B;font-weight:500">${f.lead}</span>
-        ${f.text}
-        <span style="color:#C6A15B;text-decoration:underline;text-underline-offset:3px">${f.cta}</span>`;
-  }
-
-  // One row tall, rotating through the fundraisers the way the hunt
-  // banner rotates its messages.
-  function buildFundStrip() {
-    const f = FUNDRAISERS[0];
-    return `
-      <a href="${f.href}" id="fund-strip" data-fund="${f.id}" target="_blank" rel="noopener"
-         style="display:block;background:#1A1410;border-top:1px solid rgba(198,161,91,0.35);border-bottom:1px solid rgba(198,161,91,0.35);color:#F2F0EC;text-decoration:none;text-align:center;padding:9px 16px;font-size:13px;line-height:1.5;transition:opacity 0.4s">
-        <span id="fund-strip-inner">${fundRowHTML(f)}</span>
-      </a>
-    `;
-  }
-
-  function initFundRotation() {
-    const strip = document.getElementById('fund-strip');
-    const inner = document.getElementById('fund-strip-inner');
-    if (!strip || !inner || FUNDRAISERS.length < 2) return;
-
-    let i = 0;
-    window.setInterval(function () {
-      strip.style.opacity = '0';
-      window.setTimeout(function () {
-        i = (i + 1) % FUNDRAISERS.length;
-        const f = FUNDRAISERS[i];
-        strip.href = f.href;
-        strip.setAttribute('data-fund', f.id);
-        inner.innerHTML = fundRowHTML(f);
-        strip.style.opacity = '1';
-      }, 420);
-    }, 8000);
   }
 
   function buildNav() {
@@ -199,7 +172,6 @@
             <span></span><span></span><span></span>
           </button>
         </div>
-        ${buildFundStrip()}
         ${buildBanner()}
       </nav>
     `;
@@ -342,15 +314,9 @@
     initNavScroll();
     initReveal();
     initBannerRotation();
-    initFundRotation();
     initPageDates();
     syncNavHeight();
     window.addEventListener('resize', syncNavHeight, { passive: true });
-
-    var fund = document.getElementById('fund-strip');
-    if (fund) fund.addEventListener('click', function () {
-      if (typeof gtag === 'function') gtag('event', 'fundraiser_click', { fund: fund.getAttribute('data-fund') });
-    });
   });
 
   // == G-Funk's Realm ==========================================
