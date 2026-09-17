@@ -1,12 +1,28 @@
 [
   {
+    "title": "One Text to Run Your Day: The Case for Full-Life AI Orchestration",
+    "href": "posts/full-life-ai-orchestration.html",
+    "date": "2026-09-17",
+    "updated": "2026-09-17",
+    "author": "Greg Airel",
+    "tags": [
+      "ai",
+      "agents"
+    ],
+    "excerpt": "One place you send requests, in plain language, and a team of agents that works both halves of your life. What I'm running at work today, the five layers it takes to build, and where it still breaks.",
+    "image": "img/blog-ai-orchestration.svg",
+    "imageAlt": "Architecture diagram: one orchestrator routing requests to a work chief of staff and a personal chief of staff, over shared memory and approval rules"
+  },
+  {
     "title": "The All-Time Albums",
     "href": "posts/all-time-albums.html",
     "date": "2026-08-21",
     "updated": "2026-08-21",
     "author": "Greg Airel",
     "model": "Claude Fable 5",
-    "tags": ["music"],
+    "tags": [
+      "music"
+    ],
     "excerpt": "140 albums in no particular order — the hip-hop, rock, jazz, and everything in between that built my taste, every one with its cover. Ranking them would be like ranking your friends.",
     "image": "img/blog-albums.jpg",
     "imageAlt": "A 3x3 grid of album covers including 36 Chambers, Illmatic, Nevermind, Dark Side of the Moon, MM..FOOD, and Kind of Blue"
@@ -18,7 +34,10 @@
     "updated": "2026-08-17",
     "author": "Greg Airel",
     "model": "Claude Fable 5",
-    "tags": ["ai", "parenting"],
+    "tags": [
+      "ai",
+      "parenting"
+    ],
     "excerpt": "A parent's guide: your child answers ten questions and an AI turns their answers into a real website they can send to their grandparents. The complete walkthrough, all code included.",
     "image": "img/blog-kid-website.png",
     "imageAlt": "A child's drawing of a house, rainbow, sun, and star stamps inside a browser window"
@@ -29,7 +48,10 @@
     "date": "2012-09-23",
     "updated": "2012-09-23",
     "author": "Greg Airel",
-    "tags": ["music", "mixes"],
+    "tags": [
+      "music",
+      "mixes"
+    ],
     "excerpt": "An old mix from the gregtron era — an hour of jazz and hip-hop stitched together into something mellow enough to work to and heavy enough to nod to. Fourteen years old and still holds up.",
     "image": "img/blog-ninjazz.jpg",
     "imageAlt": "Cover art for Ninjazz Vol. 1, a jazz and hip-hop mix"
@@ -41,7 +63,10 @@
     "updated": "2026-08-16",
     "author": "Greg Airel",
     "model": "Claude Sonnet (via Cursor)",
-    "tags": ["adventures", "field guides"],
+    "tags": [
+      "adventures",
+      "field guides"
+    ],
     "excerpt": "Five days on the W circuit, written up afterwards — terrain day by day, the gear that earned its weight, and what to pack for a March departure.",
     "image": "img/day2-towers.jpg",
     "imageAlt": "The granite towers of Torres del Paine above the glacial lake at their base"
@@ -53,7 +78,10 @@
     "updated": "2026-08-16",
     "author": "Greg Airel",
     "model": "Claude Sonnet (via Cursor)",
-    "tags": ["adventures", "field guides"],
+    "tags": [
+      "adventures",
+      "field guides"
+    ],
     "excerpt": "Ten days through the Khumbu — Lukla to Base Camp on foot, a helicopter out, and a pre-dawn climb up Kala Patthar to 5,555 m for the view everyone comes for.",
     "image": "img/khumbu-icefall.jpg",
     "imageAlt": "The Khumbu Icefall — a river of broken glacier ice below Everest"
@@ -66,7 +94,10 @@
     "updated": "2026-08-16",
     "author": "Greg Airel",
     "model": "Claude Sonnet (via Cursor)",
-    "tags": ["adventures", "field guides"],
+    "tags": [
+      "adventures",
+      "field guides"
+    ],
     "excerpt": "The plan, published while it is still a plan: ten nights riding the cherry blossom front south from Tokyo to Kyoto, with the full write-up to follow in April 2027.",
     "image": "img/japan-chureito.jpg",
     "imageAlt": "Chureito Pagoda above Fujiyoshida with early cherry blossoms and snow-capped Mount Fuji"

@@ -6,7 +6,17 @@
     <atom:link href="https://gregairel.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Logistics notes, AI experiments, field guides, and the occasional mix.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>One Text to Run Your Day: The Case for Full-Life AI Orchestration</title>
+      <link>https://gregairel.com/posts/full-life-ai-orchestration.html</link>
+      <guid isPermaLink="true">https://gregairel.com/posts/full-life-ai-orchestration.html</guid>
+      <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
+      <dc:creator>Greg Airel</dc:creator>
+      <description>One place you send requests, in plain language, and a team of agents that works both halves of your life. What I'm running at work today, the five layers it takes to build, and where it still breaks.</description>
+      <category>ai</category>
+      <category>agents</category>
+    </item>
     <item>
       <title>The All-Time Albums</title>
       <link>https://gregairel.com/posts/all-time-albums.html</link>
