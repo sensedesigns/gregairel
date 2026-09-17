@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640" role="img"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 706" width="760" height="706" role="img"
      aria-labelledby="orchTitle orchDesc"
      font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
   <title id="orchTitle">Full-life AI orchestration, layer by layer</title>
-  <desc id="orchDesc">One front door takes your request and splits it between a work chief of staff and a personal chief of staff. Each runs its own agents, each agent reaches its own tools, and a shared layer of memory and approval rules sits underneath both sides.</desc>
+  <desc id="orchDesc">One front door takes your request and splits it between a work chief of staff and a personal chief of staff. Each runs its own agents — email and meetings on the work side; home and family, calendar and events, errands and deliveries, and occasions on the personal side — and each agent reaches its own tools. A shared layer of memory and approval rules sits underneath both sides.</desc>
 
   <defs>
     <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -13,6 +13,7 @@
       .card--key { fill: #121215; stroke: rgba(198,161,91,0.45); }
       .t    { fill: #F2F0EC; font-size: 13px; font-weight: 500; }
       .s    { fill: #8B8880; font-size: 11px; font-weight: 400; }
+      .i    { fill: #F2F0EC; font-size: 11.5px; font-weight: 500; }
       .lbl  { fill: #C6A15B; font-size: 9.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
       .ln   { stroke: #C6A15B; stroke-width: 1.4; fill: none; opacity: 0.75; }
       .rule { stroke: rgba(242,240,236,0.10); stroke-width: 1; }
@@ -45,63 +46,51 @@
   <text class="t" x="555" y="274" text-anchor="middle">Personal chief of staff</text>
   <text class="s" x="555" y="291" text-anchor="middle">Google Assistant (planned)</text>
 
-  <path class="ln" d="M205 304 L205 318 L130 318 L130 346" marker-end="url(#arw)"/>
-  <path class="ln" d="M205 304 L205 318 L280 318 L280 346" marker-end="url(#arw)"/>
-  <path class="ln" d="M555 304 L555 318 L480 318 L480 346" marker-end="url(#arw)"/>
-  <path class="ln" d="M555 304 L555 318 L630 318 L630 346" marker-end="url(#arw)"/>
+  <path class="ln" d="M205 304 L205 344" marker-end="url(#arw)"/>
+  <path class="ln" d="M555 304 L555 344" marker-end="url(#arw)"/>
 
   <!-- 4. Agents -->
-  <text class="lbl" x="40" y="342">3 · Agents</text>
-  <rect class="card" x="60" y="352" width="140" height="58" rx="10"/>
-  <text class="t" x="130" y="376" text-anchor="middle">Email</text>
-  <text class="s" x="130" y="393" text-anchor="middle">Triage, drafts</text>
+  <text class="lbl" x="40" y="344">3 · Agents</text>
+  <rect class="card" x="60" y="352" width="290" height="110" rx="10"/>
+  <text class="i" x="78" y="400">Email</text>
+  <text class="s" x="132" y="400">triage, drafts</text>
+  <text class="i" x="78" y="424">Meetings</text>
+  <text class="s" x="150" y="424">calendar, prep</text>
 
-  <rect class="card" x="210" y="352" width="140" height="58" rx="10"/>
-  <text class="t" x="280" y="376" text-anchor="middle">Meetings</text>
-  <text class="s" x="280" y="393" text-anchor="middle">Calendar, prep</text>
+  <rect class="card" x="410" y="352" width="290" height="110" rx="10"/>
+  <text class="i" x="428" y="378">Home &amp; family</text>
+  <text class="s" x="533" y="378">thermostat, reminders</text>
+  <text class="i" x="428" y="400">Calendar &amp; events</text>
+  <text class="s" x="556" y="400">holds, RSVPs</text>
+  <text class="i" x="428" y="422">Errands &amp; deliveries</text>
+  <text class="s" x="571" y="422">what's late</text>
+  <text class="i" x="428" y="444">Occasions</text>
+  <text class="s" x="504" y="444">birthdays, gifts</text>
 
-  <rect class="card" x="410" y="352" width="140" height="58" rx="10"/>
-  <text class="t" x="480" y="376" text-anchor="middle">Home &amp; family</text>
-  <text class="s" x="480" y="393" text-anchor="middle">Thermostat, kids</text>
-
-  <rect class="card" x="560" y="352" width="140" height="58" rx="10"/>
-  <text class="t" x="630" y="376" text-anchor="middle">Errands</text>
-  <text class="s" x="630" y="393" text-anchor="middle">Orders, bookings</text>
-
-  <path class="ln" d="M130 410 L130 436" marker-end="url(#arw)"/>
-  <path class="ln" d="M280 410 L280 436" marker-end="url(#arw)"/>
-  <path class="ln" d="M480 410 L480 436" marker-end="url(#arw)"/>
-  <path class="ln" d="M630 410 L630 436" marker-end="url(#arw)"/>
+  <path class="ln" d="M205 462 L205 490" marker-end="url(#arw)"/>
+  <path class="ln" d="M555 462 L555 490" marker-end="url(#arw)"/>
 
   <!-- 5. Tools -->
-  <text class="lbl" x="40" y="432">4 · Tools</text>
-  <rect class="card" x="60" y="442" width="140" height="52" rx="10"/>
-  <text class="s" x="130" y="464" text-anchor="middle">Gmail</text>
-  <text class="s" x="130" y="481" text-anchor="middle">Slack, docs</text>
+  <text class="lbl" x="40" y="488">4 · Tools</text>
+  <rect class="card" x="60" y="496" width="290" height="56" rx="10"/>
+  <text class="s" x="205" y="519" text-anchor="middle">Gmail · Slack · Docs</text>
+  <text class="s" x="205" y="537" text-anchor="middle">Work calendar</text>
 
-  <rect class="card" x="210" y="442" width="140" height="52" rx="10"/>
-  <text class="s" x="280" y="464" text-anchor="middle">Calendar</text>
-  <text class="s" x="280" y="481" text-anchor="middle">Meeting notes</text>
+  <rect class="card" x="410" y="496" width="290" height="56" rx="10"/>
+  <text class="s" x="555" y="519" text-anchor="middle">Smart home · Texts · Personal calendar</text>
+  <text class="s" x="555" y="537" text-anchor="middle">Carrier tracking · Shops · Venmo</text>
 
-  <rect class="card" x="410" y="442" width="140" height="52" rx="10"/>
-  <text class="s" x="480" y="464" text-anchor="middle">Smart home</text>
-  <text class="s" x="480" y="481" text-anchor="middle">Text messages</text>
+  <text class="s" x="380" y="580" text-anchor="middle" font-style="italic">No integration? A browser-using agent fills the gap.</text>
 
-  <rect class="card" x="560" y="442" width="140" height="52" rx="10"/>
-  <text class="s" x="630" y="464" text-anchor="middle">Grocery, booking</text>
-  <text class="s" x="630" y="481" text-anchor="middle">Venmo</text>
-
-  <text class="s" x="380" y="518" text-anchor="middle" font-style="italic">No integration? A browser-using agent fills the gap.</text>
-
-  <line class="rule" x1="40" y1="538" x2="720" y2="538"/>
+  <line class="rule" x1="40" y1="600" x2="720" y2="600"/>
 
   <!-- 6. Shared layer -->
-  <text class="lbl" x="40" y="566">5 · Underneath both sides</text>
-  <rect class="card card--key" x="60" y="576" width="310" height="52" rx="10"/>
-  <text class="t" x="215" y="598" text-anchor="middle">Shared memory</text>
-  <text class="s" x="215" y="615" text-anchor="middle">Names, schedules, preferences, your tone</text>
+  <text class="lbl" x="40" y="628">5 · Underneath both sides</text>
+  <rect class="card card--key" x="60" y="638" width="310" height="52" rx="10"/>
+  <text class="t" x="215" y="660" text-anchor="middle">Shared memory</text>
+  <text class="s" x="215" y="677" text-anchor="middle">Names, schedules, preferences, offhand mentions</text>
 
-  <rect class="card card--key" x="390" y="576" width="310" height="52" rx="10"/>
-  <text class="t" x="545" y="598" text-anchor="middle">Approval rules</text>
-  <text class="s" x="545" y="615" text-anchor="middle">Sending, spending, booking — ask first</text>
+  <rect class="card card--key" x="390" y="638" width="310" height="52" rx="10"/>
+  <text class="t" x="545" y="660" text-anchor="middle">Approval rules</text>
+  <text class="s" x="545" y="677" text-anchor="middle">Sending, spending, booking — ask first</text>
 </svg>

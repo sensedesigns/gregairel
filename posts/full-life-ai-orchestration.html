@@ -73,9 +73,9 @@
 
 <p>Time is the one thing you can't make more of, and most of us spend a shocking amount of ours on jobs that aren't hard, just numerous.</p>
 
-<p>Count a normal week. At work: sorting email, scheduling meetings, writing the fourth version of the same reply. At home: building the grocery list and placing the order, fitting haircuts around soccer, reminding a kid about reading homework, working out what you owe the babysitter. None of it is difficult. Together it's hours.</p>
+<p>Count a normal week. At work: sorting email, scheduling meetings, writing the fourth version of the same reply. Outside it: the grocery order, a dentist appointment that needs moving, a package that never showed up, a friend's birthday you remembered four days late, fitting haircuts around soccer, working out what you owe the babysitter. None of it is difficult. Together it's hours.</p>
 
-<p>The hours aren't the expensive part. The expensive part is the tracking. If you're a parent you know the feeling — you're sitting at dinner and some background process is still running on whether the registration renewal went out and what time practice starts Saturday. That noise never fully shuts off.</p>
+<p>The hours aren't the expensive part. The expensive part is the tracking. Everybody has a version of it — the registration renewal, the gift you still haven't bought, the delivery you're not sure arrived. Kids just turn the volume up and take the off switch with them: you're sitting at dinner and some background process is still running on what time practice starts Saturday. Either way, the noise never fully shuts off.</p>
 
 <p>Getting the grocery hour back is nice. Handing off the tracking is the actual prize. The goal was never to do more. It's to be all the way present for the part that matters.</p>
 
@@ -91,13 +91,18 @@
   <p>Book haircuts for Jack and Lily Friday or Saturday afternoon — soccer is Saturday morning, so nothing before 1.</p>
   <p>Set the thermostat to 70 overnight now that it's getting colder.</p>
   <p>Pay the babysitter for this week. Read her texts to find the hours she worked and the rate she gave us, then send it to the Venmo account she gave us. Show me the total before it goes out.</p>
-  <p>Also: draft a reply to my manager proposing Thursday for the budget review, find a time next week for dinner with my parents and send my wife a couple of options, remind me to renew the car registration before it expires this month, and track the package that was supposed to arrive yesterday.</p>
+  <p>Keep an eye on everything I've ordered. Tell me when something's late, and when a delivery window moves, move it on my calendar too.</p>
+  <p>My calendar: Dave asked about the game on the 12th — hold it and tell him I'm in. The dentist wants to reschedule; take the first morning that isn't stacked on a meeting. And put the Brennans' party on there, it's the Saturday after next.</p>
+  <p>Who has a birthday or an anniversary in the next month? For each one, go back through my texts with them and find something they actually said they wanted. Price it out and show me the list before you order anything.</p>
+  <p>Also: draft a reply to my manager proposing Thursday for the budget review, find a time next week for dinner with my parents and send my wife a couple of options, renew the car registration before it expires this month, and chase the dishwasher part that was supposed to arrive yesterday.</p>
   <p>Two lines at 5 p.m.: what got done, what still needs me.</p>
 </blockquote>
 
 <p>Then you get up and make coffee.</p>
 
-<p>Read that list again and notice what it isn't. Nothing in it is clever. There's no task in there you couldn't do yourself in five minutes. That's exactly the point — it's fourteen five-minute jobs, which is most of a morning, and every one of them was sitting in your head before you sent the message.</p>
+<p>Read that list again and notice what it isn't. Nothing in it is clever. There's no task in there you couldn't do yourself in five minutes. That's exactly the point — it's twenty-odd five-minute jobs, which is most of a morning, and every one of them was sitting in your head before you sent the message.</p>
+
+<p>The birthday request is the one worth reading twice. Everything else on that list is a job you could write down as a checklist and hand to anyone. That one you couldn't. It only works if something has read the thread where your sister mentioned, in passing, in March, the thing she'd actually use — and then brings you the list instead of quietly spending your money. That's not automation. It's the memory layer doing the one thing the people in your life would actually notice.</p>
 
 <hr>
 
@@ -130,7 +135,7 @@
 
 <h2>How to build it</h2>
 
-<img src="/img/blog-ai-orchestration.svg" alt="Architecture diagram: one orchestrator routing requests to a work chief of staff and a personal chief of staff, each with its own agents and tools, over a shared layer of memory and approval rules" class="guide-diagram" loading="lazy" width="760" height="640">
+<img src="/img/blog-ai-orchestration.svg" alt="Architecture diagram: one orchestrator routing requests to a work chief of staff and a personal chief of staff — email and meetings on one side, home and family, calendar and events, errands and deliveries, and occasions on the other — each reaching its own tools, over a shared layer of memory and approval rules" class="guide-diagram" loading="lazy" width="760" height="706">
 <p class="guide-img-caption">Five layers. Each one does a single job and hands the request down.</p>
 
 <h3>1. The front door</h3>
@@ -151,20 +156,22 @@
 <ul>
   <li><strong>Email:</strong> triage the inbox, draft replies in your tone.</li>
   <li><strong>Meetings:</strong> manage the calendar, pull prep notes, schedule.</li>
-  <li><strong>Home and family:</strong> thermostat, kids' reminders, appointments.</li>
-  <li><strong>Errands:</strong> groceries, bookings, payments.</li>
+  <li><strong>Home and family:</strong> thermostat, appointments, reminders.</li>
+  <li><strong>Calendar and events:</strong> your own calendar, not the work one — holding dates, RSVPs, tickets, and moving what needs moving.</li>
+  <li><strong>Errands and deliveries:</strong> groceries, bookings, payments, and what's in transit, late, or waiting to go back.</li>
+  <li><strong>Occasions:</strong> birthdays and anniversaries, and the gift itself — found in what the person actually told you, ordered once you've said yes.</li>
 </ul>
 
 <h3>4. Tools and connectors</h3>
 <ul>
   <li><strong>Work:</strong> Gmail, calendar, Slack, docs.</li>
-  <li><strong>Personal:</strong> smart home, text messages, grocery apps, booking sites, Venmo.</li>
+  <li><strong>Personal:</strong> smart home, text messages, your personal calendar, contacts, grocery and shopping accounts, carrier tracking, booking sites, Venmo.</li>
   <li><strong>Gaps:</strong> where no direct integration exists, a browser-using agent can usually fill in. Slower and more fragile — fine for a weekly errand, not for anything you need to be right every time.</li>
 </ul>
 
 <h3>5. Shared memory and approval rules</h3>
 <ul>
-  <li><strong>Memory:</strong> what every agent needs to know — names, schedules, preferences, your tone.</li>
+  <li><strong>Memory:</strong> what every agent needs to know — names, schedules, preferences, your tone, and the offhand thing someone said they wanted eight months ago.</li>
   <li><strong>Approvals:</strong> what needs your yes first. Sending anything, spending anything, booking anything.</li>
   <li><strong>The rule:</strong> start strict. Loosen it as trust is earned, one category at a time.</li>
 </ul>
@@ -184,7 +191,7 @@
 <ol>
   <li><strong>Pick your front door.</strong> Whatever you already check all day. Don't add an app for this.</li>
   <li><strong>Build the work arm first.</strong> Email and calendar integrations are the most mature by a wide margin, so it's where you'll get a win before you get frustrated.</li>
-  <li><strong>Add the personal arm one domain at a time.</strong> Reminders, then the smart home, then errands and payments. In that order — it's easiest to hardest, and it's also least to most expensive when something goes wrong.</li>
+  <li><strong>Add the personal arm one domain at a time.</strong> Reminders, then the smart home, then deliveries and your own calendar, then errands, gifts and payments. In that order — it's easiest to hardest, and it's also least to most expensive when something goes wrong.</li>
   <li><strong>Keep drafts as drafts, and payments behind approval.</strong> Every time.</li>
   <li><strong>Ask for a daily summary</strong> of everything done in your name. If you can't answer "what did it do today," you've given up the thing you were trying to buy.</li>
 </ol>
