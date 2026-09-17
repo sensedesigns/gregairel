@@ -112,6 +112,7 @@ p + p { margin-top: 1rem; }
 
 /* --- Hunt banner (sits inside the fixed nav block) --- */
 .hunt-banner {
+  position: relative;
   border-top: 1px solid var(--line);
   background: rgba(198, 161, 91, 0.08);
 }
@@ -142,6 +143,21 @@ p + p { margin-top: 1rem; }
   box-shadow: 0 0 10px var(--brass);
 }
 .hunt-banner__dot:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
+
+/* The dismiss x. Absolute so it never joins the centred message row,
+   and sized to sit inside the banner's own side padding — the text
+   stops before it at every width. */
+.hunt-banner__close {
+  position: absolute; top: 3px; right: 3px;
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  border: 0; padding: 0; border-radius: 50%;
+  background: none; color: var(--muted);
+  cursor: pointer;
+  transition: color 0.25s, background 0.25s;
+}
+.hunt-banner__close:hover { color: var(--ink); background: rgba(242, 240, 236, 0.08); }
+.hunt-banner__close:focus-visible { outline: 1px solid var(--brass); outline-offset: 1px; }
 
 /* Post byline — avatar, name, dates. Sits at the top of every post. */
 .byline { display: flex; align-items: center; gap: 0.85rem; margin: 0 0 2.2rem; }

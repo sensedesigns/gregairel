@@ -85,8 +85,34 @@
     ...FUNDRAISERS.map(fundMessage),
   ];
 
+  // Closing the banner buys quiet for this browsing session and no
+  // longer — it's back on the next visit. sessionStorage is the whole
+  // mechanism: it clears itself when the tab does. Reads and writes are
+  // wrapped because it throws outright in some privacy modes.
+  const BANNER_HIDDEN_KEY = 'banner_hidden';
+
+  function bannerHidden() {
+    try { return window.sessionStorage.getItem(BANNER_HIDDEN_KEY) === '1'; } catch (e) { return false; }
+  }
+  function rememberBannerHidden() {
+    try { window.sessionStorage.setItem(BANNER_HIDDEN_KEY, '1'); } catch (e) {}
+  }
+
+  // Closing it: an x, small enough to ignore until you want it.
+  const CLOSE_MARK = `
+    <button class="hunt-banner__close" id="hunt-banner-close" type="button"
+            aria-label="Hide this bar for now" title="Hide this bar for now">
+      <svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false">
+        <path d="M5 5 L19 19 M19 5 L5 19" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  `;
+
   function buildBanner() {
     if (HUNT_PAGE.test(document.body.className)) return '';
+    // Built out of the DOM entirely rather than hidden with CSS, so the
+    // nav measures its real height on load instead of flashing.
+    if (bannerHidden()) return '';
     const dots = BANNER_MESSAGES.map(
       (_, n) => `<button class="hunt-banner__dot${n === 0 ? ' hunt-banner__dot--on' : ''}" type="button" aria-label="Banner message ${n + 1}"></button>`
     ).join('');
@@ -96,6 +122,7 @@
           ${BANNER_MESSAGES[0]}
         </div>
         <div class="hunt-banner__dots" id="hunt-banner-dots">${dots}</div>
+        ${CLOSE_MARK}
       </div>
     `;
   }
@@ -104,10 +131,26 @@
     const banner = document.getElementById('hunt-banner');
     const inner = document.getElementById('hunt-banner-inner');
     const dotsHost = document.getElementById('hunt-banner-dots');
-    if (!banner || !inner || !dotsHost || BANNER_MESSAGES.length < 2) return;
+    if (!banner) return;
 
     let i = 0;
     let timer = null;
+
+    const close = document.getElementById('hunt-banner-close');
+    if (close) {
+      close.addEventListener('click', function () {
+        if (timer) window.clearInterval(timer);
+        banner.remove();
+        rememberBannerHidden();
+        // Every page offset is calc()'d off --nav-height, so the nav has
+        // to be re-measured the moment the banner leaves it.
+        syncNavHeight();
+        if (typeof gtag === 'function') gtag('event', 'banner_dismiss');
+      });
+    }
+
+    if (!inner || !dotsHost || BANNER_MESSAGES.length < 2) return;
+
     const dots = Array.prototype.slice.call(dotsHost.children);
     inner.style.transition = 'opacity 0.4s';
 
