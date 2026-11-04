@@ -112,6 +112,7 @@ p + p { margin-top: 1rem; }
 
 /* --- Hunt banner (sits inside the fixed nav block) --- */
 .hunt-banner {
+  position: relative;
   border-top: 1px solid var(--line);
   background: rgba(198, 161, 91, 0.08);
 }
@@ -143,6 +144,21 @@ p + p { margin-top: 1rem; }
 }
 .hunt-banner__dot:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
 
+/* The dismiss x. Absolute so it never joins the centred message row,
+   and sized to sit inside the banner's own side padding — the text
+   stops before it at every width. */
+.hunt-banner__close {
+  position: absolute; top: 3px; right: 3px;
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  border: 0; padding: 0; border-radius: 50%;
+  background: none; color: var(--muted);
+  cursor: pointer;
+  transition: color 0.25s, background 0.25s;
+}
+.hunt-banner__close:hover { color: var(--ink); background: rgba(242, 240, 236, 0.08); }
+.hunt-banner__close:focus-visible { outline: 1px solid var(--brass); outline-offset: 1px; }
+
 /* Post byline — avatar, name, dates. Sits at the top of every post. */
 .byline { display: flex; align-items: center; gap: 0.85rem; margin: 0 0 2.2rem; }
 .byline img {
@@ -158,6 +174,21 @@ p + p { margin-top: 1rem; }
 /* Contact channel rows carry a brand icon in a slim column. */
 .row.row--icon { grid-template-columns: 2.5rem 2.5rem 1fr auto; }
 .row__icon { width: 2.5rem; height: 2.5rem; padding: 0.45rem; box-sizing: border-box; }
+/* Venture marks come off light-background sites, so each sits on its
+   own white tile rather than disappearing into the page. The art
+   carries its own breathing room, hence no padding. */
+.row__icon--tile { padding: 0; border-radius: 7px; background: #fff; object-fit: contain; }
+/* Ventures with no mark to show yet keep the same footprint, so a real
+   icon drops in later without moving anything. */
+.row__icon--mono {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0; border-radius: 7px;
+  border: 1px solid var(--line-2);
+  background: var(--raise-2);
+  color: var(--brass);
+  font-family: var(--font-display);
+  font-size: 1rem; letter-spacing: 0.06em;
+}
 @media (max-width: 640px) {
   .row.row--icon { grid-template-columns: 1.8rem 2.2rem 1fr; }
 }
@@ -629,6 +660,15 @@ a.card__media { display: block; }
 .guide-hero { width: 100%; max-height: 30rem; object-fit: cover; margin-bottom: 3rem; }
 .guide-img { width: 100%; max-height: 26rem; object-fit: cover; margin: 2rem 0 0.7rem; }
 .guide-img-caption { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-bottom: 2rem; }
+/* Diagrams are drawn to fit, not cropped to fit — no object-fit: cover. */
+.guide-diagram {
+  width: 100%; height: auto; max-height: none;
+  object-fit: contain;
+  background: var(--raise);
+  border: 1px solid var(--line);
+  padding: 1.2rem;
+  margin: 2rem 0 0.7rem;
+}
 .guide-stats {
   display: grid; gap: 0.4rem;
   margin: 2rem 0; padding: 1.5rem;
