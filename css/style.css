@@ -178,6 +178,14 @@ p + p { margin-top: 1rem; }
    own white tile rather than disappearing into the page. The art
    carries its own breathing room, hence no padding. */
 .row__icon--tile { padding: 0; border-radius: 7px; background: #fff; object-fit: contain; }
+/* White or light marks vanish on the white tile, so they keep the
+   mono tile's dark surface instead. */
+.row__icon--tile-dark {
+  padding: 0.45rem; border-radius: 7px;
+  border: 1px solid var(--line-2);
+  background: var(--raise-2);
+  object-fit: contain;
+}
 /* Ventures with no mark to show yet keep the same footprint, so a real
    icon drops in later without moving anything. */
 .row__icon--mono {
